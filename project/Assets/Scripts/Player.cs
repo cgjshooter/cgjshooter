@@ -27,8 +27,14 @@ public class Player : MonoBehaviour
         //TODO - populate from players weapon selection.
         this.items = new List<IItem>();
         //Just for testing, instantiate the first value and set it as active item.
-        var activeGO = Instantiate(itemPrefabs[0], this.transform);
-        this.activeItem = activeGO.GetComponent<IItem>();
+        for (int i = 0; i < itemPrefabs.Count; i++)
+        {
+            GameObject go = Instantiate(itemPrefabs[i], this.transform);
+            this.items.Add(go.GetComponent<IItem>());
+        }
+
+
+        this.activeItem = this.items[0];// itemPrefabs[i].GetComponent<IItem>();
     }
 
     private void Update()
@@ -36,6 +42,35 @@ public class Player : MonoBehaviour
         if( CrossPlatformInputManager.GetAxis("p" + playerId + "Fire1")!=0 && activeItem != null)
         {
             this.activeItem.activate(this.gameObject);
+        }
+
+        //Check for item swaps
+        bool i1 = CrossPlatformInputManager.GetButtonDown("p" + playerId + "SelectItem1");
+        bool i2 = CrossPlatformInputManager.GetButtonDown("p" + playerId + "SelectItem2");
+        bool i3 = CrossPlatformInputManager.GetButtonDown("p" + playerId + "SelectItem3");
+        bool i4 = CrossPlatformInputManager.GetButtonDown("p" + playerId + "SelectItem4");
+
+        var itemInd = i1 ? 0 : i2 ? 1 : i3 ? 2 : i4 ? 3 : -1;
+        if(itemInd >= 0)
+        {
+            //Select item and activate.
+            if(itemInd >= 0 && itemInd < this.items.Count)
+            {
+                var nextItem = this.items[itemInd];
+                if(nextItem.toggleable)
+                {
+                    if(this.activeItem != null)
+                    {
+                        this.activeItem.deactivate(this.gameObject);
+                    }
+                    activeItem = this.items[itemInd];
+                }
+                else
+                {
+                    //TODO - Apply usable item
+                }
+
+            }
         }
     }
 

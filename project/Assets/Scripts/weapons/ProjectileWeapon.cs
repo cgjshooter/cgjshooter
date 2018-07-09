@@ -28,11 +28,20 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
         }
     }
 
+    public float power
+    {
+        get
+        {
+            return bulletDamage;
+        }
+    }
+
     public float spread;
     public float bulletSpeedRandomFactor;
     public float firedelay;
     public float bulletspeed;
     public float bulletAmount;
+    public float bulletDamage;
 
     public GameObject bulletPrefab;
 
@@ -68,10 +77,14 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
                     0f,
                     Mathf.Cos(angle * Mathf.PI / 180f + Mathf.PI / 2)
                 );
-                go.GetComponent<Bullet>().direction = add * (bulletspeed + UnityEngine.Random.value*bulletSpeedRandomFactor) + player.GetComponent<Player>().m_Move;
+                go.GetComponent<Bullet>().direction = add * (bulletspeed + UnityEngine.Random.value * bulletSpeedRandomFactor) + player.GetComponent<Player>().m_Move;
+                go.GetComponent<Bullet>().damage = this.bulletDamage;
             }
             this.previousActivation = Time.time;
         }
     }
+    public void deactivate(GameObject player)
+    {
 
+    }
 }

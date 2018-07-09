@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour {
 
     public Vector3 direction;
     public float start;
+    public float damage;
 
 	// Use this for initialization
 	void Start () {
@@ -24,7 +25,7 @@ public class Bullet : MonoBehaviour {
         Enemy e = other.GetComponent<Enemy>();
         if (e!=null)
         {
-            e.hit();
+            e.hit(this.damage);
             GameObject.Destroy(this.gameObject);
         }
         else
@@ -32,7 +33,7 @@ public class Bullet : MonoBehaviour {
             Obstacle o = other.GetComponent<Obstacle>();
             if(o != null)
             {
-                o.hit();
+                o.hit(this.damage);
                 GameObject.Destroy(this.gameObject);
             }
         }

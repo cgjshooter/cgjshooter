@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour {
     public float moveSpeed;
-    public int hitPoints;
+    public float hitPoints;
 
     private GameObject player1;
     private GameObject player2;
@@ -44,9 +44,9 @@ public class Enemy : MonoBehaviour {
         this.transform.position -= targetD * moveSpeed;
     }
 
-    public void hit()
+    public void hit(float damage)
     {
-        this.hitPoints--;
+        this.hitPoints -= damage;
         if (this.hitPoints <= 0)
             GameObject.Destroy(this.gameObject);
     }

@@ -15,7 +15,7 @@ public class Obstacle : MonoBehaviour {
 		
 	}
 
-    public void hit()
+    public void hit(float damage)
     {
 
     }

@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
 
     public LayerMask mouseHitMask;
     public float moveSpeed;
+	public float hitPoints;
     public Vector3 m_Move;
 
     //TODO - get player id from registration order.
@@ -38,6 +39,12 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+		if(hitPoints < 0)
+		{
+			//DIE
+			this.die();
+		}
+
         if( CrossPlatformInputManager.GetAxis("p" + playerId + "Fire1")!=0 && activeItem != null)
         {
             this.activeItem.activate(this.gameObject);
@@ -72,6 +79,11 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+	private void die()
+	{
+		GameObject.Destroy(this.gameObject);
+	}
 
     private void OnTriggerEnter(Collider other)
     {

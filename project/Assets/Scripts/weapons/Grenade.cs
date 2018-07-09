@@ -71,6 +71,7 @@ public class Grenade : MonoBehaviour, IProjectile{
 
         Invoke("clearObject", 1);
     }
+
     void clearObject()
     {
         GameObject.Destroy(this.gameObject);

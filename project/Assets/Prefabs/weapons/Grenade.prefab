@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4105986841769896}
   - component: {fileID: 198300590773641122}
   - component: {fileID: 199908006171511246}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 135141222546475022}
   - component: {fileID: 114792783188269208}
   - component: {fileID: 54257958883587738}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Grenade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   start: 0
-  explosionDelay: 3
+  explosionDelay: 1.5
   dampeningFunction:
     serializedVersion: 2
     m_Curve:

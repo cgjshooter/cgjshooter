@@ -465,21 +465,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1635604695155870, guid: 32aa543bc1233bf42a097608cf4a0b9b,
     type: 2}
   m_PrefabInternal: {fileID: 575902678}
---- !u!54 &251963301
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 251963300}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &320824295
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,8 +769,7 @@ Prefab:
       propertyPath: m_Name
       value: Player1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 54847888825129096, guid: 32aa543bc1233bf42a097608cf4a0b9b, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 32aa543bc1233bf42a097608cf4a0b9b, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &601624513

@@ -8,14 +8,20 @@ public class Grenade : MonoBehaviour, IProjectile{
     public float start;
     public float explosionDelay;
     private GameObject enemiesGameObject;
-
+    private bool exploded;
     public AnimationCurve dampeningFunction;
 
     Vector3 _direction;
     public Vector3 direction
     {
         get {return _direction;}
-        set{_direction = value;}
+        set{
+            Debug.Log(this.gameObject.name);
+            if (this.gameObject.name.IndexOf("Mine")>=0)
+                _direction = new Vector3();
+            else
+                _direction = value;
+        }
     }
 
     float _damage;
@@ -53,8 +59,19 @@ public class Grenade : MonoBehaviour, IProjectile{
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        //TODO - better way for this.
+        if(!exploded && other.transform.parent != null &&  other.transform.parent.name == "enemyContainer")
+        {
+            explode();
+        }
+            
+    }
+
     void explode()
     {
+        exploded = true;
         //Find out enemies in the range
 
         this.explosionParticles.GetComponent<ParticleSystem>().Play();

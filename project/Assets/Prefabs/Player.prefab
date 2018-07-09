@@ -57,7 +57,6 @@ GameObject:
   - component: {fileID: 33418815287332498}
   - component: {fileID: 23645367858859246}
   - component: {fileID: 135579853634161258}
-  - component: {fileID: 54847888825129096}
   m_Layer: 11
   m_Name: Sphere
   m_TagString: Untagged
@@ -91,6 +90,7 @@ GameObject:
   - component: {fileID: 4503229556164640}
   - component: {fileID: 65886397344501324}
   - component: {fileID: 114561768281793148}
+  - component: {fileID: 54916046152592328}
   m_Layer: 11
   m_Name: Player
   m_TagString: Untagged
@@ -293,12 +293,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1160494248039608}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54847888825129096
+--- !u!54 &54916046152592328
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1437888750473314}
+  m_GameObject: {fileID: 1635604695155870}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -442,13 +442,13 @@ MonoBehaviour:
   - {fileID: 1460600213935450, guid: 2116546604853a342bd73437af5b7488, type: 2}
   - {fileID: 1520028987011832, guid: bd908c48c86efc24b9c99b2e6123e634, type: 2}
   - {fileID: 1399108751618058, guid: c862440ced6338b47b968d12ddda13e2, type: 2}
+  - {fileID: 1085345533283350, guid: 07d93e12df55b84489f6e2ab62d975f2, type: 2}
+  - {fileID: 1085345533283350, guid: 6b0cdeb25eb61d44c8981281f8d14965, type: 2}
+  - {fileID: 1085345533283350, guid: 6b0cdeb25eb61d44c8981281f8d14965, type: 2}
+  - {fileID: 1085345533283350, guid: 6b0cdeb25eb61d44c8981281f8d14965, type: 2}
+  - {fileID: 1085345533283350, guid: 6b0cdeb25eb61d44c8981281f8d14965, type: 2}
+  - {fileID: 1520028987011832, guid: f44280a5804644541a46370c00ce0a6c, type: 2}
   - {fileID: 1085345533283350, guid: e58b66576a4fcac4e90237d09d4a7cc6, type: 2}
-  - {fileID: 1085345533283350, guid: 6b0cdeb25eb61d44c8981281f8d14965, type: 2}
-  - {fileID: 1085345533283350, guid: 6b0cdeb25eb61d44c8981281f8d14965, type: 2}
-  - {fileID: 1085345533283350, guid: 6b0cdeb25eb61d44c8981281f8d14965, type: 2}
-  - {fileID: 1085345533283350, guid: 6b0cdeb25eb61d44c8981281f8d14965, type: 2}
-  - {fileID: 1085345533283350, guid: 6b0cdeb25eb61d44c8981281f8d14965, type: 2}
-  - {fileID: 1085345533283350, guid: 6b0cdeb25eb61d44c8981281f8d14965, type: 2}
   mouseHitMask:
     serializedVersion: 2
     m_Bits: 512

@@ -11,6 +11,6 @@ public interface IItem {
     //How many times the item can be used. -1 for infinite.
     int useCount { get; }
 
-    void activate();
+    void activate(GameObject player);
 	
 }

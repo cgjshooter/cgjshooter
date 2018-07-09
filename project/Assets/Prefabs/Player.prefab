@@ -283,12 +283,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49743d7ee3152b8449715d60a22bd529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemPrefabs:
+  - {fileID: 1520028987011832, guid: bd908c48c86efc24b9c99b2e6123e634, type: 2}
   mouseHitMask:
     serializedVersion: 2
     m_Bits: 512
-  bulletPrefab: {fileID: 1737630033848492, guid: 38a90b522ff647042904f00e003f5dc5,
-    type: 2}
-  shootDelay: 0.05
   moveSpeed: 0.1
-  bulletShootSpeed: 0
+  m_Move: {x: 0, y: 0, z: 0}
   playerId: 1

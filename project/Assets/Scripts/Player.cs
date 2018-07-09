@@ -5,12 +5,13 @@ using System.Collections.Generic;
 
 public class Player : MonoBehaviour
 {
+    public List<GameObject> itemPrefabs;
+    public IItem activeItem;
+    public List<IItem> items;
+
     public LayerMask mouseHitMask;
-    public GameObject bulletPrefab;
-    public float shootDelay;
     public float moveSpeed;
-    public float bulletShootSpeed;
-    private Vector3 m_Move;
+    public Vector3 m_Move;
 
     //TODO - get player id from registration order.
     //p1 - keybaord / steam controller as it maps to kb/mouse without steam overlay
@@ -20,35 +21,23 @@ public class Player : MonoBehaviour
     public String playerId;
 
     private float lastSpawn;
-    private GameObject bulletContainer;
-       
+   
     private void Start()
     {
-        bulletContainer = GameObject.Find("bulletContainer");
-        Debug.Log(bulletContainer);
+        //TODO - populate from players weapon selection.
+        this.items = new List<IItem>();
+        //Just for testing, instantiate the first value and set it as active item.
+        var activeGO = Instantiate(itemPrefabs[0], this.transform);
+        this.activeItem = activeGO.GetComponent<IItem>();
     }
-
 
     private void Update()
     {
-        if(Time.realtimeSinceStartup - lastSpawn > shootDelay && 
-            CrossPlatformInputManager.GetAxis("p" + playerId + "Fire1")!=0 && 
-            bulletContainer != null)
+        if( CrossPlatformInputManager.GetAxis("p" + playerId + "Fire1")!=0 && activeItem != null)
         {
-            //Spawn a bullet
-            var go = GameObject.Instantiate(bulletPrefab, this.transform.position,
-                this.transform.rotation
-                ,this.bulletContainer.transform);
-            Vector3 add = new Vector3(
-                Mathf.Sin(this.transform.rotation.eulerAngles.y * Mathf.PI / 180f + Mathf.PI / 2),
-                0f,
-                Mathf.Cos(this.transform.rotation.eulerAngles.y * Mathf.PI / 180f + Mathf.PI / 2)
-            );
-            go.GetComponent<Bullet>().direction = add*0.2f + m_Move;
-            lastSpawn = Time.realtimeSinceStartup;
+            this.activeItem.activate(this.gameObject);
         }
     }
-
 
     // Fixed update is called in sync with physics
     //TODO - update this to use the position from main game logic which runs based on ticks.

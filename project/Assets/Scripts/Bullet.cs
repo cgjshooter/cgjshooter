@@ -32,5 +32,15 @@ public class Bullet : MonoBehaviour {
             e.hit();
             GameObject.Destroy(this.gameObject);
         }
+        else
+        {
+            Obstacle o = other.GetComponent<Obstacle>();
+            if(o != null)
+            {
+                o.hit();
+                GameObject.Destroy(this.gameObject);
+            }
+        }
+
     }
 }

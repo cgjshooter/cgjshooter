@@ -44,6 +44,19 @@ public class MainControl : MonoBehaviour {
 
     private void updateMultiplayerCam()
     {
+        Vector3 distanceBetween = player2.transform.position - player1.transform.position;
+        float dist = Vector3.Magnitude(distanceBetween);
 
+        Vector3 midPoint = player1.transform.position + distanceBetween * 0.5f;
+
+        target.Set(Camera.main.transform.position.x + (midPoint.x - Camera.main.transform.position.x) / 10,
+            0,
+            Camera.main.transform.position.z + (midPoint.z - 15 - Camera.main.transform.position.z) / 10 + 15);
+        Camera.main.transform.position = new Vector3(
+            Camera.main.transform.position.x + (midPoint.x - Camera.main.transform.position.x) / 10,
+            +30 + Mathf.Max(0,(dist*2f-20f)),
+            Camera.main.transform.position.z + (midPoint.z - 15 - Camera.main.transform.position.z) / 10);
+
+        Camera.main.transform.LookAt(target);
     }
 }

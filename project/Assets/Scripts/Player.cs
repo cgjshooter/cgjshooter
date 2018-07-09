@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     public String playerId;
 
     private float lastSpawn;
-   
+    private bool falling;
     private void Start()
     {
         //TODO - populate from players weapon selection.
@@ -33,8 +33,7 @@ public class Player : MonoBehaviour
             this.items.Add(go.GetComponent<IItem>());
         }
 
-
-        this.activeItem = this.items[0];// itemPrefabs[i].GetComponent<IItem>();
+        this.activeItem = this.items[0];
     }
 
     private void Update()
@@ -71,6 +70,21 @@ public class Player : MonoBehaviour
                 }
 
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.name == "fallTrigger" && !falling)
+        {
+            //Trigger fall
+            falling = true;
+            this.transform.Find("Sounds").GetComponent<AudioSource>().Play();
+        }
+        else if(other.name == "exitTrigger")
+        {
+            //Game over
+            
         }
     }
 

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4891047883894680}
   - component: {fileID: 114621592274498732}
   m_Layer: 0
-  m_Name: GrenadeThrower
+  m_Name: GrenadeHandThrower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,11 +53,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spread: 0
   bulletSpeedRandomFactor: 0
-  firedelay: 1
-  bulletspeed: 0.15
+  firedelay: 0.6
+  bulletspeed: 0.1
   bulletAmount: 1
-  bulletDamage: 20
-  heightAngle: 70
+  bulletDamage: 10
+  heightAngle: 13.05
   effectRadius: 3
   bulletPrefab: {fileID: 1166425571736118, guid: 5102894c93b08c641b5e73a4091007c8,
     type: 2}

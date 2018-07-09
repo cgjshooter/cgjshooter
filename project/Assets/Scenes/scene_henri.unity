@@ -113,6 +113,48 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &85489654
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4330121003260238, guid: 47d44be3cd7a0254394267273ec62080, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.8009143
+      objectReference: {fileID: 0}
+    - target: {fileID: 4330121003260238, guid: 47d44be3cd7a0254394267273ec62080, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 4.7605333
+      objectReference: {fileID: 0}
+    - target: {fileID: 4330121003260238, guid: 47d44be3cd7a0254394267273ec62080, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.698051
+      objectReference: {fileID: 0}
+    - target: {fileID: 4330121003260238, guid: 47d44be3cd7a0254394267273ec62080, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4330121003260238, guid: 47d44be3cd7a0254394267273ec62080, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4330121003260238, guid: 47d44be3cd7a0254394267273ec62080, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4330121003260238, guid: 47d44be3cd7a0254394267273ec62080, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4330121003260238, guid: 47d44be3cd7a0254394267273ec62080, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 47d44be3cd7a0254394267273ec62080, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &112150313
 GameObject:
   m_ObjectHideFlags: 0

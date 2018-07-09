@@ -38,13 +38,15 @@ public class Grenade : MonoBehaviour, IProjectile{
         set{ _effectRadius = value; }
     }
 
-    private GameObject explosionParticles;
+    private Transform explosionParticles;
+    private Transform smokeParticles;
 
     // Use this for initialization
     void Start()
     {
         start = Time.time;
-        this.explosionParticles = this.transform.Find("explosion").gameObject;
+        this.explosionParticles = this.transform.Find("explosion");
+        this.smokeParticles = this.transform.Find("smoke");
         this.enemiesGameObject = GameObject.Find("/enemyContainer");
     }
     
@@ -62,11 +64,10 @@ public class Grenade : MonoBehaviour, IProjectile{
     private void OnTriggerEnter(Collider other)
     {
         //TODO - better way for this.
-        if(!exploded && other.transform.parent != null &&  other.transform.parent.name == "enemyContainer")
+        if(!exploded && other.transform.parent != null && other.transform.parent.name == "enemyContainer")
         {
             explode();
         }
-            
     }
 
     void explode()
@@ -74,9 +75,11 @@ public class Grenade : MonoBehaviour, IProjectile{
         exploded = true;
         //Find out enemies in the range
 
-        this.explosionParticles.GetComponent<ParticleSystem>().Play();
-
-        for(int i = 0; i < enemiesGameObject.transform.childCount; i++)
+        this.direction = new Vector3();
+        this.explosionParticles.gameObject.GetComponent<ParticleSystem>().Play();
+        if(this.smokeParticles != null)
+            this.smokeParticles.gameObject.GetComponent<ParticleSystem>().Stop();
+        for (int i = 0; i < enemiesGameObject.transform.childCount; i++)
         {
             var co = enemiesGameObject.transform.GetChild(i);
             var d = this.transform.position - co.transform.position;

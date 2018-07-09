@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     public LayerMask mouseHitMask;
     public GameObject bulletPrefab;
     public float shootDelay;
+    public float moveSpeed;
+    public float bulletShootSpeed;
     private Vector3 m_Move;
 
     //TODO - get player id from registration order.
@@ -37,6 +39,12 @@ public class Player : MonoBehaviour
             var go = GameObject.Instantiate(bulletPrefab, this.transform.position,
                 this.transform.rotation
                 ,this.bulletContainer.transform);
+            Vector3 add = new Vector3(
+                Mathf.Sin(this.transform.rotation.eulerAngles.y * Mathf.PI / 180f + Mathf.PI / 2),
+                0f,
+                Mathf.Cos(this.transform.rotation.eulerAngles.y * Mathf.PI / 180f + Mathf.PI / 2)
+            );
+            go.GetComponent<Bullet>().direction = add*0.2f + m_Move;
             lastSpawn = Time.realtimeSinceStartup;
         }
     }
@@ -79,8 +87,8 @@ public class Player : MonoBehaviour
         }
 
         //calculate move.
-        m_Move = v * Vector3.forward + h * Vector3.right;
+        m_Move = (v * Vector3.forward + h * Vector3.right)*moveSpeed;
 
-        this.transform.position += m_Move*0.1f;
+        this.transform.position += m_Move;
     }
 }

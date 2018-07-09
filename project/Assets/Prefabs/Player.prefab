@@ -216,4 +216,5 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1737630033848492, guid: 38a90b522ff647042904f00e003f5dc5,
     type: 2}
   shootDelay: 0.05
+  moveSpeed: 0.1
   playerId: 1

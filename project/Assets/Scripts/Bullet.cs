@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
-    public float speed;
+    public Vector3 direction;
     public float start;
 
 	// Use this for initialization
@@ -14,13 +14,8 @@ public class Bullet : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Vector3 add = new Vector3(
-                Mathf.Sin(this.transform.rotation.eulerAngles.y * Mathf.PI / 180f+Mathf.PI/2),
-                0f,
-                Mathf.Cos(this.transform.rotation.eulerAngles.y*Mathf.PI/180f + Mathf.PI / 2)
-            );
         
-        this.transform.position += add * speed;
+        this.transform.position += direction;
         if (Time.time - start > 10f) GameObject.Destroy(this.gameObject);
 	}
 

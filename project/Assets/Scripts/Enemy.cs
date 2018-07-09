@@ -19,7 +19,11 @@ public class Enemy : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		
+		if(hitPoints < 0)
+        {
+            //DIE
+            GameObject.Destroy(this.gameObject);
+        }
         
 	}
 
@@ -44,10 +48,8 @@ public class Enemy : MonoBehaviour {
         this.transform.position -= targetD * moveSpeed;
     }
 
-    public void hit(float damage)
+    public void hit(IProjectile ammunition)
     {
-        this.hitPoints -= damage;
-        if (this.hitPoints <= 0)
-            GameObject.Destroy(this.gameObject);
+        ammunition.affect(this.gameObject);
     }
 }

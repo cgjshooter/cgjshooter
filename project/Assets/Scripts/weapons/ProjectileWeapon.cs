@@ -42,6 +42,8 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
     public float bulletspeed;
     public float bulletAmount;
     public float bulletDamage;
+    public float heightAngle;
+    public float effectRadius;
 
     public GameObject bulletPrefab;
 
@@ -74,11 +76,14 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
                 float angle = this.transform.rotation.eulerAngles.y + (UnityEngine.Random.value - 0.5f) * spread;
                 Vector3 add = new Vector3(
                     Mathf.Sin(angle * Mathf.PI / 180f + Mathf.PI / 2),
-                    0f,
+                    Mathf.Sin(heightAngle * 180f/Mathf.PI),
                     Mathf.Cos(angle * Mathf.PI / 180f + Mathf.PI / 2)
                 );
-                go.GetComponent<Bullet>().direction = add * (bulletspeed + UnityEngine.Random.value * bulletSpeedRandomFactor) + player.GetComponent<Player>().m_Move;
-                go.GetComponent<Bullet>().damage = this.bulletDamage;
+                add.Normalize();
+                go.GetComponent<IProjectile>().direction = add * (bulletspeed + UnityEngine.Random.value * bulletSpeedRandomFactor) + player.GetComponent<Player>().m_Move;
+                go.GetComponent<IProjectile>().damage = this.bulletDamage;
+                go.GetComponent<IProjectile>().effectRadius = this.effectRadius;
+
             }
             this.previousActivation = Time.time;
         }

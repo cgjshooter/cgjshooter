@@ -287,6 +287,7 @@ MonoBehaviour:
   - {fileID: 1460600213935450, guid: 2116546604853a342bd73437af5b7488, type: 2}
   - {fileID: 1520028987011832, guid: bd908c48c86efc24b9c99b2e6123e634, type: 2}
   - {fileID: 1399108751618058, guid: c862440ced6338b47b968d12ddda13e2, type: 2}
+  - {fileID: 1085345533283350, guid: 6b0cdeb25eb61d44c8981281f8d14965, type: 2}
   mouseHitMask:
     serializedVersion: 2
     m_Bits: 512

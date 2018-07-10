@@ -42,6 +42,7 @@ public class Bullet : MonoBehaviour, IProjectile {
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Collider enter");
         Enemy e = other.GetComponent<Enemy>();
         if (e!=null)
         {
@@ -50,12 +51,14 @@ public class Bullet : MonoBehaviour, IProjectile {
         }
         else
         {
+
+            /*
             Obstacle o = other.GetComponent<Obstacle>();
             if(o != null)
             {
-                o.hit(this.damage);
+                o.hit(this.damage);*/
                 GameObject.Destroy(this.gameObject);
-            }
+            //}
         }
     }
 

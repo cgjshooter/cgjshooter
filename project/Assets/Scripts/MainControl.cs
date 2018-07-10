@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class MainControl : MonoBehaviour {
 
+    public List<GameObject> players;
+
+    //Keep players available at any point for other classes.
+    public static List<GameObject> activePlayers;
+
     public GameObject player1;
     public GameObject player2;
 
@@ -11,7 +16,16 @@ public class MainControl : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        //TODO - initialize player amount based on player selection.
+        //TODO - make sure they have correct player ids (controller based).
+
+        //Populate active players
+        activePlayers = new List<GameObject>();
+        foreach(GameObject player in players)
+        {
+            if (player.activeSelf)
+                activePlayers.Add(player);
+        }
 	}
 	
 	// Update is called once per frame

@@ -9,59 +9,75 @@ public class FFTEffects : MonoBehaviour {
 
     private PostProcessingBehaviour ppBehaviour;
     private PostProcessingProfile ppProfile;
-	// Use this for initialization
-	void Start () {
-        this.filters = new List<Filter>();
-        this.filters.Add(new Filter(0, 600,true));
-        this.filters.Add(new Filter(6000, 12000, true));
-        ppProfile = Camera.main.GetComponent<PostProcessingBehaviour>().profile;
-    }
+
+    private int fftSize = 1024;
     private List<float[]> history;
     private int historyInd;
+    private float[] result;
+    // Use this for initialization
+    void Start () {
+        result = new float[fftSize];
+        this.filters = new List<Filter>();
+        this.filters.Add(new Filter(0, 600,true));
+        this.filters.Add(new Filter(1000, 2000, true));
+        ppProfile = Camera.main.GetComponent<PostProcessingBehaviour>().profile;
+        history = new List<float[]>();
+        history.Add(new float[fftSize]);
+        history.Add(new float[fftSize]);
+        history.Add(new float[fftSize]);
+        history.Add(new float[fftSize]);
+        history.Add(new float[fftSize]);
+        history.Add(new float[fftSize]);
+
+    }
     // Update is called once per frame
     void Update() {
-        var fftSize = 1024;
-        float[] spectrum = new float[fftSize];
-
-        AudioListener.GetSpectrumData(spectrum, 0, FFTWindow.Rectangular);
+        
+        
+        AudioListener.GetSpectrumData(history[historyInd%history.Count], 0, FFTWindow.Rectangular);
         historyInd++;
-        history[historyInd % history.Count] = spectrum;
+        for (int i = 0; i < fftSize; i++)
+            result[i] = history[0][i];
 
-        float[] result = new float[fftSize];
+        for (int j = 1; j < history.Count; j++)
+        {
+            var hs = history[j];
+            for (int i = 0; i < fftSize; i++)
+                result[i] += hs[i];
+        }
 
         foreach (Filter filter in filters)
         {
             filter.max = 0;
             filter.min = 1;
         }
-        for (int i = 1; i < spectrum.Length - 1; i++)
+        
+        for (int i = 0; i < fftSize; i++)
         {
             foreach (Filter filter in filters)
             {
-                float v = spectrum[i];
+                float v = result[i]/history.Count;
                 float band = 44100 / fftSize * i;
                 if (filter.inclusive && band > filter.low && band < filter.high)
                 {
                     filter.max = Mathf.Max(v, filter.max);
-                    filter.min = Mathf.Max(v, filter.min);
+                    filter.min = Mathf.Min(v, filter.min);
                 }
                 else if (!filter.inclusive && (band < filter.low || band > filter.high))
                 {
                     filter.max = Mathf.Max(v, filter.max);
-                    filter.min = Mathf.Max(v, filter.min);
+                    filter.min = Mathf.Min(v, filter.min);
                 }
             }
         }
 
         //Update the effects
         var vignetSettings = ppProfile.vignette.settings;
-        vignetSettings.intensity = Mathf.Clamp(filters[0].max*4f, 0f, 0.35f);
+        
+        vignetSettings.intensity = Mathf.Clamp(filters[0].max*1f+0.10f, 0f, 0.25f);
         ppProfile.vignette.settings = vignetSettings;
 
-        var bloomSettings = ppProfile.bloom.settings;
-        bloomSettings.bloom.intensity = Mathf.Clamp(filters[1].max*8f , 0f, 0.35f)+1f;
-        ppProfile.bloom.settings = bloomSettings;
-
+        
     }
 }
 

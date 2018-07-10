@@ -285,7 +285,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1437888750473314}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300052, guid: d05d496cb4f43c14e80630addd23652e, type: 3}
 --- !u!33 &33544256580942046
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -341,7 +341,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 699a9d34ba04e314783f8c0f81cb7f85, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 23919a81acf8085438e9cace0c0f3013, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

@@ -68,8 +68,7 @@ public class Bullet : MonoBehaviour, IAmmunition {
     {
         if (other.gameObject == this.shooter || (other.transform.parent != null && other.transform.parent.gameObject == this.shooter))
             return;
-
-        Debug.Log("Collider enter");
+        
         ITarget e = other.GetComponent<ITarget>();
         
         if (e!=null)

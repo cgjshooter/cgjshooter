@@ -19,7 +19,7 @@ public class FFTEffects : MonoBehaviour {
         result = new float[fftSize];
         this.filters = new List<Filter>();
         this.filters.Add(new Filter(0, 600,true));
-        this.filters.Add(new Filter(1000, 2000, true));
+        this.filters.Add(new Filter(80, 1200, true));
         ppProfile = Camera.main.GetComponent<PostProcessingBehaviour>().profile;
         history = new List<float[]>();
         history.Add(new float[fftSize]);
@@ -77,7 +77,9 @@ public class FFTEffects : MonoBehaviour {
         vignetSettings.intensity = Mathf.Clamp(filters[0].max*1f+0.10f, 0f, 0.25f);
         ppProfile.vignette.settings = vignetSettings;
 
-        
+        var bloomSettings = ppProfile.bloom.settings;
+        bloomSettings.bloom.intensity = 2.2f + Mathf.SmoothStep(0.0f, 1.8f, filters[1].max*3.2f);
+        ppProfile.bloom.settings = bloomSettings;
     }
 }
 

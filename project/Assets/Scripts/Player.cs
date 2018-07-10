@@ -12,6 +12,7 @@ public class Player : MonoBehaviour, ITarget
     public LayerMask mouseHitMask;
     public float moveSpeed;
 	public float _hitPoints;
+    public GameObject death;
     
     //TODO - get player id from registration order.
     //p1 - keybaord / steam controller as it maps to kb/mouse without steam overlay
@@ -69,11 +70,11 @@ public class Player : MonoBehaviour, ITarget
 
     private void Update()
     {
-        if (dead) return;
-		if(hitPoints < 0)
+        if(dead)
 		{
 			//DIE
 			this.die();
+            return;
 		}
 
         if( CrossPlatformInputManager.GetAxis("p" + playerId + "Fire1")!=0 && activeItem != null)
@@ -109,15 +110,20 @@ public class Player : MonoBehaviour, ITarget
 
             }
         }
-
-        
     }
 
 	private void die()
 	{
-        
-	}
-
+        if ( !death.activeSelf)
+        {
+            Debug.Log("DIE");
+            death.SetActive(true);
+            foreach (MeshRenderer me in this.GetComponentsInChildren<MeshRenderer>()) me.enabled = false;
+            foreach (Collider co in this.GetComponentsInChildren<Collider>()) co.enabled = false;
+            foreach (SpriteRenderer sr in this.GetComponentsInChildren<SpriteRenderer>()) sr.enabled = false;
+        }
+    }
+    
     private void OnTriggerEnter(Collider other)
     {
         if(other.name == "fallTrigger" && !falling)
@@ -137,7 +143,10 @@ public class Player : MonoBehaviour, ITarget
     //TODO - update this to use the position from main game logic which runs based on ticks.
     private void FixedUpdate()
     {
-        if (dead) return;
+        if (dead)
+        {
+            return;
+        }
 
         // read inputs
         float h = CrossPlatformInputManager.GetAxis("p" + playerId + "Horizontal");

@@ -54,8 +54,10 @@ MonoBehaviour:
   spread: 30
   bulletSpeedRandomFactor: 0.1
   firedelay: 1
-  bulletspeed: 0.5
+  bulletspeed: 10
   bulletAmount: 10
   bulletDamage: 1
+  heightAngle: 0
+  effectRadius: 0
   bulletPrefab: {fileID: 1737630033848492, guid: 38a90b522ff647042904f00e003f5dc5,
     type: 2}

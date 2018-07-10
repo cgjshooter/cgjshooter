@@ -50,7 +50,7 @@ public class Bullet : MonoBehaviour, IAmmunition {
 	// Update is called once per frame
 	void Update () {
         
-        this.transform.position += direction;
+        this.transform.position += direction*Time.deltaTime;
         if (Time.time - start > 10f) GameObject.Destroy(this.gameObject);
 	}
 

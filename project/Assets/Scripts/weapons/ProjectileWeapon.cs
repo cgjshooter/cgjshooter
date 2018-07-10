@@ -81,14 +81,16 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
                 );
                 add.Normalize();
                 go.GetComponent<IAmmunition>().shooter = player;
-                go.GetComponent<IAmmunition>().direction = add * (bulletspeed + UnityEngine.Random.value * bulletSpeedRandomFactor) + player.GetComponent<ITarget>().m_Move;
+                go.GetComponent<IAmmunition>().direction = add * (bulletspeed + UnityEngine.Random.value * bulletSpeedRandomFactor) 
+                                                           + player.GetComponent<ITarget>().m_Move;
                 go.GetComponent<IAmmunition>().damage = this.bulletDamage;
                 go.GetComponent<IAmmunition>().effectRadius = this.effectRadius;
-
+                
             }
             this.previousActivation = Time.time;
         }
     }
+
     public void deactivate(GameObject player)
     {
 

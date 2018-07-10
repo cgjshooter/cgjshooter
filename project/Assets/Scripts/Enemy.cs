@@ -11,6 +11,15 @@ public class Enemy : MonoBehaviour, ITarget {
     private GameObject player1;
     private GameObject player2;
 
+    private Vector3 move;
+    public Vector3 m_Move
+    {
+        get
+        {
+            return move;
+        }
+    }
+
     // Use this for initialization
     void Start () {
         //Get player references.
@@ -52,9 +61,9 @@ public class Enemy : MonoBehaviour, ITarget {
                 target = player;
             }
         }
-        
-		this.transform.LookAt (player1.transform.position);
-        this.transform.position -= dMin.normalized * moveSpeed;
+        this.move = dMin.normalized * moveSpeed;
+        this.transform.LookAt (player1.transform.position);
+        this.transform.position -= move;
     }
 
     public void hit(IAmmunition ammunition)

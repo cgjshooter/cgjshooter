@@ -11,10 +11,18 @@ public class Spawner : MonoBehaviour, ITarget {
     public GameObject enemyContainer;
     public float spawnDelay;
     private float previousSpawn;
-    
 
-	// Use this for initialization
-	void Start () {
+    public Vector3 move = new Vector3();
+    public Vector3 m_Move
+    {
+        get
+        {
+            return move;
+        }
+    }
+
+    // Use this for initialization
+    void Start () {
         if (this.enemyContainer == null) this.enemyContainer = GameObject.Find("enemyContainer");
 	}
 	

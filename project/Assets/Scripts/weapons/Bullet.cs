@@ -28,6 +28,20 @@ public class Bullet : MonoBehaviour, IAmmunition {
         set { _effectRadius = value; }
     }
 
+    private GameObject _shooter;
+    public GameObject shooter
+    {
+        get
+        {
+            return _shooter;
+        }
+
+        set
+        {
+            _shooter = value;
+        }
+    }
+
     // Use this for initialization
     void Start () {
         start = Time.time;
@@ -42,8 +56,12 @@ public class Bullet : MonoBehaviour, IAmmunition {
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject == this.shooter || (other.transform.parent != null && other.transform.parent.gameObject == this.shooter))
+            return;
+
         Debug.Log("Collider enter");
-        Enemy e = other.GetComponent<Enemy>();
+        ITarget e = other.GetComponent<ITarget>();
+        
         if (e!=null)
         {
             e.hit(this);
@@ -51,14 +69,7 @@ public class Bullet : MonoBehaviour, IAmmunition {
         }
         else
         {
-
-            /*
-            Obstacle o = other.GetComponent<Obstacle>();
-            if(o != null)
-            {
-                o.hit(this.damage);*/
-                GameObject.Destroy(this.gameObject);
-            //}
+           GameObject.Destroy(this.gameObject);
         }
     }
 

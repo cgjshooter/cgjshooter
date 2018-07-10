@@ -47,7 +47,7 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
 
     public GameObject bulletPrefab;
 
-    private float previousActivation;
+    private float previousActivation=0f;
     private GameObject bulletContainer;
 
     
@@ -65,6 +65,7 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
     {
         if (Time.time - this.previousActivation > this.firedelay)
         {
+            Debug.Log(firedelay);
             //Allow fire
             for(int i = 0; i < bulletAmount; i++)
             {
@@ -80,7 +81,8 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
                     Mathf.Cos(angle * Mathf.PI / 180f + Mathf.PI / 2)
                 );
                 add.Normalize();
-                go.GetComponent<IAmmunition>().direction = add * (bulletspeed + UnityEngine.Random.value * bulletSpeedRandomFactor) + player.GetComponent<Player>().m_Move;
+                go.GetComponent<IAmmunition>().shooter = player;
+                go.GetComponent<IAmmunition>().direction = add * (bulletspeed + UnityEngine.Random.value * bulletSpeedRandomFactor) + player.GetComponent<ITarget>().m_Move;
                 go.GetComponent<IAmmunition>().damage = this.bulletDamage;
                 go.GetComponent<IAmmunition>().effectRadius = this.effectRadius;
 

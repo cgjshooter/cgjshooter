@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour, ITarget {
 
+    public Vector3 move = new Vector3();
+    public Vector3 m_Move
+    {
+        get
+        {
+            return move;
+        }
+    }
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	

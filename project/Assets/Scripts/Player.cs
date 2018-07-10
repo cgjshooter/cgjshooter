@@ -12,8 +12,7 @@ public class Player : MonoBehaviour, ITarget
     public LayerMask mouseHitMask;
     public float moveSpeed;
 	public float hitPoints;
-    public Vector3 m_Move;
-
+    
     //TODO - get player id from registration order.
     //p1 - keybaord / steam controller as it maps to kb/mouse without steam overlay
     //p2 - joystick 1
@@ -23,6 +22,16 @@ public class Player : MonoBehaviour, ITarget
 
     private float lastSpawn;
     private bool falling;
+
+    public Vector3 move;
+    public Vector3 m_Move
+    {
+        get
+        {
+            return move;
+        }
+    }
+
     private void Start()
     {
         //TODO - populate from players weapon selection.
@@ -137,9 +146,9 @@ public class Player : MonoBehaviour, ITarget
         }
 
         //calculate move.
-        m_Move = (v * Vector3.forward + h * Vector3.right)*moveSpeed;
+        move = (v * Vector3.forward + h * Vector3.right)*moveSpeed;
 
-        this.transform.position += m_Move;
+        this.transform.position += move;
     }
 
     public void hit(IAmmunition ammunition)

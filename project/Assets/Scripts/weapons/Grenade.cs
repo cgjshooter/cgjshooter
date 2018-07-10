@@ -38,6 +38,20 @@ public class Grenade : MonoBehaviour, IAmmunition{
         set{ _effectRadius = value; }
     }
 
+    private GameObject _shooter;
+    public GameObject shooter
+    {
+        get
+        {
+            return _shooter;
+        }
+
+        set
+        {
+            _shooter = value;
+        }
+    }
+
     private Transform explosionParticles;
     private Transform smokeParticles;
 

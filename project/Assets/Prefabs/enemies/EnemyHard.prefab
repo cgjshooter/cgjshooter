@@ -126,4 +126,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0.025
   hitPoints: 22
-  weaponPrefab: {fileID: 0}
+  weaponPrefab: {fileID: 1085345533283350, guid: 6b0cdeb25eb61d44c8981281f8d14965,
+    type: 2}

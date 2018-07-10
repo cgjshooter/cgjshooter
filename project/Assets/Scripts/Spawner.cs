@@ -21,7 +21,7 @@ public class Spawner : MonoBehaviour, ITarget {
         }
     }
 
-    private float _hitPoints;
+    public float _hitPoints;
     public float hitPoints
     {
         get
@@ -50,7 +50,7 @@ public class Spawner : MonoBehaviour, ITarget {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Time.time - previousSpawn >  spawnDelay)
+		if(Time.time - previousSpawn >  spawnDelay && !dead)
         {
             previousSpawn = Time.time;
             //Pick a random type
@@ -62,6 +62,7 @@ public class Spawner : MonoBehaviour, ITarget {
 
     public void hit(IAmmunition ammunition)
     {
-
+        Debug.Log("SPAWNER HIT!");
+        ammunition.affect(this.gameObject);
     }
 }

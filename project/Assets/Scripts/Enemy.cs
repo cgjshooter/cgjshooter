@@ -79,7 +79,7 @@ public class Enemy : MonoBehaviour, ITarget {
         }
         this.move = dMin.normalized * moveSpeed;
         this.transform.LookAt (target.transform.position);
-        this.transform.position -= move;
+        this.transform.position -= move * Time.fixedDeltaTime;
     }
 
     public void hit(IAmmunition ammunition)

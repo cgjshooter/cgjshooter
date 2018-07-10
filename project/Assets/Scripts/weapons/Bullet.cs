@@ -75,7 +75,7 @@ public class Bullet : MonoBehaviour, IAmmunition {
 
     public void affect(GameObject target)
     {
-        var e = target.GetComponent<Enemy>();
+        var e = target.GetComponent<ITarget>();
         if(e!= null)
             e.hitPoints -= this.damage;
     }

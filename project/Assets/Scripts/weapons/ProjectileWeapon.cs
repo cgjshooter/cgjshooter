@@ -80,9 +80,9 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
                     Mathf.Cos(angle * Mathf.PI / 180f + Mathf.PI / 2)
                 );
                 add.Normalize();
-                go.GetComponent<IProjectile>().direction = add * (bulletspeed + UnityEngine.Random.value * bulletSpeedRandomFactor) + player.GetComponent<Player>().m_Move;
-                go.GetComponent<IProjectile>().damage = this.bulletDamage;
-                go.GetComponent<IProjectile>().effectRadius = this.effectRadius;
+                go.GetComponent<IAmmunition>().direction = add * (bulletspeed + UnityEngine.Random.value * bulletSpeedRandomFactor) + player.GetComponent<Player>().m_Move;
+                go.GetComponent<IAmmunition>().damage = this.bulletDamage;
+                go.GetComponent<IAmmunition>().effectRadius = this.effectRadius;
 
             }
             this.previousActivation = Time.time;

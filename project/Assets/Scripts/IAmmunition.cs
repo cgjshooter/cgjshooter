@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IProjectile  {
+public interface IAmmunition {
 
     //Direction of the ammunition
     Vector3 direction { get; set; }

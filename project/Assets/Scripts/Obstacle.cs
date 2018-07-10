@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour {
+public class Obstacle : MonoBehaviour, ITarget {
 
 
 	// Use this for initialization
@@ -15,7 +15,7 @@ public class Obstacle : MonoBehaviour {
 		
 	}
 
-    public void hit(float damage)
+    public void hit(IAmmunition ammunition)
     {
 
     }

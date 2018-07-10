@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grenade : MonoBehaviour, IProjectile{
+public class Grenade : MonoBehaviour, IAmmunition{
 
     public float start;
     public float explosionDelay;

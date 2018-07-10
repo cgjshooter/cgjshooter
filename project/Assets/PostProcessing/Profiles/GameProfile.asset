@@ -94,22 +94,22 @@ MonoBehaviour:
       adaptationType: 0
       speedUp: 2
       speedDown: 1
-      logMin: -8
-      logMax: 4
+      logMin: -11
+      logMax: 3
   bloom:
     m_Enabled: 1
     m_Settings:
       bloom:
-        intensity: 3.06
-        threshold: 1.12
+        intensity: 1.97
+        threshold: 1.14
         softKnee: 0.5
-        radius: 1.61
+        radius: 1.76
         antiFlicker: 0
       lensDirt:
         texture: {fileID: 0}
         intensity: 3
   colorGrading:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       tonemapping:
         tonemapper: 1
@@ -121,22 +121,22 @@ MonoBehaviour:
         neutralWhiteClip: 10
       basic:
         postExposure: 0
-        temperature: -16.3
-        tint: 0
-        hueShift: -3
-        saturation: 0
-        contrast: 1.845
+        temperature: 25.3
+        tint: 59.7
+        hueShift: -1
+        saturation: 2
+        contrast: 0.855
       channelMixer:
-        red: {x: 1, y: 0, z: 0}
+        red: {x: 1.08, y: 0, z: 0}
         green: {x: 0, y: 1, z: 0}
         blue: {x: 0, y: 0, z: 1}
         currentEditingChannel: 0
       colorWheels:
         mode: 1
         log:
-          slope: {r: 1, g: 1, b: 1, a: 0}
-          power: {r: 1, g: 1, b: 1, a: 0}
-          offset: {r: 1, g: 1, b: 1, a: 0}
+          slope: {r: 0.70298994, g: 1, b: 0.78354365, a: 0}
+          power: {r: 0.33510917, g: 0.2778219, b: 1, a: 0}
+          offset: {r: 0.9119638, g: 1, b: 0.91490555, a: 0}
         linear:
           lift: {r: 0, g: 0, b: 0, a: 0}
           gamma: {r: 0, g: 0, b: 0, a: 0}
@@ -151,6 +151,15 @@ MonoBehaviour:
               value: 0
               inSlope: 1
               outSlope: 1
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 0.5188679
+              value: 0.8712871
+              inSlope: 1.0764152
+              outSlope: 1.0764152
               tangentMode: 0
               weightedMode: 0
               inWeight: 0
@@ -322,7 +331,7 @@ MonoBehaviour:
       mode: 0
       color: {r: 0, g: 0, b: 0, a: 1}
       center: {x: 0.5, y: 0.5}
-      intensity: 0.13520455
+      intensity: 0.1
       smoothness: 0.2
       roundness: 1
       mask: {fileID: 0}

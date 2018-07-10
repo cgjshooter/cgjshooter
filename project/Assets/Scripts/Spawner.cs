@@ -5,7 +5,7 @@ using UnityEngine;
 /**
  * Spawner spawning new enemies constantly.
  */
-public class Spawner : MonoBehaviour {
+public class Spawner : MonoBehaviour, ITarget {
 
     public List<GameObject> enemyTypes;
     public GameObject enemyContainer;
@@ -29,4 +29,9 @@ public class Spawner : MonoBehaviour {
             Instantiate(enemyType, this.transform.position, this.transform.rotation, enemyContainer.transform);
         }
 	}
+
+    public void hit(IAmmunition ammunition)
+    {
+
+    }
 }

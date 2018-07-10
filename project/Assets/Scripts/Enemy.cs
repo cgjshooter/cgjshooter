@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour {
+public class Enemy : MonoBehaviour, ITarget {
     public float moveSpeed;
     public float hitPoints;
 	public GameObject weaponPrefab;
@@ -57,7 +57,7 @@ public class Enemy : MonoBehaviour {
         this.transform.position -= dMin.normalized * moveSpeed;
     }
 
-    public void hit(IProjectile ammunition)
+    public void hit(IAmmunition ammunition)
     {
         ammunition.affect(this.gameObject);
     }

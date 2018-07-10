@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using System.Collections.Generic;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, ITarget
 {
     public List<GameObject> itemPrefabs;
     public IItem activeItem;
@@ -140,5 +140,10 @@ public class Player : MonoBehaviour
         m_Move = (v * Vector3.forward + h * Vector3.right)*moveSpeed;
 
         this.transform.position += m_Move;
+    }
+
+    public void hit(IAmmunition ammunition)
+    {
+
     }
 }

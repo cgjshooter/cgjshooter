@@ -171,7 +171,7 @@ public class Player : MonoBehaviour, ITarget
         }
 
         //calculate move.
-        move = (v * Vector3.forward + h * Vector3.right) * moveSpeed * Time.fixedDeltaTime * 60f;
+        move = (v * Vector3.forward + h * Vector3.right) * moveSpeed * Time.fixedDeltaTime;
 
         this.transform.position += move;
     }

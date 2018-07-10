@@ -8,7 +8,8 @@ public class Enemy : MonoBehaviour, ITarget {
     public float _hitPoints;
 	public GameObject weaponPrefab;
 	public IItem activeWeapon;
-    
+    public GameObject death;
+
     private Vector3 move;
     public Vector3 m_Move
     {
@@ -52,20 +53,31 @@ public class Enemy : MonoBehaviour, ITarget {
 		if(hitPoints < 0)
         {
             //DIE
-            GameObject.Destroy(this.gameObject);
+            if(!this.death.activeSelf)
+            {
+                this.death.SetActive(true);
+                this.GetComponent<MeshRenderer>().enabled = false;
+                Invoke("deathDone", 5f);
+            }
         }
         
-		if (activeWeapon != null)
+		if (activeWeapon != null && !dead)
 		{
 			// simple shoot ai
 			this.activeWeapon.activate(this.gameObject);
 		}
 	}
 
+    void deathDone()
+    {
+        GameObject.Destroy(this.gameObject);
+    }
+
     //Calculate movements on fixed step.
     //TODO - if text mode is wanted. This needs to be moved to logic.
     private void FixedUpdate()
     {
+        if (dead) return;
         Vector3 dMin = new Vector3(999999999f, 9999999999f, 9999999999f);
         GameObject target = null;
         foreach(GameObject player in MainControl.activePlayers)

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour, IProjectile {
+public class Bullet : MonoBehaviour, IAmmunition {
 
     public float start;
 
@@ -28,6 +28,20 @@ public class Bullet : MonoBehaviour, IProjectile {
         set { _effectRadius = value; }
     }
 
+    private GameObject _shooter;
+    public GameObject shooter
+    {
+        get
+        {
+            return _shooter;
+        }
+
+        set
+        {
+            _shooter = value;
+        }
+    }
+
     // Use this for initialization
     void Start () {
         start = Time.time;
@@ -42,8 +56,12 @@ public class Bullet : MonoBehaviour, IProjectile {
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject == this.shooter || (other.transform.parent != null && other.transform.parent.gameObject == this.shooter))
+            return;
+
         Debug.Log("Collider enter");
-        Enemy e = other.GetComponent<Enemy>();
+        ITarget e = other.GetComponent<ITarget>();
+        
         if (e!=null)
         {
             e.hit(this);
@@ -51,20 +69,13 @@ public class Bullet : MonoBehaviour, IProjectile {
         }
         else
         {
-
-            /*
-            Obstacle o = other.GetComponent<Obstacle>();
-            if(o != null)
-            {
-                o.hit(this.damage);*/
-                GameObject.Destroy(this.gameObject);
-            //}
+           GameObject.Destroy(this.gameObject);
         }
     }
 
     public void affect(GameObject target)
     {
-        var e = target.GetComponent<Enemy>();
+        var e = target.GetComponent<ITarget>();
         if(e!= null)
             e.hitPoints -= this.damage;
     }

@@ -47,13 +47,13 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
 
     public GameObject bulletPrefab;
 
-    private float previousActivation;
+    private float previousActivation=0f;
     private GameObject bulletContainer;
-
     
     // Use this for initialization
     void Start () {
         this.bulletContainer = GameObject.Find("bulletContainer");
+        
 	}
 	
 	// Update is called once per frame
@@ -69,20 +69,21 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
             for(int i = 0; i < bulletAmount; i++)
             {
                 //Spawn a bullet
-                var go = GameObject.Instantiate(bulletPrefab, player.transform.position,
+                var go = GameObject.Instantiate(bulletPrefab, player.transform.Find("shootPoint").position,
                     player.transform.rotation
                     , this.bulletContainer.transform);
                 
                 float angle = this.transform.rotation.eulerAngles.y + (UnityEngine.Random.value - 0.5f) * spread;
                 Vector3 add = new Vector3(
-                    Mathf.Sin(angle * Mathf.PI / 180f + Mathf.PI / 2),
+                    Mathf.Sin(angle * Mathf.PI / 180f),
                     Mathf.Sin(heightAngle * 180f/Mathf.PI),
-                    Mathf.Cos(angle * Mathf.PI / 180f + Mathf.PI / 2)
+                    Mathf.Cos(angle * Mathf.PI / 180f )
                 );
                 add.Normalize();
-                go.GetComponent<IProjectile>().direction = add * (bulletspeed + UnityEngine.Random.value * bulletSpeedRandomFactor) + player.GetComponent<Player>().m_Move;
-                go.GetComponent<IProjectile>().damage = this.bulletDamage;
-                go.GetComponent<IProjectile>().effectRadius = this.effectRadius;
+                go.GetComponent<IAmmunition>().shooter = player;
+                go.GetComponent<IAmmunition>().direction = add * (bulletspeed + UnityEngine.Random.value * bulletSpeedRandomFactor) + player.GetComponent<ITarget>().m_Move;
+                go.GetComponent<IAmmunition>().damage = this.bulletDamage;
+                go.GetComponent<IAmmunition>().effectRadius = this.effectRadius;
 
             }
             this.previousActivation = Time.time;

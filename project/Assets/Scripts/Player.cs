@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using System.Collections.Generic;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, ITarget
 {
     public List<GameObject> itemPrefabs;
     public IItem activeItem;
@@ -11,9 +11,8 @@ public class Player : MonoBehaviour
 
     public LayerMask mouseHitMask;
     public float moveSpeed;
-	public float hitPoints;
-    public Vector3 m_Move;
-
+	public float _hitPoints;
+    
     //TODO - get player id from registration order.
     //p1 - keybaord / steam controller as it maps to kb/mouse without steam overlay
     //p2 - joystick 1
@@ -23,6 +22,36 @@ public class Player : MonoBehaviour
 
     private float lastSpawn;
     private bool falling;
+
+    public Vector3 move;
+    public Vector3 m_Move
+    {
+        get
+        {
+            return move;
+        }
+    }
+    public float hitPoints
+    {
+        get
+        {
+            return _hitPoints;
+        }
+
+        set
+        {
+            _hitPoints = value;
+        }
+    }
+
+    public bool dead
+    {
+        get
+        {
+            return this.hitPoints <= 0;
+        }
+    }
+
     private void Start()
     {
         //TODO - populate from players weapon selection.
@@ -39,6 +68,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (dead) return;
 		if(hitPoints < 0)
 		{
 			//DIE
@@ -78,11 +108,13 @@ public class Player : MonoBehaviour
 
             }
         }
+
+        
     }
 
 	private void die()
 	{
-		GameObject.Destroy(this.gameObject);
+        
 	}
 
     private void OnTriggerEnter(Collider other)
@@ -104,22 +136,24 @@ public class Player : MonoBehaviour
     //TODO - update this to use the position from main game logic which runs based on ticks.
     private void FixedUpdate()
     {
-        // read inputs
-        float h = CrossPlatformInputManager.GetAxis("p"+playerId+"Horizontal");
-        float v = CrossPlatformInputManager.GetAxis("p"+playerId+"Vertical");
+        if (dead) return;
 
-        if(this.playerId == "1")//Use mouse to look
+        // read inputs
+        float h = CrossPlatformInputManager.GetAxis("p" + playerId + "Horizontal");
+        float v = CrossPlatformInputManager.GetAxis("p" + playerId + "Vertical");
+
+        if (this.playerId == "1")//Use mouse to look
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); //make sure you have a camera in the scene tagged as 'MainCamera'
             RaycastHit hit;
 
-            if (Physics.Raycast(ray,out hit, 1000f, mouseHitMask.value,QueryTriggerInteraction.Ignore))
+            if (Physics.Raycast(ray, out hit, 1000f, mouseHitMask.value, QueryTriggerInteraction.Ignore))
             {
-                var dx = hit.point.x- this.transform.position.x;
-                var dz = hit.point.z- this.transform.position.z;
+                var dx = hit.point.x - this.transform.position.x;
+                var dz = hit.point.z - this.transform.position.z;
                 var angle = Mathf.Atan2(dx, dz);
                 this.transform.rotation = Quaternion.Euler(0,
-                        angle * 180f / Mathf.PI - 90
+                        angle * 180f / Mathf.PI
                         , 0);
             }
         }
@@ -131,14 +165,20 @@ public class Player : MonoBehaviour
             if (Mathf.Abs(hR + vR) > 0)
             {
                 this.transform.rotation = Quaternion.Euler(0,
-                    Mathf.Atan2(vR, hR) * 180f / Mathf.PI
+                    Mathf.Atan2(vR, hR) * 180f / Mathf.PI + 90
                     , 0);
             }
         }
 
         //calculate move.
-        m_Move = (v * Vector3.forward + h * Vector3.right)*moveSpeed;
+        move = (v * Vector3.forward + h * Vector3.right) * moveSpeed * Time.fixedDeltaTime;
 
-        this.transform.position += m_Move;
+        this.transform.position += move;
+    }
+
+    public void hit(IAmmunition ammunition)
+    {
+        ammunition.affect(this.gameObject);
+        Debug.Log(this.hitPoints);
     }
 }

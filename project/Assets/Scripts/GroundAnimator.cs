@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//TESTING ONLY
 public class GroundAnimator : MonoBehaviour {
 
     private static int WIDTH = 100;
@@ -41,11 +42,11 @@ public class GroundAnimator : MonoBehaviour {
                     near = player;
                 }
             }
-            /*
+            
             tile.transform.position = new Vector3(tile.transform.position.x, 
                                                  -Mathf.Clamp(dMin-15f, 0f, 25f), 
                                                   tile.transform.position.z);
-            tile.transform.GetComponent<MeshRenderer>().enabled = tile.transform.position.y > -15f;*/
+            tile.transform.GetComponent<MeshRenderer>().enabled = tile.transform.position.y > -15f;
         }
 	}
 }

@@ -2,11 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour {
+public class Obstacle : MonoBehaviour, ITarget {
 
+    public Vector3 move = new Vector3();
+    public Vector3 m_Move
+    {
+        get
+        {
+            return move;
+        }
+    }
+    public float hitPoints
+    {
+        get
+        {
+            return 1;
+        }
 
-	// Use this for initialization
-	void Start () {
+        set
+        {
+            
+        }
+    }
+
+    public bool dead
+    {
+        get
+        {
+            return false;
+        }
+    }
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -15,7 +42,7 @@ public class Obstacle : MonoBehaviour {
 		
 	}
 
-    public void hit(float damage)
+    public void hit(IAmmunition ammunition)
     {
 
     }

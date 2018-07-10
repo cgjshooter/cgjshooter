@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grenade : MonoBehaviour, IProjectile{
+public class Grenade : MonoBehaviour, IAmmunition{
 
     public float start;
     public float explosionDelay;
@@ -16,7 +16,6 @@ public class Grenade : MonoBehaviour, IProjectile{
     {
         get {return _direction;}
         set{
-            Debug.Log(this.gameObject.name);
             if (this.gameObject.name.IndexOf("Mine")>=0)
                 _direction = new Vector3();
             else
@@ -36,6 +35,20 @@ public class Grenade : MonoBehaviour, IProjectile{
     {
         get{ return _effectRadius; }
         set{ _effectRadius = value; }
+    }
+
+    private GameObject _shooter;
+    public GameObject shooter
+    {
+        get
+        {
+            return _shooter;
+        }
+
+        set
+        {
+            _shooter = value;
+        }
     }
 
     private Transform explosionParticles;
@@ -85,7 +98,15 @@ public class Grenade : MonoBehaviour, IProjectile{
             var d = this.transform.position - co.transform.position;
             if(Vector3.Magnitude(d) < this.effectRadius)
             {
-                co.GetComponent<Enemy>().hit(this);
+                co.GetComponent<ITarget>().hit(this);
+            }
+        }
+        foreach(GameObject co in MainControl.activePlayers)
+        {
+            var d = this.transform.position - co.transform.position;
+            if (Vector3.Magnitude(d) < this.effectRadius)
+            {
+                co.GetComponent<ITarget>().hit(this);
             }
         }
 
@@ -99,7 +120,7 @@ public class Grenade : MonoBehaviour, IProjectile{
 
     public void affect(GameObject target)
     {
-        var e = target.GetComponent<Enemy>();
+        var e = target.GetComponent<ITarget>();
         if (e != null)
         {
             var d = this.transform.position - target.transform.position;

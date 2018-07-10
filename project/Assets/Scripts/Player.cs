@@ -62,7 +62,8 @@ public class Player : MonoBehaviour, ITarget
             GameObject go = Instantiate(itemPrefabs[i], this.transform);
             this.items.Add(go.GetComponent<IItem>());
         }
-
+        ListUtil.Shuffle<IItem>(this.items);
+        
         this.activeItem = this.items[0];
     }
 

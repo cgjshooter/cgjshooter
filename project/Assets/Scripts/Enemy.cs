@@ -57,6 +57,8 @@ public class Enemy : MonoBehaviour, ITarget {
             {
                 this.death.SetActive(true);
                 this.GetComponent<MeshRenderer>().enabled = false;
+				foreach(MeshRenderer e in transform.GetComponentsInChildren<MeshRenderer>()) e.enabled = false;
+				this.GetComponent<BoxCollider> ().enabled = false;
                 Invoke("deathDone", 5f);
             }
         }

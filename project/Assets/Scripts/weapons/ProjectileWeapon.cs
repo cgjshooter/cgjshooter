@@ -49,11 +49,11 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
 
     private float previousActivation=0f;
     private GameObject bulletContainer;
-
     
     // Use this for initialization
     void Start () {
         this.bulletContainer = GameObject.Find("bulletContainer");
+        
 	}
 	
 	// Update is called once per frame
@@ -65,20 +65,19 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
     {
         if (Time.time - this.previousActivation > this.firedelay)
         {
-            Debug.Log(firedelay);
             //Allow fire
             for(int i = 0; i < bulletAmount; i++)
             {
                 //Spawn a bullet
-                var go = GameObject.Instantiate(bulletPrefab, player.transform.position,
+                var go = GameObject.Instantiate(bulletPrefab, player.transform.Find("shootPoint").position,
                     player.transform.rotation
                     , this.bulletContainer.transform);
                 
                 float angle = this.transform.rotation.eulerAngles.y + (UnityEngine.Random.value - 0.5f) * spread;
                 Vector3 add = new Vector3(
-                    Mathf.Sin(angle * Mathf.PI / 180f + Mathf.PI / 2),
+                    Mathf.Sin(angle * Mathf.PI / 180f),
                     Mathf.Sin(heightAngle * 180f/Mathf.PI),
-                    Mathf.Cos(angle * Mathf.PI / 180f + Mathf.PI / 2)
+                    Mathf.Cos(angle * Mathf.PI / 180f )
                 );
                 add.Normalize();
                 go.GetComponent<IAmmunition>().shooter = player;

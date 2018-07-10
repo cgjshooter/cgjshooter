@@ -11,7 +11,7 @@ public class Player : MonoBehaviour, ITarget
 
     public LayerMask mouseHitMask;
     public float moveSpeed;
-	public float hitPoints;
+	public float _hitPoints;
     
     //TODO - get player id from registration order.
     //p1 - keybaord / steam controller as it maps to kb/mouse without steam overlay
@@ -31,6 +31,26 @@ public class Player : MonoBehaviour, ITarget
             return move;
         }
     }
+    public float hitPoints
+    {
+        get
+        {
+            return _hitPoints;
+        }
+
+        set
+        {
+            _hitPoints = value;
+        }
+    }
+
+    public bool dead
+    {
+        get
+        {
+            return this.hitPoints <= 0;
+        }
+    }
 
     private void Start()
     {
@@ -48,6 +68,7 @@ public class Player : MonoBehaviour, ITarget
 
     private void Update()
     {
+        if (dead) return;
 		if(hitPoints < 0)
 		{
 			//DIE
@@ -91,7 +112,7 @@ public class Player : MonoBehaviour, ITarget
 
 	private void die()
 	{
-		GameObject.Destroy(this.gameObject);
+        
 	}
 
     private void OnTriggerEnter(Collider other)
@@ -113,6 +134,8 @@ public class Player : MonoBehaviour, ITarget
     //TODO - update this to use the position from main game logic which runs based on ticks.
     private void FixedUpdate()
     {
+        if (dead) return;
+
         // read inputs
         float h = CrossPlatformInputManager.GetAxis("p"+playerId+"Horizontal");
         float v = CrossPlatformInputManager.GetAxis("p"+playerId+"Vertical");
@@ -128,7 +151,7 @@ public class Player : MonoBehaviour, ITarget
                 var dz = hit.point.z- this.transform.position.z;
                 var angle = Mathf.Atan2(dx, dz);
                 this.transform.rotation = Quaternion.Euler(0,
-                        angle * 180f / Mathf.PI - 90
+                        angle * 180f / Mathf.PI
                         , 0);
             }
         }
@@ -140,7 +163,7 @@ public class Player : MonoBehaviour, ITarget
             if (Mathf.Abs(hR + vR) > 0)
             {
                 this.transform.rotation = Quaternion.Euler(0,
-                    Mathf.Atan2(vR, hR) * 180f / Mathf.PI
+                    Mathf.Atan2(vR, hR) * 180f / Mathf.PI+90
                     , 0);
             }
         }
@@ -153,6 +176,7 @@ public class Player : MonoBehaviour, ITarget
 
     public void hit(IAmmunition ammunition)
     {
-
+        ammunition.affect(this.gameObject);
+        Debug.Log(this.hitPoints);
     }
 }

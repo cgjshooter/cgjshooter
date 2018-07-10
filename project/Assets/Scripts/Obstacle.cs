@@ -12,7 +12,26 @@ public class Obstacle : MonoBehaviour, ITarget {
             return move;
         }
     }
+    public float hitPoints
+    {
+        get
+        {
+            return 1;
+        }
 
+        set
+        {
+            
+        }
+    }
+
+    public bool dead
+    {
+        get
+        {
+            return false;
+        }
+    }
     // Use this for initialization
     void Start () {
 		

@@ -16,7 +16,6 @@ public class Grenade : MonoBehaviour, IAmmunition{
     {
         get {return _direction;}
         set{
-            Debug.Log(this.gameObject.name);
             if (this.gameObject.name.IndexOf("Mine")>=0)
                 _direction = new Vector3();
             else
@@ -99,7 +98,15 @@ public class Grenade : MonoBehaviour, IAmmunition{
             var d = this.transform.position - co.transform.position;
             if(Vector3.Magnitude(d) < this.effectRadius)
             {
-                co.GetComponent<Enemy>().hit(this);
+                co.GetComponent<ITarget>().hit(this);
+            }
+        }
+        foreach(GameObject co in MainControl.activePlayers)
+        {
+            var d = this.transform.position - co.transform.position;
+            if (Vector3.Magnitude(d) < this.effectRadius)
+            {
+                co.GetComponent<ITarget>().hit(this);
             }
         }
 
@@ -113,7 +120,7 @@ public class Grenade : MonoBehaviour, IAmmunition{
 
     public void affect(GameObject target)
     {
-        var e = target.GetComponent<Enemy>();
+        var e = target.GetComponent<ITarget>();
         if (e != null)
         {
             var d = this.transform.position - target.transform.position;

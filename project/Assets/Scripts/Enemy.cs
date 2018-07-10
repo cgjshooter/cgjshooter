@@ -1,16 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour, ITarget {
     public float moveSpeed;
-    public float hitPoints;
+    public float _hitPoints;
 	public GameObject weaponPrefab;
 	public IItem activeWeapon;
-
-    private GameObject player1;
-    private GameObject player2;
-
+    
     private Vector3 move;
     public Vector3 m_Move
     {
@@ -20,12 +18,30 @@ public class Enemy : MonoBehaviour, ITarget {
         }
     }
 
+    public float hitPoints
+    {
+        get
+        {
+            return _hitPoints;
+        }
+
+        set
+        {
+            _hitPoints = value;
+        }
+    }
+
+    public bool dead
+    {
+        get
+        {
+            return this.hitPoints <= 0;
+        }
+    }
+
     // Use this for initialization
     void Start () {
-        //Get player references.
-        this.player1 = GameObject.Find("Player1");
-        this.player2 = GameObject.Find("Player2");
-
+        
 		if (weaponPrefab != null) {
 			this.activeWeapon = Instantiate (weaponPrefab, this.transform).GetComponent<IItem> ();
 		}
@@ -62,7 +78,7 @@ public class Enemy : MonoBehaviour, ITarget {
             }
         }
         this.move = dMin.normalized * moveSpeed;
-        this.transform.LookAt (player1.transform.position);
+        this.transform.LookAt (target.transform.position);
         this.transform.position -= move;
     }
 

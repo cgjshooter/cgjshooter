@@ -21,6 +21,28 @@ public class Spawner : MonoBehaviour, ITarget {
         }
     }
 
+    private float _hitPoints;
+    public float hitPoints
+    {
+        get
+        {
+            return _hitPoints;
+        }
+
+        set
+        {
+            _hitPoints = value;
+        }
+    }
+
+    public bool dead
+    {
+        get
+        {
+            return this.hitPoints <= 0;
+        }
+    }
+
     // Use this for initialization
     void Start () {
         if (this.enemyContainer == null) this.enemyContainer = GameObject.Find("enemyContainer");

@@ -66,7 +66,7 @@ public class Grenade : MonoBehaviour, IAmmunition{
     // Update is called once per frame
     void Update()
     {
-        this.transform.position += direction;
+        this.transform.position += direction*Time.deltaTime;
         if (Time.time - start > explosionDelay)
         {
             //TODO - explosion

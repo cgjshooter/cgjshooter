@@ -179,6 +179,5 @@ public class Player : MonoBehaviour, ITarget
     public void hit(IAmmunition ammunition)
     {
         ammunition.affect(this.gameObject);
-        Debug.Log(this.hitPoints);
     }
 }

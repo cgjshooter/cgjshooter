@@ -13,13 +13,16 @@ public class Player : MonoBehaviour, ITarget
     public float moveSpeed;
 	public float _hitPoints;
     public GameObject death;
+
+    public List<Sprite> glowImages;
+    public List<Color> playerColors;
     
     //TODO - get player id from registration order.
     //p1 - keybaord / steam controller as it maps to kb/mouse without steam overlay
     //p2 - joystick 1
     //p3 - joystick 2
     //p4 - joystick 3
-    public String playerId;
+    public int playerId;
 
     private float lastSpawn;
     private bool falling;
@@ -66,6 +69,11 @@ public class Player : MonoBehaviour, ITarget
         ListUtil.Shuffle<IItem>(this.items);
         
         this.activeItem = this.items[0];
+
+        foreach (SpriteRenderer si in this.GetComponentsInChildren<SpriteRenderer>()) si.sprite = glowImages[this.playerId-1];
+        this.GetComponentInChildren<Light>().color = playerColors[this.playerId-1];
+        foreach(MeshRenderer mr in this.GetComponentsInChildren<MeshRenderer>()) mr.material.SetColor("_Color", playerColors[this.playerId-1]);
+
     }
 
     private void Update()
@@ -152,7 +160,7 @@ public class Player : MonoBehaviour, ITarget
         float h = CrossPlatformInputManager.GetAxis("p" + playerId + "Horizontal");
         float v = CrossPlatformInputManager.GetAxis("p" + playerId + "Vertical");
 
-        if (this.playerId == "1")//Use mouse to look
+        if (this.playerId == 1)//Use mouse to look
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); //make sure you have a camera in the scene tagged as 'MainCamera'
             RaycastHit hit;

@@ -326,7 +326,7 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1635604695155870}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: ba92fb44336020f40bdf294bb66bc9da, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -439,7 +439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefabs:
-  - {fileID: 1460600213935450, guid: 2116546604853a342bd73437af5b7488, type: 2}
+  - {fileID: 1460600213935450, guid: 7eaaf130964b7c54e8c1d4b6191cadb0, type: 2}
   - {fileID: 1520028987011832, guid: bd908c48c86efc24b9c99b2e6123e634, type: 2}
   - {fileID: 1085345533283350, guid: 6b0cdeb25eb61d44c8981281f8d14965, type: 2}
   - {fileID: 1460600213935450, guid: 78543a94590320a46aa6adadcd7052c9, type: 2}
@@ -453,6 +453,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   moveSpeed: 0.1
+  hitPoints: 0
   m_Move: {x: 0, y: 0, z: 0}
   playerId: 1
 --- !u!135 &135579853634161258

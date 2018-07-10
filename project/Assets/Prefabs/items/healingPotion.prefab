@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4018156153259648}
   - component: {fileID: 114700774953773570}
   m_Layer: 0
-  m_Name: Pistol
+  m_Name: healingPotion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,5 +57,7 @@ MonoBehaviour:
   bulletspeed: 0.4
   bulletAmount: 1
   bulletDamage: 5
+  heightAngle: 0
+  effectRadius: 0
   bulletPrefab: {fileID: 1737630033848492, guid: 38a90b522ff647042904f00e003f5dc5,
     type: 2}

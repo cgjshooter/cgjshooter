@@ -62,7 +62,12 @@ public class Grenade : MonoBehaviour, IAmmunition{
         this.smokeParticles = this.transform.Find("smoke");
         this.enemiesGameObject = GameObject.Find("/enemyContainer");
     }
-    
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -76,11 +81,17 @@ public class Grenade : MonoBehaviour, IAmmunition{
 
     private void OnTriggerEnter(Collider other)
     {
-        //TODO - better way for this.
-        if(!exploded && other.transform.parent != null && other.transform.parent.name == "enemyContainer")
+        if (other.gameObject == this.shooter || (other.transform.parent != null && other.transform.parent.gameObject == this.shooter))
+            return;
+
+        ITarget e = other.GetComponent<ITarget>();
+
+        if (e != null)
         {
             explode();
         }
+        else if (this.gameObject.name.IndexOf("Rocket")>=0)
+            explode();
     }
 
     void explode()
@@ -115,7 +126,7 @@ public class Grenade : MonoBehaviour, IAmmunition{
 
     void clearObject()
     {
-        GameObject.Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
     }
 
     public void affect(GameObject target)

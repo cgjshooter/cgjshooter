@@ -99,16 +99,27 @@ public class MainControl : MonoBehaviour {
     //Updates the cam to fit single player in.
     private void updateSinglePlayerCam()
     {
-        GameObject player1 = activePlayers[0];
-        target.Set(Camera.main.transform.position.x + (player1.transform.position.x - Camera.main.transform.position.x) / 10,
-            0,
-            Camera.main.transform.position.z + (player1.transform.position.z-15 - Camera.main.transform.position.z) / 10+15);
-        Camera.main.transform.position= new Vector3( 
-            Camera.main.transform.position.x + (player1.transform.position.x-Camera.main.transform.position.x)/10, 
-            defaultHeight,
-            Camera.main.transform.position.z + (player1.transform.position.z-15 - Camera.main.transform.position.z)/10  );
-        
-        Camera.main.transform.LookAt(target);
+        GameObject player1 = null;
+        foreach(GameObject player in activePlayers)
+        {
+            if (!player.GetComponent<ITarget>().dead)
+            {
+                player1 = player;
+                break;
+            }
+        }
+        if(player1 != null)
+        {
+            target.Set(Camera.main.transform.position.x + (player1.transform.position.x - Camera.main.transform.position.x) / 10,
+                0,
+                Camera.main.transform.position.z + (player1.transform.position.z - 15 - Camera.main.transform.position.z) / 10 + 15);
+            Camera.main.transform.position = new Vector3(
+                Camera.main.transform.position.x + (player1.transform.position.x - Camera.main.transform.position.x) / 10,
+                defaultHeight,
+                Camera.main.transform.position.z + (player1.transform.position.z - 15 - Camera.main.transform.position.z) / 10);
+
+            Camera.main.transform.LookAt(target);
+        }
     }
 
     //Updates the cam to fit two players in.

@@ -129,7 +129,7 @@ public class Player : MonoBehaviour, ITarget
         else if(other.name == "exitTrigger")
         {
             //Game over
-            
+            this.hitPoints = 0;
         }
     }
 
@@ -172,9 +172,11 @@ public class Player : MonoBehaviour, ITarget
         }
 
         //calculate move.
-        move = (v * Vector3.forward + h * Vector3.right) * moveSpeed * Time.fixedDeltaTime;
+        move = (v * Vector3.forward + h * Vector3.right);
+        if (move.magnitude > 1) move.Normalize();
+        move *= moveSpeed;
 
-        this.transform.position += move;
+        this.transform.position += move*Time.fixedDeltaTime;
     }
 
     public void hit(IAmmunition ammunition)

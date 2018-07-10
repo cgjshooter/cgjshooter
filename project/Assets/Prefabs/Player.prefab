@@ -190,7 +190,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1240842345595430}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0.8}
+  m_LocalPosition: {x: 0, y: 0, z: 1.044}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4503229556164640}
@@ -471,7 +471,7 @@ MonoBehaviour:
     m_Bits: 512
   moveSpeed: 10
   _hitPoints: 10
-  playerId: 2
+  playerId: 1
   move: {x: 0, y: 0, z: 0}
 --- !u!135 &135558788475564144
 SphereCollider:

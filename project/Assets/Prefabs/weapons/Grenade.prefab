@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 135141222546475022}
   - component: {fileID: 114792783188269208}
   - component: {fileID: 54257958883587738}
+  - component: {fileID: 135935866678815124}
   m_Layer: 12
   m_Name: Grenade
   m_TagString: Untagged
@@ -197,7 +198,19 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.28
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &135935866678815124
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1166425571736118}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.49999997
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &198300590773641122
 ParticleSystem:

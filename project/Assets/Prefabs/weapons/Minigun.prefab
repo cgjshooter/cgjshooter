@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spread: 5
-  bulletSpeedRandomFactor: 0.2
+  bulletSpeedRandomFactor: 3
   firedelay: 0.01
   bulletspeed: 20
   bulletAmount: 1

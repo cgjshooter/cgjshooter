@@ -6,7 +6,6 @@ public class BuildChildColliders : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
         // Iterate through all child objects of our Geometry object
         foreach (Transform childObject in transform)
         {

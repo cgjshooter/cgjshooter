@@ -46,12 +46,22 @@ public class Bullet : MonoBehaviour, IAmmunition {
     void Start () {
         start = Time.time;
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
+
+    private void OnEnable()
+    {
+        start = Time.time;
+    }
+
+    // Update is called once per frame
+    void Update () {
         
         this.transform.position += direction*Time.deltaTime;
-        if (Time.time - start > 10f) GameObject.Destroy(this.gameObject);
+        if (Time.time - start > 10f) this.gameObject.SetActive(false);
 	}
 
     private void OnTriggerEnter(Collider other)
@@ -65,11 +75,11 @@ public class Bullet : MonoBehaviour, IAmmunition {
         if (e!=null)
         {
             e.hit(this);
-            GameObject.Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
         else
         {
-           GameObject.Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
     }
 

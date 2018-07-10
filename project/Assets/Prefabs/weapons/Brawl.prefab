@@ -54,7 +54,7 @@ MonoBehaviour:
   spread: 180
   bulletSpeedRandomFactor: 0.1
   firedelay: 0.3
-  bulletspeed: 0.4
+  bulletspeed: 1
   bulletAmount: 1
   bulletDamage: 5
   heightAngle: 0

@@ -35,7 +35,6 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
             return bulletDamage;
         }
     }
-
     public float spread;
     public float bulletSpeedRandomFactor;
     public float firedelay;
@@ -50,11 +49,37 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
     private float previousActivation=0f;
     private GameObject bulletContainer;
     
+    private static Dictionary<GameObject, List<GameObject>> bulletPool;
+    private static Dictionary<GameObject, int> bulletIndices;
+
+    private static int bulletPoolSize = 100;
+
     // Use this for initialization
     void Start () {
         this.bulletContainer = GameObject.Find("bulletContainer");
-        
-	}
+
+        if (bulletPool == null)
+        {
+            DontDestroyOnLoad(this.bulletContainer.gameObject);
+            bulletPool = new Dictionary<GameObject, List<GameObject>>();
+            bulletIndices = new Dictionary<GameObject, int>();
+        }
+        if (!bulletPool.ContainsKey(this.bulletPrefab))
+        {
+            //Instantiate bullets.
+            List <GameObject> bullets = new List<GameObject>();
+            for( int i = 0; i < bulletPoolSize; i++)
+            {
+                GameObject go = GameObject.Instantiate(bulletPrefab,bulletContainer.transform);
+                DontDestroyOnLoad(go);
+                bullets.Add(go);
+                go.SetActive(false);
+            }
+            
+            bulletPool.Add(this.bulletPrefab, bullets);
+            bulletIndices.Add(this.bulletPrefab, 0);
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -69,10 +94,14 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
             for(int i = 0; i < bulletAmount; i++)
             {
                 //Spawn a bullet
-                var go = GameObject.Instantiate(bulletPrefab, player.transform.Find("shootPoint").position,
-                    player.transform.rotation
-                    , this.bulletContainer.transform);
-                
+                var go = bulletPool[this.bulletPrefab][(bulletIndices[bulletPrefab]++)%bulletPoolSize];
+                go.transform.parent = bulletContainer.transform;
+                go.transform.rotation = player.transform.rotation;
+                go.transform.position = player.transform.Find("shootPoint").position;
+                /*GameObject.Instantiate(bulletPrefab, player.transform.Find("shootPoint").position,
+                player.transform.rotation
+                , this.bulletContainer.transform);*/
+                go.SetActive(true);
                 float angle = this.transform.rotation.eulerAngles.y + (UnityEngine.Random.value - 0.5f) * spread;
                 Vector3 add = new Vector3(
                     Mathf.Sin(angle * Mathf.PI / 180f),
@@ -80,9 +109,11 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
                     Mathf.Cos(angle * Mathf.PI / 180f )
                 );
                 add.Normalize();
+                Debug.Log("Shoot angle: " + add);
                 go.GetComponent<IAmmunition>().shooter = player;
                 go.GetComponent<IAmmunition>().direction = add * (bulletspeed + UnityEngine.Random.value * bulletSpeedRandomFactor) 
-                                                           + player.GetComponent<ITarget>().m_Move;
+                                                           + player.GetComponent<ITarget>().m_Move; //60 is for approximation of fps. Better way?
+                Debug.Log("final shoot: " + go.GetComponent<IAmmunition>().direction);
                 go.GetComponent<IAmmunition>().damage = this.bulletDamage;
                 go.GetComponent<IAmmunition>().effectRadius = this.effectRadius;
                 

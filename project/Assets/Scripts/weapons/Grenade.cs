@@ -96,6 +96,7 @@ public class Grenade : MonoBehaviour, IAmmunition{
 
     void explode()
     {
+        if(enemiesGameObject == null) this.enemiesGameObject = GameObject.Find("/enemyContainer");
         exploded = true;
         //Find out enemies in the range
 

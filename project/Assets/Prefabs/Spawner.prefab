@@ -260,6 +260,6 @@ MonoBehaviour:
   - {fileID: 1736116986323202, guid: 22aae10553efaf24eb218f6e96e4e84c, type: 2}
   - {fileID: 1826057610392674, guid: 43e8d7596d6d7634ea6b1d86f314234c, type: 2}
   enemyContainer: {fileID: 0}
-  spawnDelay: 10
+  spawnDelay: 2
   move: {x: 0, y: 0, z: 0}
-  _hitPoints: 20
+  _hitPoints: 200

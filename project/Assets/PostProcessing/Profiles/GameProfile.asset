@@ -31,7 +31,7 @@ MonoBehaviour:
   antialiasing:
     m_Enabled: 1
     m_Settings:
-      method: 0
+      method: 1
       fxaaSettings:
         preset: 2
       taaSettings:
@@ -40,10 +40,10 @@ MonoBehaviour:
         stationaryBlending: 0.95
         motionBlending: 0.85
   ambientOcclusion:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
-      intensity: 1
-      radius: 0.3
+      intensity: 3.33
+      radius: 0.28
       sampleCount: 10
       downsampling: 1
       forceForwardCompatibility: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       bloom:
-        intensity: 0.5
+        intensity: 3.06
         threshold: 1.12
         softKnee: 0.5
         radius: 1.61
@@ -308,7 +308,7 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       spectralTexture: {fileID: 0}
-      intensity: 0.1
+      intensity: 0.203
   grain:
     m_Enabled: 1
     m_Settings:
@@ -322,7 +322,7 @@ MonoBehaviour:
       mode: 0
       color: {r: 0, g: 0, b: 0, a: 1}
       center: {x: 0.5, y: 0.5}
-      intensity: 0.14461231
+      intensity: 0.13520455
       smoothness: 0.2
       roundness: 1
       mask: {fileID: 0}

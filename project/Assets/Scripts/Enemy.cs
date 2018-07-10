@@ -41,23 +41,20 @@ public class Enemy : MonoBehaviour {
     //TODO - if text mode is wanted. This needs to be moved to logic.
     private void FixedUpdate()
     {
-        //Calculate distance to the nearest player
-        Vector3 d1 = player1 == null || !player1.activeSelf ? new Vector3(99999999f,999999999f,99999999f) : this.transform.position - player1.transform.position;
-        Vector3 d2 = player2 == null || !player1.activeSelf ? new Vector3(99999999f, 999999999f, 99999999f) : this.transform.position - player2.transform.position;
+        Vector3 dMin = new Vector3(999999999f, 9999999999f, 9999999999f);
+        GameObject target = null;
+        foreach(GameObject player in MainControl.activePlayers)
+        {
+            var d = this.transform.position - player.transform.position;
+            if(Vector3.Magnitude(d) < Vector3.Magnitude(dMin))
+            {
+                dMin = d;
+                target = player;
+            }
+        }
         
-        Vector3 targetD;
-        if( Vector3.Magnitude(d1) < Vector3.Magnitude(d2))
-        {
-            targetD = d1.normalized;
-			this.transform.LookAt (player1.transform.position);
-        }
-        else
-        {
-			targetD = d2.normalized;
-			this.transform.LookAt (player2.transform.position);
-        }
-
-        this.transform.position -= targetD * moveSpeed;
+		this.transform.LookAt (player1.transform.position);
+        this.transform.position -= dMin.normalized * moveSpeed;
     }
 
     public void hit(IProjectile ammunition)

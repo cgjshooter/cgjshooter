@@ -15,7 +15,7 @@ public class Spawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        if (this.enemyContainer == null) this.enemyContainer = GameObject.Find("enemyContainer");
 	}
 	
 	// Update is called once per frame

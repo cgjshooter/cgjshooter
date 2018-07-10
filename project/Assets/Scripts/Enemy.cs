@@ -5,6 +5,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour {
     public float moveSpeed;
     public float hitPoints;
+	public GameObject weaponPrefab;
+	public IItem activeWeapon;
 
     private GameObject player1;
     private GameObject player2;
@@ -15,6 +17,9 @@ public class Enemy : MonoBehaviour {
         this.player1 = GameObject.Find("Player1");
         this.player2 = GameObject.Find("Player2");
 
+		if (weaponPrefab != null) {
+			this.activeWeapon = Instantiate (weaponPrefab, this.transform).GetComponent<IItem> ();
+		}
     }
 
     // Update is called once per frame
@@ -25,6 +30,11 @@ public class Enemy : MonoBehaviour {
             GameObject.Destroy(this.gameObject);
         }
         
+		if (activeWeapon != null)
+		{
+			// simple shoot ai
+			this.activeWeapon.activate(this.gameObject);
+		}
 	}
 
     //Calculate movements on fixed step.
@@ -39,10 +49,12 @@ public class Enemy : MonoBehaviour {
         if( Vector3.Magnitude(d1) < Vector3.Magnitude(d2))
         {
             targetD = d1.normalized;
+			this.transform.LookAt (player1.transform.position);
         }
         else
         {
-            targetD = d2.normalized;
+			targetD = d2.normalized;
+			this.transform.LookAt (player2.transform.position);
         }
 
         this.transform.position -= targetD * moveSpeed;

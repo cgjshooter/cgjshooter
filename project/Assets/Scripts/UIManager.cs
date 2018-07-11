@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour {
 	void Start () {
         this.win.SetActive(false);
         this.lose.SetActive(false);
-        this.gameObject.SetActive(false);
+        
 	}
 	
 	// Update is called once per frame

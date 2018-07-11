@@ -5,6 +5,12 @@ using System.Collections.Generic;
 
 public class Player : MonoBehaviour, ITarget
 {
+    public float weaponSpeedMultiplier = 1f;
+    public float weaponDamageMultiplier = 1f;
+    public float weaponSpeedMultiplierResetTime;
+    public float weaponDamageMultiplierResetTime;
+
+
     public List<GameObject> itemPrefabs;
     public IItem activeItem;
     public List<IItem> items;
@@ -118,6 +124,8 @@ public class Player : MonoBehaviour, ITarget
             this.items.Add(go.GetComponent<IItem>());
         }
         ListUtil.Shuffle<IItem>(this.items);
+        this.items.RemoveRange(3, items.Count - 3);
+        while (items.Count < 4) items.Add(null);
         
         this.activeItem = this.items[0];
 
@@ -135,6 +143,10 @@ public class Player : MonoBehaviour, ITarget
 			this.die();
             return;
 		}
+
+        //Reset powerup modifiers
+        if (Time.time > this.weaponDamageMultiplierResetTime) this.weaponDamageMultiplier = 1f;
+        if (Time.time > this.weaponSpeedMultiplierResetTime) this.weaponSpeedMultiplier = 1f;
 
         if( CrossPlatformInputManager.GetAxis("p" + playerId + "Fire1")!=0 && activeItem != null)
         {
@@ -164,7 +176,7 @@ public class Player : MonoBehaviour, ITarget
                 }
                 else
                 {
-                    //TODO - Apply usable item
+                    nextItem.activate(this.gameObject);
                 }
 
             }
@@ -187,7 +199,14 @@ public class Player : MonoBehaviour, ITarget
         else
         {
             //Check if player has room for new item.
-
+            for(int i = 0; i < 4; i++)
+            {
+                if (this.items[i] == null)
+                {
+                    this.items[i] = powerup.GetComponent<IItem>();
+                    return true;
+                }
+            }
         }
         return false;
     }

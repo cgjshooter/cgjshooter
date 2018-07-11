@@ -53,7 +53,7 @@ public class Powerup : MonoBehaviour, IItem {
     public float armor;
     public float weaponspeedmultiplier;
     public float weapondamagemultiplier;
-
+    public float activeTime;
 
     // Use this for initialization
     void Start () {
@@ -84,6 +84,28 @@ public class Powerup : MonoBehaviour, IItem {
         p.hitPoints += this.health;
         //TODO - armor
         //TODO - other activations.
+
+        if (this.weapondamagemultiplier > 0f)
+        {
+            p.weaponDamageMultiplier += this.weapondamagemultiplier-1f;//offset by 1 as 1 is at bottom.
+            if (p.weaponDamageMultiplierResetTime > Time.time) p.weaponDamageMultiplierResetTime += this.activeTime;
+            else p.weaponDamageMultiplierResetTime = Time.time + this.activeTime;
+        }
+        if (this.weaponspeedmultiplier > 0f)
+        {
+            p.weaponSpeedMultiplier += this.weaponspeedmultiplier-1f;
+            if (p.weaponSpeedMultiplierResetTime > Time.time) p.weaponSpeedMultiplierResetTime += this.activeTime;
+            else p.weaponSpeedMultiplierResetTime = Time.time + this.activeTime;
+        }
+
+        this._useCount--;
+        if (this.useCount <= 0)
+        {
+            p.items[p.items.IndexOf(this.gameObject.GetComponent<IItem>())] = null;
+            this.gameObject.SetActive(false);
+        }
+            
+            
     }
 
     public void deactivate(GameObject player)

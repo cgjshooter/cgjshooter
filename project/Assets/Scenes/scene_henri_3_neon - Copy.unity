@@ -439,6 +439,11 @@ Prefab:
       propertyPath: m_Name
       value: Player1
       objectReference: {fileID: 0}
+    - target: {fileID: 114561768281793148, guid: 32aa543bc1233bf42a097608cf4a0b9b,
+        type: 2}
+      propertyPath: _armor
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 32aa543bc1233bf42a097608cf4a0b9b, type: 2}
   m_IsPrefabParent: 0
@@ -3164,7 +3169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c1e1ef3bb28d1a4ba75a645c0c35fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _icon: {fileID: 0}
   _useOnPickup: 0
   _useCount: 0
   _power: 0
@@ -3172,7 +3176,6 @@ MonoBehaviour:
   armor: 0.5
   weaponspeedmultiplier: 0
   weapondamagemultiplier: 0
-  activeTime: 0
 --- !u!1001 &2101194084
 Prefab:
   m_ObjectHideFlags: 0

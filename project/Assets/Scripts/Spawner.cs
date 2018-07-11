@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -45,6 +46,45 @@ public class Spawner : MonoBehaviour, ITarget {
         }
     }
 
+    public float armor
+    {
+        get
+        {
+            return 0;
+        }
+
+        set
+        {
+           
+        }
+    }
+
+    public bool invulnerable
+    {
+        get
+        {
+            return false;
+        }
+
+        set
+        {
+            
+        }
+    }
+
+    public bool invisible
+    {
+        get
+        {
+            return false;
+        }
+
+        set
+        {
+            
+        }
+    }
+
     // Use this for initialization
     void Start () {
         if (this.enemyContainer == null) this.enemyContainer = GameObject.Find("enemyContainer");
@@ -57,7 +97,7 @@ public class Spawner : MonoBehaviour, ITarget {
         {
             previousSpawn = Time.time;
             //Pick a random type
-            GameObject enemyType = enemyTypes[(int)Mathf.Floor(Random.value * enemyTypes.Count)];
+            GameObject enemyType = enemyTypes[(int)Mathf.Floor(UnityEngine.Random.value * enemyTypes.Count)];
             //TODO - get the spawn place. For now, just use default.
             Instantiate(enemyType, this.spawnPos.transform.position, this.transform.rotation, enemyContainer.transform);
         }

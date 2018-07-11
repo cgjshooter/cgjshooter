@@ -137,7 +137,14 @@ public class Grenade : MonoBehaviour, IAmmunition{
         if (e != null && target != this.shooter)
         {
             var d = this.transform.position - target.transform.position;
-            e.hitPoints -= dampeningFunction.Evaluate(Mathf.Clamp(Vector3.Magnitude(d) / this.effectRadius, 0f, 1f))* this.damage;
+            float damage = dampeningFunction.Evaluate(Mathf.Clamp(Vector3.Magnitude(d) / this.effectRadius, 0f, 1f)) * this.damage;
+            float blocked = damage * Mathf.Clamp((e.armor), 0.1f, 1f);
+
+            e.hitPoints -= damage - blocked;
+            //Weaken armor by blocked amount. Divider is just some weakening value that needs to be tweaked.
+            e.armor -= blocked / 15f;
+            if (e.armor < 0) e.armor = 0f;
+
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -32,6 +33,43 @@ public class Obstacle : MonoBehaviour, ITarget {
             return false;
         }
     }
+
+    public float armor
+    {
+        get
+        {
+            return 0;
+        }
+
+        set
+        {
+        }
+    }
+
+    public bool invulnerable
+    {
+        get
+        {
+            return true;
+        }
+
+        set
+        {
+        }
+    }
+
+    public bool invisible
+    {
+        get
+        {
+            return false;
+        }
+
+        set
+        {
+        }
+    }
+
     // Use this for initialization
     void Start () {
 		

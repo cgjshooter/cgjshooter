@@ -20,6 +20,7 @@ public class FFTEffects : MonoBehaviour {
         this.filters = new List<Filter>();
         this.filters.Add(new Filter(0, 600,true));
         this.filters.Add(new Filter(80, 1200, true));
+        this.filters.Add(new Filter(1200, 6200, true));
         ppProfile = Camera.main.GetComponent<PostProcessVolume>().profile;
         history = new List<float[]>();
         history.Add(new float[fftSize]);
@@ -80,9 +81,24 @@ public class FFTEffects : MonoBehaviour {
         var bloomSettings = ppProfile.GetSetting<Bloom>();
         bloomSettings.intensity.value = 5.0f + Mathf.SmoothStep(0.0f, 1.8f, filters[1].max*3.2f);
         //ppProfile.bloom.settings = bloomSettings;
+
+        var rgbSettings = ppProfile.GetSetting<RGBShift>();
+        Debug.Log(filters[2].max);
+        if(filters[2].max > 0.02f)
+        {
+            rgbSettings.bShift.value = (filters[2].max-0.02f)*0.05f;
+            rgbSettings.gShift.value = -(filters[2].max-0.02f)*0.05f;
+        }
+        else
+        {
+            rgbSettings.bShift.value = 0;// Mathf.SmoothStep(0.0f, 0.02f, filters[2].max);
+            rgbSettings.gShift.value = 0;// -Mathf.SmoothStep(0.0f, 0.02f, filters[2].max);
+        }
+
+        var distortSettings = ppProfile.GetSetting<Distort>();
+        distortSettings.intensity.value = filters[2].min*25f;
     }
 }
-
 
 class Filter
 {

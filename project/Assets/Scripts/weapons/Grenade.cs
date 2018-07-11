@@ -106,7 +106,7 @@ public class Grenade : MonoBehaviour, IAmmunition{
         for (int i = 0; i < enemiesGameObject.transform.childCount; i++)
         {
             var co = enemiesGameObject.transform.GetChild(i);
-            if (co.tag == "spawner" && this.tag == "Enemy")
+            if (co.tag == "spawner" && this.tag == "Enemy" || co.tag == "Enemy" && this.tag == "Enemy")
                 continue; 
             var d = this.transform.position - co.transform.position;
             if(Vector3.Magnitude(d) < this.effectRadius)

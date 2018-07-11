@@ -273,6 +273,8 @@ MonoBehaviour:
   m_AfterStackBundles:
   - assemblyQualifiedName: Distort, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  - assemblyQualifiedName: RGBShift, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &114390900742036054
 MonoBehaviour:
   m_ObjectHideFlags: 1

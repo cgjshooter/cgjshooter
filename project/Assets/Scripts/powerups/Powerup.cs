@@ -101,11 +101,10 @@ public class Powerup : MonoBehaviour, IItem {
         this._useCount--;
         if (this.useCount <= 0)
         {
-            p.items[p.items.IndexOf(this.gameObject.GetComponent<IItem>())] = null;
+            if(!this.useOnPickup)
+                p.items[p.items.IndexOf(this.gameObject.GetComponent<IItem>())] = null;
             this.gameObject.SetActive(false);
         }
-            
-            
     }
 
     public void deactivate(GameObject player)

@@ -18,6 +18,7 @@ MonoBehaviour:
   - {fileID: 114820870306827210}
   - {fileID: 114978593338041238}
   - {fileID: 114656676642697216}
+  - {fileID: 114678516202542036}
 --- !u!114 &114546635802731666
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -80,10 +81,34 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   intensity:
-    overrideState: 0
-    value: 0.1
+    overrideState: 1
+    value: 0
   height:
     overrideState: 0
+    value: 4096
+--- !u!114 &114678516202542036
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62cdd22954e03b74bb0f651cb875d10e, type: 3}
+  m_Name: RGBShift
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  rShift:
+    overrideState: 0
+    value: 0
+  gShift:
+    overrideState: 1
+    value: -0.01
+  bShift:
+    overrideState: 1
     value: 0.01
 --- !u!114 &114763055069841018
 MonoBehaviour:

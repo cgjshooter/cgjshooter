@@ -67,7 +67,6 @@ public class Powerup : MonoBehaviour, IItem {
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("HIT WITH " + other.gameObject.tag);
         if(other.gameObject.tag == "Player")
         {
             //TODO - implement pickup
@@ -79,7 +78,6 @@ public class Powerup : MonoBehaviour, IItem {
 
     public void activate(GameObject player)
     {
-        Debug.Log("ACTIVATE POWERR UP : " + this.health);
         var p = player.GetComponent<Player>();
         p.hitPoints += this.health;
         //TODO - armor

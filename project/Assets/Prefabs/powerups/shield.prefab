@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4675628376844332}
   - component: {fileID: 212523884553965920}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: police-badge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,8 +35,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4148357330876862}
-  - component: {fileID: 114297663487243746}
   - component: {fileID: 65622261025326736}
+  - component: {fileID: 54390650030033342}
+  - component: {fileID: 114881815574335654}
   m_Layer: 0
   m_Name: shield
   m_TagString: Untagged
@@ -55,7 +56,7 @@ GameObject:
   - component: {fileID: 212319011126303102}
   - component: {fileID: 61139300982326684}
   - component: {fileID: 50406455679915054}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: NeonBlueSquare
   m_TagString: Blue
   m_Icon: {fileID: 0}
@@ -123,6 +124,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!54 &54390650030033342
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1569151068804318}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!61 &61139300982326684
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -160,7 +176,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 4, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114297663487243746
+--- !u!114 &114881815574335654
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -171,14 +187,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c1e1ef3bb28d1a4ba75a645c0c35fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _icon: {fileID: 21300000, guid: f8ad8fc0d249b7d47beb2282977549f2, type: 3}
+  _icon: {fileID: 0}
   _useOnPickup: 0
   _useCount: 0
   _power: 0
   health: 0
-  armor: 0
+  armor: 0.5
   weaponspeedmultiplier: 0
   weapondamagemultiplier: 0
+  activeTime: 0
 --- !u!212 &212319011126303102
 SpriteRenderer:
   m_ObjectHideFlags: 1

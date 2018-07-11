@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1205504270099930}
+  m_IsPrefabParent: 1
+--- !u!1 &1205504270099930
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4595751825218394}
+  - component: {fileID: 114536993554911014}
+  m_Layer: 0
+  m_Name: powerupSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4595751825218394
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1205504270099930}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -78.09256, y: 7.086515, z: -25.222265}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114536993554911014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1205504270099930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cd7a323d48eaa740a98edd4ede15d6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnRadius: 150
+  powerupPrefabs:
+  - {fileID: 1207040929541996, guid: 28a42a016edd76049bd05e62270b572d, type: 2}
+  - {fileID: 1358583408165872, guid: 04f4c47fcfec9cd429eefe521079e8e3, type: 2}
+  - {fileID: 1569151068804318, guid: dda81d645d37c3349bba969b594bf66c, type: 2}
+  - {fileID: 1759685155787456, guid: d02476870727cb149bc42eccc4d6cb53, type: 2}
+  - {fileID: 1116329346407412, guid: 109c72af8a5133e41817c34345c85055, type: 2}
+  powerUpSpawnMinDelay: 1
+  powerUpSpawnMaxDelay: 10
+  maxPowerupCount: 10

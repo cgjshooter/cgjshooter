@@ -83,7 +83,7 @@ public class FFTEffects : MonoBehaviour {
         //ppProfile.bloom.settings = bloomSettings;
 
         var rgbSettings = ppProfile.GetSetting<RGBShift>();
-        Debug.Log(filters[2].max);
+        
         if(filters[2].max > 0.02f)
         {
             rgbSettings.bShift.value = (filters[2].max-0.02f)*0.05f;
@@ -96,7 +96,8 @@ public class FFTEffects : MonoBehaviour {
         }
 
         var distortSettings = ppProfile.GetSetting<Distort>();
-        distortSettings.intensity.value = filters[2].min*25f;
+        distortSettings.intensity.value = Mathf.SmoothStep(0f,0.4f, filters[2].min*105f);
+        distortSettings.posOff.value = UnityEngine.Random.value;
     }
 }
 

@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour, ITarget {
     {
         get
         {
-            return move;
+            return -move;
         }
     }
 

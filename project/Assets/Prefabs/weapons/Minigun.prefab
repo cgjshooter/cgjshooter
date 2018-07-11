@@ -57,7 +57,7 @@ MonoBehaviour:
   firedelay: 0.01
   bulletspeed: 20
   bulletAmount: 1
-  bulletDamage: 0.25
+  bulletDamage: 0.5
   heightAngle: 0
   effectRadius: 0
   bulletPrefab: {fileID: 1737630033848492, guid: 38a90b522ff647042904f00e003f5dc5,

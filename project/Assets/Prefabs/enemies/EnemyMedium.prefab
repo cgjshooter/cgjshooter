@@ -309,6 +309,7 @@ MonoBehaviour:
   _armor: 0.25
   _invulnerable: 0
   _invisible: 0
+  _maxHealth: 0
 --- !u!198 &198383186992618738
 ParticleSystem:
   m_ObjectHideFlags: 1

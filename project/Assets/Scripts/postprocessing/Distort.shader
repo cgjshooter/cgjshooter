@@ -7,12 +7,13 @@
 		TEXTURE2D_SAMPLER2D(_MainTex, sampler_MainTex);
 	float _Height;
 	float _Intensity;
+	float _PosOff;
 
 	float4 Frag(VaryingsDefault i) : SV_Target
 	{
 		float t = _Time * 600.;
 		float2 tc = float2(i.texcoord.x, i.texcoord.y);
-		tc.x *= 1.+( sin(tc.y*_Height) + sin(tc.y*_Height*0.65+0.73) )*_Intensity;
+		tc.x *= 1.+( sin(tc.y*_Height+_PosOff) + sin(tc.y*_Height*0.65+0.73+_PosOff) )*_Intensity;
 		float4 color = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, tc);
 		return color;
 	}

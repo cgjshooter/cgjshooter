@@ -66,6 +66,9 @@ public class Grenade : MonoBehaviour, IAmmunition{
     private void OnEnable()
     {
         start = Time.time;
+        foreach (SpriteRenderer si in this.GetComponentsInChildren<SpriteRenderer>()) si.enabled = true;
+        foreach (MeshRenderer mr in this.GetComponentsInChildren<MeshRenderer>()) mr.enabled = true;
+
     }
     // Update is called once per frame
     void Update()
@@ -73,21 +76,24 @@ public class Grenade : MonoBehaviour, IAmmunition{
         this.transform.position += direction*Time.deltaTime;
         if (Time.time - start > explosionDelay)
         {
-            //TODO - explosion
             this.explode();
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        //Block self
         if (other.gameObject == this.shooter || (other.transform.parent != null && other.transform.parent.gameObject == this.shooter))
             return;
 
         ITarget e = other.GetComponent<ITarget>();
-
+        if (this.gameObject.name.IndexOf("Mine") >= 0)
+            Debug.Log("trigge enter: "+ (e == null));
         if (e != null)
         {
-            explode();
+            
+            if (!(other.tag == "spawner" && this.shooter.tag == "Enemy" || other.tag == "Enemy" && this.shooter.tag == "Enemy"))
+                explode();
         }
         else if (this.gameObject.name.IndexOf("Rocket")>=0)
             explode();
@@ -98,7 +104,7 @@ public class Grenade : MonoBehaviour, IAmmunition{
         if(enemiesGameObject == null) this.enemiesGameObject = GameObject.Find("/enemyContainer");
         exploded = true;
         //Find out enemies in the range
-
+        if (this.gameObject.name.IndexOf("Mine") >= 0) Debug.Log("Mine explode");
         this.direction = new Vector3();
         this.explosionParticles.gameObject.GetComponent<ParticleSystem>().Play();
         if(this.smokeParticles != null)
@@ -106,7 +112,7 @@ public class Grenade : MonoBehaviour, IAmmunition{
         for (int i = 0; i < enemiesGameObject.transform.childCount; i++)
         {
             var co = enemiesGameObject.transform.GetChild(i);
-            if (co.tag == "spawner" && this.tag == "Enemy" || co.tag == "Enemy" && this.tag == "Enemy")
+            if (co.tag == "spawner" && this.shooter.tag == "Enemy" || co.tag == "Enemy" && this.shooter.tag == "Enemy")
                 continue; 
             var d = this.transform.position - co.transform.position;
             if(Vector3.Magnitude(d) < this.effectRadius)
@@ -122,6 +128,10 @@ public class Grenade : MonoBehaviour, IAmmunition{
                 co.GetComponent<ITarget>().hit(this);
             }
         }
+
+        foreach (SpriteRenderer si in this.GetComponentsInChildren<SpriteRenderer>()) si.enabled = false;
+        foreach (MeshRenderer mr in this.GetComponentsInChildren<MeshRenderer>()) mr.enabled = false;
+
 
         Invoke("clearObject", 1);
     }

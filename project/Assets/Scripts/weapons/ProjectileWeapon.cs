@@ -133,7 +133,7 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
            //     Debug.Log("Shoot angle: " + add);
                 go.GetComponent<IAmmunition>().shooter = player;
                 go.GetComponent<IAmmunition>().direction = add * (bulletspeed * addSpeed + UnityEngine.Random.value * bulletSpeedRandomFactor * addSpeed) 
-                                                           + player.GetComponent<ITarget>().m_Move; //60 is for approximation of fps. Better way?
+                                                           + player.GetComponent<ITarget>().m_Move;
             //    Debug.Log("final shoot: " + go.GetComponent<IAmmunition>().direction);
                 go.GetComponent<IAmmunition>().damage = this.bulletDamage*addDamage;
                 go.GetComponent<IAmmunition>().effectRadius = this.effectRadius;

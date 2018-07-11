@@ -166,17 +166,20 @@ public class Player : MonoBehaviour, ITarget
             if(itemInd >= 0 && itemInd < this.items.Count)
             {
                 var nextItem = this.items[itemInd];
-                if(nextItem.toggleable)
+                if(nextItem != null)
                 {
-                    if(this.activeItem != null)
+                    if(nextItem.toggleable)
                     {
-                        this.activeItem.deactivate(this.gameObject);
+                        if(this.activeItem != null)
+                        {
+                            this.activeItem.deactivate(this.gameObject);
+                        }
+                        activeItem = this.items[itemInd];
                     }
-                    activeItem = this.items[itemInd];
-                }
-                else
-                {
-                    nextItem.activate(this.gameObject);
+                    else
+                    {
+                        nextItem.activate(this.gameObject);
+                    }
                 }
 
             }

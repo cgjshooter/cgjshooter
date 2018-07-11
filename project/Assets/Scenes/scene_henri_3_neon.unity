@@ -2064,6 +2064,31 @@ Prefab:
       propertyPath: volumeLayer.m_Bits
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 114066674178174846, guid: ea173ca9e05cfe74888773464b7923d7,
+        type: 2}
+      propertyPath: antialiasingMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 20556883571572578, guid: ea173ca9e05cfe74888773464b7923d7,
+        type: 2}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 114066674178174846, guid: ea173ca9e05cfe74888773464b7923d7,
+        type: 2}
+      propertyPath: m_ShowToolkit
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114066674178174846, guid: ea173ca9e05cfe74888773464b7923d7,
+        type: 2}
+      propertyPath: m_ShowCustomSorter
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114771815601270236, guid: ea173ca9e05cfe74888773464b7923d7,
+        type: 2}
+      propertyPath: weight
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ea173ca9e05cfe74888773464b7923d7, type: 2}
   m_IsPrefabParent: 0

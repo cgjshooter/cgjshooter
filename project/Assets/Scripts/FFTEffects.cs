@@ -78,7 +78,7 @@ public class FFTEffects : MonoBehaviour {
         //ppProfile.vignette.settings = vignetSettings;
 
         var bloomSettings = ppProfile.GetSetting<Bloom>();
-        bloomSettings.intensity.value = 2.2f + Mathf.SmoothStep(0.0f, 1.8f, filters[1].max*3.2f);
+        bloomSettings.intensity.value = 5.0f + Mathf.SmoothStep(0.0f, 1.8f, filters[1].max*3.2f);
         //ppProfile.bloom.settings = bloomSettings;
     }
 }

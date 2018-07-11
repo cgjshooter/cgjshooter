@@ -45,7 +45,7 @@ public class PowerUpSpawner : MonoBehaviour {
             var xp = Mathf.Cos(deg) * r;
             var zp = Mathf.Sin(deg) * r;
             //Skip if hits something.
-            if(Physics.OverlapSphere(new Vector3(xp,10f,zp), 2f).Length > 0 )
+            if(Physics.OverlapSphere(new Vector3(xp,10f,zp) + this.transform.position, 2f).Length > 0 )
             {
                 Debug.Log(Physics.OverlapSphere(go.transform.position, 10f).Length);
                 Destroy(go);

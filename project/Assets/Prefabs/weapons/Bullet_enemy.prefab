@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 135408929181911470}
   - component: {fileID: 114429698693711774}
   m_Layer: 12
-  m_Name: Bullet_Big
+  m_Name: Bullet_enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,7 +38,7 @@ Transform:
   m_GameObject: {fileID: 1737630033848492}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -58,7 +58,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: b8619dd96ca77d74597d5cd48315d2b5, type: 2}
+  - {fileID: 2100000, guid: 8f20838d8ab462241b7e1c8e3bd16e9e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -54,11 +54,13 @@ MonoBehaviour:
   _icon: {fileID: 21300000, guid: f622a1282688a944eadc8fd7a0416784, type: 3}
   spread: 15
   bulletSpeedRandomFactor: 0.1
-  firedelay: 0.45
-  bulletspeed: 10
+  firedelay: 0.15
+  bulletspeed: 30
   bulletAmount: 2
   bulletDamage: 5
   heightAngle: 0
   effectRadius: 0
   bulletPrefab: {fileID: 1737630033848492, guid: 38a90b522ff647042904f00e003f5dc5,
+    type: 2}
+  bulletEnemyPrefab: {fileID: 1737630033848492, guid: a015e0c6596f5a4448d21a10ba5dd37c,
     type: 2}

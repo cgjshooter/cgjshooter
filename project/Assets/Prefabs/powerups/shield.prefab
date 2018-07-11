@@ -54,8 +54,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4191663933410020}
   - component: {fileID: 212319011126303102}
-  - component: {fileID: 61139300982326684}
-  - component: {fileID: 50406455679915054}
+  - component: {fileID: 65150921455064702}
+  - component: {fileID: 65834198535883750}
   m_Layer: 14
   m_Name: NeonBlueSquare
   m_TagString: Blue
@@ -104,26 +104,6 @@ Transform:
   m_Father: {fileID: 4148357330876862}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 180}
---- !u!50 &50406455679915054
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1745406157982032}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!54 &54390650030033342
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -139,31 +119,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!61 &61139300982326684
-BoxCollider2D:
+--- !u!65 &65150921455064702
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1745406157982032}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.13, y: 5.13}
-    newSize: {x: 5.13, y: 5.13}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_IsTrigger: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.6, y: 4.6}
-  m_EdgeRadius: 0
+  m_Size: {x: 5.1299996, y: 5.1300006, z: 0.20000003}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65622261025326736
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -174,7 +141,19 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 4, z: 2}
+  m_Size: {x: 3, y: 4, z: 3}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65834198535883750
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1745406157982032}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.1299996, y: 5.1300006, z: 0.20000003}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114881815574335654
 MonoBehaviour:

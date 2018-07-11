@@ -115,19 +115,27 @@ public class Player : MonoBehaviour, ITarget
     private void Start()
     {
         if (this.hitPoints > _maxHealth) _maxHealth = this.hitPoints;
-        //TODO - populate from players weapon selection.
-        this.items = new List<IItem>();
-        //Just for testing, instantiate the first value and set it as active item.
-        for (int i = 0; i < itemPrefabs.Count; i++)
+        
+        //Testing code if no player selection has been made.
+             this.items = new List<IItem>();
+        if(PlayerSelect.selections != null && PlayerSelect.selections.Count > 0)
         {
-            GameObject go = Instantiate(itemPrefabs[i], this.transform);
+            //Populate real weapons
+            GameObject go = Instantiate(itemPrefabs[PlayerSelect.selections[playerId-1].weaponIndex], this.transform);
             this.items.Add(go.GetComponent<IItem>());
         }
-        ListUtil.Shuffle<IItem>(this.items);
-        this.items.RemoveRange(3, items.Count - 3);
-        while (items.Count < 4) items.Add(null);
-        
+        else
+        {
+            GameObject go = Instantiate(itemPrefabs[(int)Mathf.Floor(UnityEngine.Random.value* itemPrefabs.Count)], this.transform);
+            this.items.Add(go.GetComponent<IItem>());
+            go = Instantiate(itemPrefabs[(int)Mathf.Floor(UnityEngine.Random.value * itemPrefabs.Count)], this.transform);
+            this.items.Add(go.GetComponent<IItem>());
+            go = Instantiate(itemPrefabs[(int)Mathf.Floor(UnityEngine.Random.value * itemPrefabs.Count)], this.transform);
+            this.items.Add(go.GetComponent<IItem>());
+        }
         this.activeItem = this.items[0];
+        while (items.Count < 4) items.Add(null);
+
 
         foreach (SpriteRenderer si in this.GetComponentsInChildren<SpriteRenderer>()) si.sprite = glowImages[this.playerId-1];
         this.GetComponentInChildren<Light>().color = playerColors[this.playerId-1];

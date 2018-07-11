@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MainControl : MonoBehaviour {
+    public List<GameObject> weapons;
 
     public List<GameObject> players;
     public List<GameObject> modifiers;
@@ -17,23 +18,45 @@ public class MainControl : MonoBehaviour {
 
     private Vector3 target = new Vector3();
 
-    private float defaultHeight = 60f;
+    private float defaultHeight = 95f;
+    private float defaultHeightMP = 70f;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
+
+        //Populate active players
+        activePlayers = new List<GameObject>();
+        
+        if(PlayerSelect.selections != null && PlayerSelect.selections.Count > 0)
+        {
+            for (int i = 0; i < PlayerSelect.selections.Count; i++)
+            {
+                if (PlayerSelect.selections[i].active)
+                {
+                    activePlayers.Add(players[i]);
+                    Debug.Log(PlayerSelect.selections[i].weaponIndex);
+                    
+                }
+                else
+                    players[i].SetActive(false);
+            }
+        }
+        else
+        {
+            foreach (GameObject player in players)
+            {
+                if (player != null && player.activeSelf)
+                    activePlayers.Add(player);
+            }
+        }
+
         running = true;
         //TODO - initialize player amount based on player selection.
         //TODO - make sure they have correct player ids (controller based).
 
         //TODO - populate modifiers based by level generation / modifiers.
 
-        //Populate active players
-        activePlayers = new List<GameObject>();
-        foreach(GameObject player in players)
-        {
-            if (player != null && player.activeSelf)
-                activePlayers.Add(player);
-        }
+       
 
         //Populate active modifiers
         activeModifiers = new List<GameObject>();
@@ -112,11 +135,11 @@ public class MainControl : MonoBehaviour {
         {
             target.Set(Camera.main.transform.position.x + (player1.transform.position.x - Camera.main.transform.position.x) / 10,
                 0,
-                Camera.main.transform.position.z + (player1.transform.position.z - 15 - Camera.main.transform.position.z) / 10 + 15);
+                Camera.main.transform.position.z + (player1.transform.position.z - 25 - Camera.main.transform.position.z) / 10 + 25);
             Camera.main.transform.position = new Vector3(
                 Camera.main.transform.position.x + (player1.transform.position.x - Camera.main.transform.position.x) / 10,
                 defaultHeight,
-                Camera.main.transform.position.z + (player1.transform.position.z - 15 - Camera.main.transform.position.z) / 10);
+                Camera.main.transform.position.z + (player1.transform.position.z - 25 - Camera.main.transform.position.z) / 10);
 
             Camera.main.transform.LookAt(target);
         }
@@ -146,11 +169,11 @@ public class MainControl : MonoBehaviour {
 
         target.Set(Camera.main.transform.position.x + (midPoint.x - Camera.main.transform.position.x) / 10,
             0,
-            Camera.main.transform.position.z + (midPoint.z - 15 - Camera.main.transform.position.z) / 10 + 15);
+            Camera.main.transform.position.z + (midPoint.z - 25 - Camera.main.transform.position.z) / 10 + 25);
         Camera.main.transform.position = new Vector3(
             Camera.main.transform.position.x + (midPoint.x - Camera.main.transform.position.x) / 10,
             defaultHeight + Mathf.Max(0,(Vector3.Magnitude(dMin)*1.9f)),
-            Camera.main.transform.position.z + (midPoint.z - 15 - Camera.main.transform.position.z) / 10);
+            Camera.main.transform.position.z + (midPoint.z - 25 - Camera.main.transform.position.z) / 10);
 
         Camera.main.transform.LookAt(target);
     }

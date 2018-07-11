@@ -106,33 +106,35 @@ public class Grenade : MonoBehaviour, IAmmunition{
         if(enemiesGameObject == null) this.enemiesGameObject = GameObject.Find("/enemyContainer");
         exploded = true;
         //Find out enemies in the range
-        if (this.gameObject.name.IndexOf("Mine") >= 0) Debug.Log("Mine explode");
         this.direction = new Vector3();
         this.explosionParticles.gameObject.GetComponent<ParticleSystem>().Play();
         if(this.smokeParticles != null)
             this.smokeParticles.gameObject.GetComponent<ParticleSystem>().Stop();
-        for (int i = 0; i < enemiesGameObject.transform.childCount; i++)
+        if(enemiesGameObject != null)
         {
-            var co = enemiesGameObject.transform.GetChild(i);
-            if (this.shooter != null && (co.tag == "spawner" && this.shooter.tag == "Enemy" || co.tag == "Enemy" && this.shooter.tag == "Enemy"))
-                continue; 
-            var d = this.transform.position - co.transform.position;
-            if(Vector3.Magnitude(d) < this.effectRadius)
+            for (int i = 0; i < enemiesGameObject.transform.childCount; i++)
             {
-                co.GetComponent<ITarget>().hit(this);
+                var co = enemiesGameObject.transform.GetChild(i);
+                if (this.shooter != null && (co.tag == "spawner" && this.shooter.tag == "Enemy" || co.tag == "Enemy" && this.shooter.tag == "Enemy"))
+                    continue; 
+                var d = this.transform.position - co.transform.position;
+                if(Vector3.Magnitude(d) < this.effectRadius)
+                {
+                    co.GetComponent<ITarget>().hit(this);
+                }
             }
-        }
-        foreach(GameObject co in MainControl.activePlayers)
-        {
-            var d = this.transform.position - co.transform.position;
-            if (Vector3.Magnitude(d) < this.effectRadius)
+            foreach (GameObject co in MainControl.activePlayers)
             {
-                co.GetComponent<ITarget>().hit(this);
+                var d = this.transform.position - co.transform.position;
+                if (Vector3.Magnitude(d) < this.effectRadius)
+                {
+                    co.GetComponent<ITarget>().hit(this);
+                }
             }
-        }
 
-        foreach (SpriteRenderer si in this.GetComponentsInChildren<SpriteRenderer>()) si.enabled = false;
-        foreach (MeshRenderer mr in this.GetComponentsInChildren<MeshRenderer>()) mr.enabled = false;
+            foreach (SpriteRenderer si in this.GetComponentsInChildren<SpriteRenderer>()) si.enabled = false;
+            foreach (MeshRenderer mr in this.GetComponentsInChildren<MeshRenderer>()) mr.enabled = false;
+        }
 
 
         Invoke("clearObject", 1);

@@ -83,10 +83,19 @@ public class Enemy : MonoBehaviour, ITarget {
         }
     }
 
+    public float _maxHealth;
+    public float maxHealth
+    {
+        get
+        {
+            return _maxHealth;
+        }
+    }
+
     // Use this for initialization
     void Start () {
-        
-		if (weaponPrefab != null) {
+        if (this.hitPoints > _maxHealth) _maxHealth = this.hitPoints;
+        if (weaponPrefab != null) {
 			this.activeWeapon = Instantiate (weaponPrefab, this.transform).GetComponent<IItem> ();
 		}
     }

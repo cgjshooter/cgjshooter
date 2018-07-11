@@ -48,6 +48,14 @@ public class Player : MonoBehaviour, ITarget
         }
     }
 
+    public float _maxHealth;
+    public float maxHealth
+    {
+        get
+        {
+            return _maxHealth;
+        }        
+    }
     public bool dead
     {
         get
@@ -100,6 +108,7 @@ public class Player : MonoBehaviour, ITarget
 
     private void Start()
     {
+        if (this.hitPoints > _maxHealth) _maxHealth = this.hitPoints;
         //TODO - populate from players weapon selection.
         this.items = new List<IItem>();
         //Just for testing, instantiate the first value and set it as active item.

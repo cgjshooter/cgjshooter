@@ -70,9 +70,18 @@ public class Obstacle : MonoBehaviour, ITarget {
         }
     }
 
+    public float _maxHealth;
+    public float maxHealth
+    {
+        get
+        {
+            return _maxHealth;
+        }
+    }
+
     // Use this for initialization
     void Start () {
-		
+        if (this.hitPoints > _maxHealth) _maxHealth = this.hitPoints;
 	}
 	
 	// Update is called once per frame

@@ -37,6 +37,14 @@ public class Spawner : MonoBehaviour, ITarget {
             _hitPoints = value;
         }
     }
+    public float _maxHealth;
+    public float maxHealth
+    {
+        get
+        {
+            return _maxHealth;
+        }
+    }
 
     public bool dead
     {
@@ -87,6 +95,7 @@ public class Spawner : MonoBehaviour, ITarget {
 
     // Use this for initialization
     void Start () {
+        if (this.hitPoints > _maxHealth) _maxHealth = this.hitPoints;
         if (this.enemyContainer == null) this.enemyContainer = GameObject.Find("enemyContainer");
         this.spawnPos = this.transform.Find("spawnPos");
 	}

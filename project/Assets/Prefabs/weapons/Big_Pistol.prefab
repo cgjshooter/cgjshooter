@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7ffc8c59d5501a4ea63f6cc313f67b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _icon: {fileID: 21300000, guid: f622a1282688a944eadc8fd7a0416784, type: 3}
   spread: 5
   bulletSpeedRandomFactor: 0.1
   firedelay: 0.3

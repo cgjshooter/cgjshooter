@@ -171,7 +171,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c1e1ef3bb28d1a4ba75a645c0c35fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemPrefab: {fileID: 0}
+  _icon: {fileID: 21300000, guid: 794d31c8574c5fe49b94a872163f3c49, type: 3}
+  _useOnPickup: 0
+  _useCount: 0
+  _power: 0
+  health: 0
+  armor: 0
+  weaponspeedmultiplier: 0
+  weapondamagemultiplier: 0
 --- !u!212 &212104978721864124
 SpriteRenderer:
   m_ObjectHideFlags: 1

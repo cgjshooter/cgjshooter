@@ -5,6 +5,15 @@ using UnityEngine;
 
 public class Powerup : MonoBehaviour, IItem {
 
+    public Sprite _icon;
+    public Sprite icon
+    {
+        get
+        {
+            return this._icon;
+        }
+    }
+
     public bool toggleable
     {
         get

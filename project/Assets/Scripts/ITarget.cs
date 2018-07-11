@@ -10,4 +10,5 @@ public interface ITarget {
     bool invulnerable { get; set; }
     bool invisible { get; set; }
     bool dead { get; }
+    float maxHealth { get; }
 }

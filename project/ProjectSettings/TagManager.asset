@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - spawner
+  - Blue
+  - Enemy
   layers:
   - Default
   - TransparentFX

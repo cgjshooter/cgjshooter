@@ -71,7 +71,6 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
             for( int i = 0; i < bulletPoolSize; i++)
             {
                 GameObject go = GameObject.Instantiate(bulletPrefab,bulletContainer.transform);
-                DontDestroyOnLoad(go);
                 bullets.Add(go);
                 go.SetActive(false);
             }
@@ -109,11 +108,11 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
                     Mathf.Cos(angle * Mathf.PI / 180f )
                 );
                 add.Normalize();
-                Debug.Log("Shoot angle: " + add);
+           //     Debug.Log("Shoot angle: " + add);
                 go.GetComponent<IAmmunition>().shooter = player;
                 go.GetComponent<IAmmunition>().direction = add * (bulletspeed + UnityEngine.Random.value * bulletSpeedRandomFactor) 
                                                            + player.GetComponent<ITarget>().m_Move; //60 is for approximation of fps. Better way?
-                Debug.Log("final shoot: " + go.GetComponent<IAmmunition>().direction);
+            //    Debug.Log("final shoot: " + go.GetComponent<IAmmunition>().direction);
                 go.GetComponent<IAmmunition>().damage = this.bulletDamage;
                 go.GetComponent<IAmmunition>().effectRadius = this.effectRadius;
                 

@@ -46,12 +46,7 @@ public class Bullet : MonoBehaviour, IAmmunition {
     void Start () {
         start = Time.time;
 	}
-
-    private void Awake()
-    {
-        DontDestroyOnLoad(this.gameObject);
-    }
-
+    
     private void OnEnable()
     {
         start = Time.time;
@@ -68,8 +63,7 @@ public class Bullet : MonoBehaviour, IAmmunition {
     {
         if (other.gameObject == this.shooter || (other.transform.parent != null && other.transform.parent.gameObject == this.shooter))
             return;
-
-        Debug.Log("Collider enter");
+        
         ITarget e = other.GetComponent<ITarget>();
         
         if (e!=null)
@@ -86,7 +80,7 @@ public class Bullet : MonoBehaviour, IAmmunition {
     public void affect(GameObject target)
     {
         var e = target.GetComponent<ITarget>();
-        if(e!= null)
+        if(e!= null && target != this.shooter)
             e.hitPoints -= this.damage;
     }
 }

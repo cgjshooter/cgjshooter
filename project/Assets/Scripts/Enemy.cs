@@ -50,7 +50,7 @@ public class Enemy : MonoBehaviour, ITarget {
 
     // Update is called once per frame
     void Update () {
-		if(hitPoints < 0)
+		if(dead)
         {
             //DIE
             if(!this.death.activeSelf)
@@ -94,6 +94,13 @@ public class Enemy : MonoBehaviour, ITarget {
         this.move = dMin.normalized * moveSpeed;
         this.transform.LookAt (target.transform.position);
         this.transform.position -= move * Time.fixedDeltaTime;
+
+        if(this.activeWeapon == null && Vector3.Magnitude(dMin) < 2.5f && hitPoints > 0)
+        {
+            //Self destruct.
+            this.hitPoints = 0;
+            target.GetComponent<Player>().hitPoints--;
+        }
     }
 
     public void hit(IAmmunition ammunition)

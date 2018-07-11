@@ -63,11 +63,10 @@ public class Grenade : MonoBehaviour, IAmmunition{
         this.enemiesGameObject = GameObject.Find("/enemyContainer");
     }
 
-    private void Awake()
+    private void OnEnable()
     {
-        DontDestroyOnLoad(this.gameObject);
+        start = Time.time;
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -107,6 +106,8 @@ public class Grenade : MonoBehaviour, IAmmunition{
         for (int i = 0; i < enemiesGameObject.transform.childCount; i++)
         {
             var co = enemiesGameObject.transform.GetChild(i);
+            if (co.tag == "spawner" && this.tag == "Enemy")
+                continue; 
             var d = this.transform.position - co.transform.position;
             if(Vector3.Magnitude(d) < this.effectRadius)
             {
@@ -133,7 +134,7 @@ public class Grenade : MonoBehaviour, IAmmunition{
     public void affect(GameObject target)
     {
         var e = target.GetComponent<ITarget>();
-        if (e != null)
+        if (e != null && target != this.shooter)
         {
             var d = this.transform.position - target.transform.position;
             e.hitPoints -= dampeningFunction.Evaluate(Mathf.Clamp(Vector3.Magnitude(d) / this.effectRadius, 0f, 1f))* this.damage;

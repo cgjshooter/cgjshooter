@@ -13,6 +13,7 @@ public class Spawner : MonoBehaviour, ITarget {
     private float previousSpawn;
     private Transform spawnPos;
 
+    public GameObject death;
     public Vector3 move = new Vector3();
     public Vector3 m_Move
     {
@@ -59,6 +60,11 @@ public class Spawner : MonoBehaviour, ITarget {
             GameObject enemyType = enemyTypes[(int)Mathf.Floor(Random.value * enemyTypes.Count)];
             //TODO - get the spawn place. For now, just use default.
             Instantiate(enemyType, this.spawnPos.transform.position, this.transform.rotation, enemyContainer.transform);
+        }
+        if (dead && !death.activeSelf)
+        {
+            death.SetActive(true);
+            foreach (MeshRenderer me in this.GetComponentsInChildren<MeshRenderer>()) me.enabled = false;
         }
 	}
 

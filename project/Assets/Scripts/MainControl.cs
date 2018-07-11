@@ -17,7 +17,7 @@ public class MainControl : MonoBehaviour {
 
     private Vector3 target = new Vector3();
 
-    private float defaultHeight = 35f;
+    private float defaultHeight = 60f;
 
 	// Use this for initialization
 	void Start () {

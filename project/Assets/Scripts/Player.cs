@@ -48,6 +48,14 @@ public class Player : MonoBehaviour, ITarget
         }
     }
 
+    public float _maxHealth;
+    public float maxHealth
+    {
+        get
+        {
+            return _maxHealth;
+        }        
+    }
     public bool dead
     {
         get
@@ -56,8 +64,51 @@ public class Player : MonoBehaviour, ITarget
         }
     }
 
+    public float _armor=0f;
+    public float armor
+    {
+        get
+        {
+            return _armor;
+        }
+
+        set
+        {
+            _armor = value;
+        }
+    }
+
+    private bool _invulnerable;
+    public bool invulnerable
+    {
+        get
+        {
+            return _invulnerable;
+        }
+
+        set
+        {
+            _invulnerable = value;
+        }
+    }
+
+    private bool _invisible;
+    public bool invisible
+    {
+        get
+        {
+            return _invisible;
+        }
+
+        set
+        {
+            _invisible = value;
+        }
+    }
+
     private void Start()
     {
+        if (this.hitPoints > _maxHealth) _maxHealth = this.hitPoints;
         //TODO - populate from players weapon selection.
         this.items = new List<IItem>();
         //Just for testing, instantiate the first value and set it as active item.
@@ -127,7 +178,18 @@ public class Player : MonoBehaviour, ITarget
      **/
     public bool pickPowerup(GameObject powerup)
     {
-        return true;
+        //Immediate activation
+        if (powerup.GetComponent<IItem>().useOnPickup)
+        {
+            powerup.GetComponent<IItem>().activate(this.gameObject);
+            return true;
+        }
+        else
+        {
+            //Check if player has room for new item.
+
+        }
+        return false;
     }
 
 	private void die()

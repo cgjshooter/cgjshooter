@@ -35,6 +35,16 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
             return bulletDamage;
         }
     }
+
+    public Sprite _icon;
+    public Sprite icon
+    {
+        get
+        {
+            return this._icon;
+        }
+    }
+
     public float spread;
     public float bulletSpeedRandomFactor;
     public float firedelay;

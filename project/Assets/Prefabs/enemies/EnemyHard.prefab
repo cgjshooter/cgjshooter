@@ -306,6 +306,10 @@ MonoBehaviour:
   weaponPrefab: {fileID: 1085345533283350, guid: 6b0cdeb25eb61d44c8981281f8d14965,
     type: 2}
   death: {fileID: 1679922544137592}
+  ramDamage: 2
+  _armor: 0
+  _invulnerable: 0
+  _invisible: 0
 --- !u!198 &198473541681093394
 ParticleSystem:
   m_ObjectHideFlags: 1

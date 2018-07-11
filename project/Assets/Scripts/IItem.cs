@@ -4,6 +4,8 @@ using UnityEngine;
 
 public interface IItem {
     
+    Sprite icon { get; }
+
     //Is the item toggleable or not.
     bool toggleable { get; }
     //Is the item activated immediatly on pickup

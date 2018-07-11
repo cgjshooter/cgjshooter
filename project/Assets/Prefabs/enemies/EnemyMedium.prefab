@@ -305,6 +305,10 @@ MonoBehaviour:
   _hitPoints: 6
   weaponPrefab: {fileID: 0}
   death: {fileID: 1156377136209992}
+  ramDamage: 0
+  _armor: 0.25
+  _invulnerable: 0
+  _invisible: 0
 --- !u!198 &198383186992618738
 ParticleSystem:
   m_ObjectHideFlags: 1

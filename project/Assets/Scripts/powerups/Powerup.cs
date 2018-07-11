@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Powerup : MonoBehaviour, IItem {
-    public float power
+
+    public Sprite _icon;
+    public Sprite icon
     {
         get
         {
-            return 0;
+            return this._icon;
         }
     }
 
@@ -20,31 +22,38 @@ public class Powerup : MonoBehaviour, IItem {
         }
     }
 
-    public int useCount
-    {
-        get
-        {
-            return 1;
-        }
-    }
-
+    public bool _useOnPickup;
     public bool useOnPickup
     {
         get
         {
-            return false;
+            return _useOnPickup;
         }
     }
 
-    public void activate(GameObject player)
+    public int _useCount;
+    public int useCount
     {
-        
+        get
+        {
+            return _useCount;
+        }
     }
 
-    public void deactivate(GameObject player)
+    public float _power;
+    public float power
     {
-        
+        get
+        {
+            return _power;
+        }
     }
+
+    public float health;
+    public float armor;
+    public float weaponspeedmultiplier;
+    public float weapondamagemultiplier;
+
 
     // Use this for initialization
     void Start () {
@@ -55,4 +64,30 @@ public class Powerup : MonoBehaviour, IItem {
 	void Update () {
 		
 	}
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("HIT WITH " + other.gameObject.tag);
+        if(other.gameObject.tag == "Player")
+        {
+            //TODO - implement pickup
+            bool pickOk = other.gameObject.GetComponent<Player>().pickPowerup(this.gameObject);
+            if(pickOk)
+                this.gameObject.SetActive(false);
+        }
+    }
+
+    public void activate(GameObject player)
+    {
+        Debug.Log("ACTIVATE POWERR UP : " + this.health);
+        var p = player.GetComponent<Player>();
+        p.hitPoints += this.health;
+        //TODO - armor
+        //TODO - other activations.
+    }
+
+    public void deactivate(GameObject player)
+    {
+        
+    }
 }

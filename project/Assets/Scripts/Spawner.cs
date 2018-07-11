@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -36,6 +37,14 @@ public class Spawner : MonoBehaviour, ITarget {
             _hitPoints = value;
         }
     }
+    public float _maxHealth;
+    public float maxHealth
+    {
+        get
+        {
+            return _maxHealth;
+        }
+    }
 
     public bool dead
     {
@@ -45,8 +54,48 @@ public class Spawner : MonoBehaviour, ITarget {
         }
     }
 
+    public float armor
+    {
+        get
+        {
+            return 0;
+        }
+
+        set
+        {
+           
+        }
+    }
+
+    public bool invulnerable
+    {
+        get
+        {
+            return false;
+        }
+
+        set
+        {
+            
+        }
+    }
+
+    public bool invisible
+    {
+        get
+        {
+            return false;
+        }
+
+        set
+        {
+            
+        }
+    }
+
     // Use this for initialization
     void Start () {
+        if (this.hitPoints > _maxHealth) _maxHealth = this.hitPoints;
         if (this.enemyContainer == null) this.enemyContainer = GameObject.Find("enemyContainer");
         this.spawnPos = this.transform.Find("spawnPos");
 	}
@@ -57,7 +106,7 @@ public class Spawner : MonoBehaviour, ITarget {
         {
             previousSpawn = Time.time;
             //Pick a random type
-            GameObject enemyType = enemyTypes[(int)Mathf.Floor(Random.value * enemyTypes.Count)];
+            GameObject enemyType = enemyTypes[(int)Mathf.Floor(UnityEngine.Random.value * enemyTypes.Count)];
             //TODO - get the spawn place. For now, just use default.
             Instantiate(enemyType, this.spawnPos.transform.position, this.transform.rotation, enemyContainer.transform);
         }
@@ -70,7 +119,6 @@ public class Spawner : MonoBehaviour, ITarget {
 
     public void hit(IAmmunition ammunition)
     {
-        Debug.Log("SPAWNER HIT!");
         ammunition.affect(this.gameObject);
     }
 }

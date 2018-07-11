@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour, ITarget {
 	public GameObject weaponPrefab;
 	public IItem activeWeapon;
     public GameObject death;
-
+    public float ramDamage;
     private Vector3 move;
     public Vector3 m_Move
     {
@@ -40,10 +40,62 @@ public class Enemy : MonoBehaviour, ITarget {
         }
     }
 
+    [Range(0,1)]
+    public float _armor;
+    public float armor
+    {
+        get
+        {
+            return _armor;
+        }
+
+        set
+        {
+            _armor = value;
+        }
+    }
+
+    public bool _invulnerable;
+    public bool invulnerable
+    {
+        get
+        {
+            return _invulnerable;
+        }
+
+        set
+        {
+            _invulnerable = value;
+        }
+    }
+
+    public bool _invisible;
+    public bool invisible
+    {
+        get
+        {
+            return _invisible;
+        }
+
+        set
+        {
+            _invisible = value;
+        }
+    }
+
+    public float _maxHealth;
+    public float maxHealth
+    {
+        get
+        {
+            return _maxHealth;
+        }
+    }
+
     // Use this for initialization
     void Start () {
-        
-		if (weaponPrefab != null) {
+        if (this.hitPoints > _maxHealth) _maxHealth = this.hitPoints;
+        if (weaponPrefab != null) {
 			this.activeWeapon = Instantiate (weaponPrefab, this.transform).GetComponent<IItem> ();
 		}
     }
@@ -99,7 +151,13 @@ public class Enemy : MonoBehaviour, ITarget {
         {
             //Self destruct.
             this.hitPoints = 0;
-            target.GetComponent<Player>().hitPoints--;
+            var e = target.GetComponent<Player>();
+            float blocked = this.ramDamage * Mathf.Clamp((e.armor), 0.1f, 1f);
+            e.hitPoints -= this.ramDamage - blocked;
+            //Weaken armor by blocked amount. Divider is just some weakening value that needs to be tweaked.
+            e.armor -= blocked / 10f;
+            if (e.armor < 0) e.armor = 0f;
+            
         }
     }
 

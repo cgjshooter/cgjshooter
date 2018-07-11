@@ -81,6 +81,12 @@ public class Bullet : MonoBehaviour, IAmmunition {
     {
         var e = target.GetComponent<ITarget>();
         if(e!= null && target != this.shooter)
-            e.hitPoints -= this.damage;
+        {
+            float blocked = this.damage * Mathf.Clamp((e.armor), 0.1f, 1f);
+            e.hitPoints -= this.damage - blocked;
+            //Weaken armor by blocked amount. Divider is just some weakening value that needs to be tweaked.
+            e.armor -= blocked / 30f;
+            if (e.armor < 0) e.armor = 0f;
+        }
     }
 }

@@ -127,7 +127,18 @@ public class Player : MonoBehaviour, ITarget
      **/
     public bool pickPowerup(GameObject powerup)
     {
-        return true;
+        //Immediate activation
+        if (powerup.GetComponent<IItem>().useOnPickup)
+        {
+            powerup.GetComponent<IItem>().activate(this.gameObject);
+            return true;
+        }
+        else
+        {
+            //Check if player has room for new item.
+
+        }
+        return false;
     }
 
 	private void die()

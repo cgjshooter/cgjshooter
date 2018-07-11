@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4084183843088678}
   - component: {fileID: 212949682970184930}
   m_Layer: 0
-  m_Name: police-badge
+  m_Name: icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -171,7 +171,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c1e1ef3bb28d1a4ba75a645c0c35fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemPrefab: {fileID: 0}
+  _useOnPickup: 1
+  _useCount: 1
+  _power: 0
+  health: 20
+  armor: 0
+  weaponspeedmultiplier: 0
+  weapondamagemultiplier: 0
 --- !u!212 &212030466433892518
 SpriteRenderer:
   m_ObjectHideFlags: 1

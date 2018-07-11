@@ -70,7 +70,6 @@ public class Spawner : MonoBehaviour, ITarget {
 
     public void hit(IAmmunition ammunition)
     {
-        Debug.Log("SPAWNER HIT!");
         ammunition.affect(this.gameObject);
     }
 }

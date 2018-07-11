@@ -3172,6 +3172,7 @@ MonoBehaviour:
   armor: 0.5
   weaponspeedmultiplier: 0
   weapondamagemultiplier: 0
+  activeTime: 0
 --- !u!1001 &2101194084
 Prefab:
   m_ObjectHideFlags: 0

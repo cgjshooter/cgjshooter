@@ -30,11 +30,9 @@ public class UIManager : MonoBehaviour {
 
 		if(this.win.activeSelf || lose.activeSelf)
         {
-            Debug.Log("wait input");
             //restarts
             if(CrossPlatformInputManager.GetButton("Submit"))
             {
-                Debug.Log("submit");
                 UnityEngine.SceneManagement.SceneManager.LoadScene(0);
             }
         }

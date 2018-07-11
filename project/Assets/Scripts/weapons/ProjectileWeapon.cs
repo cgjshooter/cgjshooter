@@ -97,7 +97,9 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
 
     public void activate(GameObject player)
     {
-        if (Time.time - this.previousActivation > this.firedelay)
+        var pl = player.GetComponent<Player>();
+        float divider = pl == null ? 1 : pl.weaponSpeedMultiplier;
+        if (Time.time - this.previousActivation > this.firedelay/divider)
         {
             //Allow fire
             for(int i = 0; i < bulletAmount; i++)
@@ -118,12 +120,22 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
                     Mathf.Cos(angle * Mathf.PI / 180f )
                 );
                 add.Normalize();
+
+                float addSpeed = 1f;
+                float addDamage = 1f;
+                //TODO - this might be moved to interface at some point, but for now. Lets keep it at player.
+                if(pl != null)
+                {
+                    addSpeed = pl.weaponSpeedMultiplier;
+                    addDamage = pl.weaponDamageMultiplier;
+                }
+
            //     Debug.Log("Shoot angle: " + add);
                 go.GetComponent<IAmmunition>().shooter = player;
-                go.GetComponent<IAmmunition>().direction = add * (bulletspeed + UnityEngine.Random.value * bulletSpeedRandomFactor) 
+                go.GetComponent<IAmmunition>().direction = add * (bulletspeed * addSpeed + UnityEngine.Random.value * bulletSpeedRandomFactor * addSpeed) 
                                                            + player.GetComponent<ITarget>().m_Move; //60 is for approximation of fps. Better way?
             //    Debug.Log("final shoot: " + go.GetComponent<IAmmunition>().direction);
-                go.GetComponent<IAmmunition>().damage = this.bulletDamage;
+                go.GetComponent<IAmmunition>().damage = this.bulletDamage*addDamage;
                 go.GetComponent<IAmmunition>().effectRadius = this.effectRadius;
                 
             }

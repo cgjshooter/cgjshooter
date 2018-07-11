@@ -5,6 +5,12 @@ using System.Collections.Generic;
 
 public class Player : MonoBehaviour, ITarget
 {
+    public float weaponSpeedMultiplier = 1f;
+    public float weaponDamageMultiplier = 1f;
+    public float weaponSpeedMultiplierResetTime;
+    public float weaponDamageMultiplierResetTime;
+
+
     public List<GameObject> itemPrefabs;
     public IItem activeItem;
     public List<IItem> items;
@@ -138,6 +144,10 @@ public class Player : MonoBehaviour, ITarget
             return;
 		}
 
+        //Reset powerup modifiers
+        if (Time.time > this.weaponDamageMultiplierResetTime) this.weaponDamageMultiplier = 1f;
+        if (Time.time > this.weaponSpeedMultiplierResetTime) this.weaponSpeedMultiplier = 1f;
+
         if( CrossPlatformInputManager.GetAxis("p" + playerId + "Fire1")!=0 && activeItem != null)
         {
             this.activeItem.activate(this.gameObject);
@@ -166,7 +176,7 @@ public class Player : MonoBehaviour, ITarget
                 }
                 else
                 {
-                    //TODO - Apply usable item
+                    nextItem.activate(this.gameObject);
                 }
 
             }

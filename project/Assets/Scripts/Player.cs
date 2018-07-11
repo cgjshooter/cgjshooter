@@ -118,6 +118,8 @@ public class Player : MonoBehaviour, ITarget
             this.items.Add(go.GetComponent<IItem>());
         }
         ListUtil.Shuffle<IItem>(this.items);
+        this.items.RemoveRange(3, items.Count - 3);
+        while (items.Count < 4) items.Add(null);
         
         this.activeItem = this.items[0];
 
@@ -187,7 +189,14 @@ public class Player : MonoBehaviour, ITarget
         else
         {
             //Check if player has room for new item.
-
+            for(int i = 0; i < 4; i++)
+            {
+                if (this.items[i] == null)
+                {
+                    this.items[i] = powerup.GetComponent<IItem>();
+                    return true;
+                }
+            }
         }
         return false;
     }

@@ -1676,6 +1676,10 @@ MonoBehaviour:
   p2: {fileID: 1977605145673624}
   p3: {fileID: 1418509927861526}
   p4: {fileID: 1505027071198328}
+  inactiveColor: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 1}
+  weaponColor: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 1}
+  weapon_selectedColor: {r: 0.8301887, g: 0.8301887, b: 0.8301887, a: 1}
+  itemColor: {r: 0.6792453, g: 0.6792453, b: 0.6792453, a: 1}
 --- !u!114 &114233360095706736
 MonoBehaviour:
   m_ObjectHideFlags: 1

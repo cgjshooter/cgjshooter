@@ -44,13 +44,14 @@ public class PowerUpSpawner : MonoBehaviour {
             var r = UnityEngine.Random.value * spawnRadius;
             var xp = Mathf.Cos(deg) * r;
             var zp = Mathf.Sin(deg) * r;
-            go.transform.position = new Vector3(xp, 10f, zp);
             //Skip if hits something.
-            if(Physics.OverlapSphere(go.transform.position, 2f).Length > 0)
+            if(Physics.OverlapSphere(new Vector3(xp,10f,zp), 2f).Length > 0 )
             {
-                Debug.Log("SPAWN FAILED! NO SPACE!");
+                Debug.Log(Physics.OverlapSphere(go.transform.position, 10f).Length);
                 Destroy(go);
             }
+            else
+                go.transform.position = new Vector3(xp, 2f, zp);
         }
         Invoke("spawnNext", UnityEngine.Random.value * (powerUpSpawnMaxDelay-powerUpSpawnMinDelay) + powerUpSpawnMinDelay);
     }

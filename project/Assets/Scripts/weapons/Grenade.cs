@@ -83,7 +83,8 @@ public class Grenade : MonoBehaviour, IAmmunition{
     private void OnTriggerEnter(Collider other)
     {
         //Block self
-        if (other.gameObject == this.shooter || (other.transform.parent != null && other.transform.parent.gameObject == this.shooter))
+        if (this.shooter != null && 
+            (other.gameObject == this.shooter || (other.transform.parent != null && other.transform.parent.gameObject == this.shooter)))
             return;
 
         ITarget e = other.GetComponent<ITarget>();
@@ -92,7 +93,8 @@ public class Grenade : MonoBehaviour, IAmmunition{
         if (e != null)
         {
             
-            if (!(other.tag == "spawner" && this.shooter.tag == "Enemy" || other.tag == "Enemy" && this.shooter.tag == "Enemy"))
+            if (this.shooter != null && 
+                !(other.tag == "spawner" && this.shooter.tag == "Enemy" || other.tag == "Enemy" && this.shooter.tag == "Enemy"))
                 explode();
         }
         else if (this.gameObject.name.IndexOf("Rocket")>=0)
@@ -112,7 +114,7 @@ public class Grenade : MonoBehaviour, IAmmunition{
         for (int i = 0; i < enemiesGameObject.transform.childCount; i++)
         {
             var co = enemiesGameObject.transform.GetChild(i);
-            if (co.tag == "spawner" && this.shooter.tag == "Enemy" || co.tag == "Enemy" && this.shooter.tag == "Enemy")
+            if (this.shooter != null && (co.tag == "spawner" && this.shooter.tag == "Enemy" || co.tag == "Enemy" && this.shooter.tag == "Enemy"))
                 continue; 
             var d = this.transform.position - co.transform.position;
             if(Vector3.Magnitude(d) < this.effectRadius)

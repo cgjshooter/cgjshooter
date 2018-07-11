@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 135558788475564144}
   m_Layer: 11
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -278,7 +278,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1635604695155870}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.57, z: 0}
+  m_LocalPosition: {x: -4.44, y: 1.887, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4680743461958756}
@@ -644,7 +644,7 @@ MonoBehaviour:
   - {r: 0.49019608, g: 1, b: 0.49019608, a: 0}
   - {r: 1, g: 0.49019608, b: 0.49019608, a: 0}
   - {r: 1, g: 0.29411766, b: 0.98486185, a: 0}
-  playerId: 2
+  playerId: 1
   move: {x: 0, y: 0, z: 0}
 --- !u!135 &135558788475564144
 SphereCollider:

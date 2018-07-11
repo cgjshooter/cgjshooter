@@ -120,6 +120,16 @@ public class Player : MonoBehaviour, ITarget
         }
     }
 
+    /**
+     * Called when player is near powerup for picking.
+     * TODO - check if powerup can be picked / should be.
+     * return true if ok, false otherwise.
+     **/
+    public bool pickPowerup(GameObject powerup)
+    {
+        return true;
+    }
+
 	private void die()
 	{
         if ( !death.activeSelf)

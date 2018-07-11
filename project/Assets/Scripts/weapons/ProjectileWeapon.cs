@@ -71,7 +71,6 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
             for( int i = 0; i < bulletPoolSize; i++)
             {
                 GameObject go = GameObject.Instantiate(bulletPrefab,bulletContainer.transform);
-                DontDestroyOnLoad(go);
                 bullets.Add(go);
                 go.SetActive(false);
             }

@@ -58,6 +58,6 @@ MonoBehaviour:
   bulletAmount: 1
   bulletDamage: 15
   heightAngle: 0
-  effectRadius: 3
+  effectRadius: 5
   bulletPrefab: {fileID: 1166425571736118, guid: 8670378b048c2dd47bc4e78ef3be15d8,
     type: 2}

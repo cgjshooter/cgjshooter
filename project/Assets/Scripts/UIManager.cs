@@ -31,7 +31,10 @@ public class UIManager : MonoBehaviour {
 		if(this.win.activeSelf || lose.activeSelf)
         {
             //restarts
-            if(CrossPlatformInputManager.GetButton("p1Submit"))
+            if(CrossPlatformInputManager.GetButton("p1Submit") ||
+                CrossPlatformInputManager.GetButton("p2Submit")||
+                CrossPlatformInputManager.GetButton("p3Submit")||
+                CrossPlatformInputManager.GetButton("p4Submit"))
             {
                 UnityEngine.SceneManagement.SceneManager.LoadScene(0);
             }

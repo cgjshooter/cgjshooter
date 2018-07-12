@@ -585,6 +585,11 @@ Prefab:
       propertyPath: _armor
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114561768281793148, guid: 32aa543bc1233bf42a097608cf4a0b9b,
+        type: 2}
+      propertyPath: playerId
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 32aa543bc1233bf42a097608cf4a0b9b, type: 2}
   m_IsPrefabParent: 0
@@ -2583,7 +2588,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4939065345085666, guid: 377da0825b4aa7649b0235af35d97d21, type: 2}
       propertyPath: m_RootOrder
-      value: 72
+      value: 73
       objectReference: {fileID: 0}
     - target: {fileID: 4939065345085666, guid: 377da0825b4aa7649b0235af35d97d21, type: 2}
       propertyPath: m_LocalScale.y
@@ -4210,7 +4215,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4939065345085666, guid: 377da0825b4aa7649b0235af35d97d21, type: 2}
       propertyPath: m_RootOrder
-      value: 71
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 4939065345085666, guid: 377da0825b4aa7649b0235af35d97d21, type: 2}
       propertyPath: m_LocalScale.y

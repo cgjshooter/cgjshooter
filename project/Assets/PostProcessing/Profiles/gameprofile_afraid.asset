@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e6292b2c06870d4495f009f912b9600, type: 3}
-  m_Name: gameprofile_v2
+  m_Name: gameprofile_afraid
   m_EditorClassIdentifier: 
   settings:
   - {fileID: 114546635802731666}
@@ -164,7 +164,7 @@ MonoBehaviour:
     overrideState: 0
     value: 1
   temperature:
-    overrideState: 0
+    overrideState: 1
     value: 0
   tint:
     overrideState: 0
@@ -177,7 +177,7 @@ MonoBehaviour:
     value: 0
   saturation:
     overrideState: 1
-    value: 0
+    value: 41.5
   brightness:
     overrideState: 0
     value: 0
@@ -186,7 +186,7 @@ MonoBehaviour:
     value: 0
   contrast:
     overrideState: 1
-    value: 0
+    value: -31.3
   mixerRedOutRedIn:
     overrideState: 0
     value: 100
@@ -215,14 +215,14 @@ MonoBehaviour:
     overrideState: 0
     value: 100
   lift:
-    overrideState: 0
-    value: {x: 1, y: 1, z: 1, w: 0}
+    overrideState: 1
+    value: {x: 0.4712988, y: 1, z: 0.41251922, w: 0}
   gamma:
-    overrideState: 0
-    value: {x: 1, y: 1, z: 1, w: 0}
+    overrideState: 1
+    value: {x: 1, y: 0.52016675, z: 0.49370104, w: 0}
   gain:
-    overrideState: 0
-    value: {x: 1, y: 1, z: 1, w: 0}
+    overrideState: 1
+    value: {x: 0.6465428, y: 0.6737834, z: 1, w: 0}
   masterCurve:
     overrideState: 0
     value:
@@ -1443,10 +1443,10 @@ MonoBehaviour:
     value: 0
   intensity:
     overrideState: 1
-    value: 0.354
+    value: 0.458
   size:
     overrideState: 1
-    value: 0.59
+    value: 0.86
   lumContrib:
     overrideState: 0
     value: 0.8
@@ -1501,7 +1501,7 @@ MonoBehaviour:
     value: {x: 0.5, y: 0.5}
   intensity:
     overrideState: 1
-    value: 0.297
+    value: 0.465
   smoothness:
     overrideState: 1
     value: 1

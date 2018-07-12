@@ -302,11 +302,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 12
-  _hitPoints: 6
+  _hitPoints: 4
   weaponPrefab: []
   death: {fileID: 1156377136209992}
   ramDamage: 0
-  _armor: 0.25
+  _armor: 0.2
   _invulnerable: 0
   _invisible: 0
   _maxHealth: 0

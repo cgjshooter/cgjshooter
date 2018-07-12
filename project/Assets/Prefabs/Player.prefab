@@ -634,7 +634,7 @@ MonoBehaviour:
   mouseHitMask:
     serializedVersion: 2
     m_Bits: 512
-  moveSpeed: 15
+  moveSpeed: 18
   _hitPoints: 100
   death: {fileID: 1655484301056638}
   glowImages:

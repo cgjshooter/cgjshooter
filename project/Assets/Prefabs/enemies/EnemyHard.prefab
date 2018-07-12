@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 6
-  _hitPoints: 10
+  _hitPoints: 8
   weaponPrefab:
   - {fileID: 1460600213935450, guid: 7eaaf130964b7c54e8c1d4b6191cadb0, type: 2}
   - {fileID: 1085345533283350, guid: e58b66576a4fcac4e90237d09d4a7cc6, type: 2}

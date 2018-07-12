@@ -156,7 +156,8 @@ public class Player : MonoBehaviour, ITarget
         if (Time.time > this.weaponDamageMultiplierResetTime) this.weaponDamageMultiplier = 1f;
         if (Time.time > this.weaponSpeedMultiplierResetTime) this.weaponSpeedMultiplier = 1f;
 
-        if( CrossPlatformInputManager.GetAxis("p" + playerId + "Fire1")!=0 && activeItem != null)
+        if( CrossPlatformInputManager.GetAxis("p" + playerId + "Fire1")!=0 || CrossPlatformInputManager.GetAxis("p" + playerId + "Fire2") != 0 && 
+            activeItem != null)
         {
             this.activeItem.activate(this.gameObject);
         }

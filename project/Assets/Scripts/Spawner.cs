@@ -98,10 +98,16 @@ public class Spawner : MonoBehaviour, ITarget {
         if (this.hitPoints > _maxHealth) _maxHealth = this.hitPoints;
         if (this.enemyContainer == null) this.enemyContainer = GameObject.Find("enemyContainer");
         this.spawnPos = this.transform.Find("spawnPos");
+        previousSpawn = Time.time;
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void Awake()
+    {
+        previousSpawn = Time.time;
+    }
+
+    // Update is called once per frame
+    void Update () {
 		if(Time.time - previousSpawn >  spawnDelay && !dead)
         {
             previousSpawn = Time.time;

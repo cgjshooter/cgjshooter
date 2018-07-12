@@ -139,7 +139,7 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
                 //TODO - this might be moved to interface at some point, but for now. Lets keep it at player.
                 if(pl != null)
                 {
-                    addSpeed = pl.weaponSpeedMultiplier;
+                 //   addSpeed = pl.weaponSpeedMultiplier;
                     addDamage = pl.weaponDamageMultiplier;
                 }
                 else
@@ -150,7 +150,7 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
            //     Debug.Log("Shoot angle: " + add);
                 go.GetComponent<IAmmunition>().shooter = player;
                 go.GetComponent<IAmmunition>().direction = add * (bulletspeed * addSpeed + UnityEngine.Random.value * bulletSpeedRandomFactor * addSpeed) 
-                                                           + player.GetComponent<ITarget>().m_Move;
+                                                           +0f* player.GetComponent<ITarget>().m_Move;
             //    Debug.Log("final shoot: " + go.GetComponent<IAmmunition>().direction);
                 go.GetComponent<IAmmunition>().damage = this.bulletDamage*addDamage;
                 go.GetComponent<IAmmunition>().effectRadius = this.effectRadius;

@@ -10,6 +10,8 @@ public class Player : MonoBehaviour, ITarget
     public float weaponSpeedMultiplierResetTime;
     public float weaponDamageMultiplierResetTime;
 
+    public float speedBoost = 0f;
+    public float speedBoostResetTime;
 
     public List<GameObject> itemPrefabs;
     public IItem activeItem;
@@ -155,6 +157,7 @@ public class Player : MonoBehaviour, ITarget
         //Reset powerup modifiers
         if (Time.time > this.weaponDamageMultiplierResetTime) this.weaponDamageMultiplier = 1f;
         if (Time.time > this.weaponSpeedMultiplierResetTime) this.weaponSpeedMultiplier = 1f;
+        if (Time.time > this.speedBoostResetTime) this.speedBoost = 0f;
 
         if( CrossPlatformInputManager.GetAxis("p" + playerId + "Fire1")!=0 || CrossPlatformInputManager.GetAxis("p" + playerId + "Fire2") != 0 && 
             activeItem != null)
@@ -294,7 +297,7 @@ public class Player : MonoBehaviour, ITarget
         //calculate move.
         move = (v * Vector3.forward + h * Vector3.right);
         if (move.magnitude > 1) move.Normalize();
-        move *= moveSpeed;
+        move *= (moveSpeed+speedBoost);
 
         this.transform.position += move*Time.fixedDeltaTime;
     }

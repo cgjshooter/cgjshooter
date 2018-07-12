@@ -2727,10 +2727,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1628145462229714, guid: ea173ca9e05cfe74888773464b7923d7, type: 2}
-      propertyPath: m_Name
-      value: Main Camera
-      objectReference: {fileID: 0}
     - target: {fileID: 114501712474548728, guid: ea173ca9e05cfe74888773464b7923d7,
         type: 2}
       propertyPath: players.Array.data[0]
@@ -2756,16 +2752,9 @@ Prefab:
       propertyPath: ui
       value: 
       objectReference: {fileID: 147144238}
-    - target: {fileID: 114771815601270236, guid: ea173ca9e05cfe74888773464b7923d7,
-        type: 2}
-      propertyPath: sharedProfile
-      value: 
-      objectReference: {fileID: 11400000, guid: d62b280f5a646484799d5f9c34e66196,
-        type: 2}
-    - target: {fileID: 20556883571572578, guid: ea173ca9e05cfe74888773464b7923d7,
-        type: 2}
-      propertyPath: m_AllowMSAA
-      value: 1
+    - target: {fileID: 1628145462229714, guid: ea173ca9e05cfe74888773464b7923d7, type: 2}
+      propertyPath: m_Name
+      value: Main Camera
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ea173ca9e05cfe74888773464b7923d7, type: 2}

@@ -54,6 +54,7 @@ public class Powerup : MonoBehaviour, IItem {
     public float weaponspeedmultiplier;
     public float weapondamagemultiplier;
     public float activeTime;
+    public float speedBoost;
 
     // Use this for initialization
     void Start () {
@@ -80,8 +81,15 @@ public class Powerup : MonoBehaviour, IItem {
     {
         var p = player.GetComponent<Player>();
         p.hitPoints += this.health;
+        
         //TODO - armor
         //TODO - other activations.
+        if(this.speedBoost > 0f)
+        {
+            p.speedBoost = this.speedBoost;
+            if (p.speedBoostResetTime > Time.time) p.speedBoostResetTime += this.activeTime;
+            else p.speedBoostResetTime = Time.time + this.activeTime;
+        }
 
         if (this.weapondamagemultiplier > 0f)
         {

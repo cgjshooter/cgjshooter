@@ -59,7 +59,7 @@ MonoBehaviour:
   bulletAmount: 1
   bulletDamage: 15
   heightAngle: 0
-  effectRadius: 2
+  effectRadius: 3.5
   bulletPrefab: {fileID: 1166425571736118, guid: 47d44be3cd7a0254394267273ec62080,
     type: 2}
   bulletEnemyPrefab: {fileID: 1460600213935450}

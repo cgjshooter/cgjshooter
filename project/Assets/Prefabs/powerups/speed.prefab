@@ -161,7 +161,8 @@ MonoBehaviour:
   armor: 0
   weaponspeedmultiplier: 0
   weapondamagemultiplier: 0
-  activeTime: 0
+  activeTime: 30
+  speedBoost: 10
 --- !u!212 &212104978721864124
 SpriteRenderer:
   m_ObjectHideFlags: 1

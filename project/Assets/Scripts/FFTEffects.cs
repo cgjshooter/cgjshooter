@@ -6,9 +6,10 @@ using UnityEngine.Rendering.PostProcessing;
 public class FFTEffects : MonoBehaviour {
 
     private List<Filter> filters;
+    
+    private PostProcessVolume[] ppBehaviour;
 
-    private PostProcessVolume ppBehaviour;
-    private PostProcessProfile ppProfile;
+    public float blend;
 
     private int fftSize = 1024;
     private List<float[]> history;
@@ -21,7 +22,9 @@ public class FFTEffects : MonoBehaviour {
         this.filters.Add(new Filter(0, 600,true));
         this.filters.Add(new Filter(80, 1200, true));
         this.filters.Add(new Filter(1200, 6200, true));
-        ppProfile = Camera.main.GetComponent<PostProcessVolume>().profile;
+
+        ppBehaviour = Camera.main.GetComponents<PostProcessVolume>();
+        
         history = new List<float[]>();
         history.Add(new float[fftSize]);
         history.Add(new float[fftSize]);
@@ -73,31 +76,46 @@ public class FFTEffects : MonoBehaviour {
         }
 
         //Update the effects
-        var vignetSettings = ppProfile.GetSetting<Vignette>();
-        
-        vignetSettings.intensity.value = Mathf.Clamp(filters[0].max*1f+0.10f, 0f, 0.25f);
-        //ppProfile.vignette.settings = vignetSettings;
-
-        var bloomSettings = ppProfile.GetSetting<Bloom>();
-        bloomSettings.intensity.value = 5.0f + Mathf.SmoothStep(0.0f, 1.8f, filters[1].max*3.2f);
-        //ppProfile.bloom.settings = bloomSettings;
-
-        var rgbSettings = ppProfile.GetSetting<RGBShift>();
-        
-        if(filters[2].max > 0.02f)
+        foreach (PostProcessVolume ppVolume in ppBehaviour)
         {
-            rgbSettings.bShift.value = (filters[2].max-0.02f)*0.07f;
-            rgbSettings.gShift.value = -(filters[2].max-0.02f)*0.07f;
-        }
-        else
-        {
-            rgbSettings.bShift.value = 0;// Mathf.SmoothStep(0.0f, 0.02f, filters[2].max);
-            rgbSettings.gShift.value = 0;// -Mathf.SmoothStep(0.0f, 0.02f, filters[2].max);
+            var ppProfile = ppVolume.profile;    
+            
+            var vignetSettings = ppProfile.GetSetting<Vignette>();
+            
+            vignetSettings.intensity.value = Mathf.Clamp(filters[0].max*1f+0.10f, 0f, 0.25f);
+            //ppProfile.vignette.settings = vignetSettings;
+
+            var bloomSettings = ppProfile.GetSetting<Bloom>();
+            bloomSettings.intensity.value = 5.0f + Mathf.SmoothStep(0.0f, 1.8f, filters[1].max*3.2f);
+            //ppProfile.bloom.settings = bloomSettings;
+
+            var rgbSettings = ppProfile.GetSetting<RGBShift>();
+        
+            if(filters[2].max > 0.02f)
+            {
+                rgbSettings.bShift.value = (filters[2].max-0.02f)*0.07f;
+                rgbSettings.gShift.value = -(filters[2].max-0.02f)*0.07f;
+            }
+            else
+            {
+                rgbSettings.bShift.value = 0;// Mathf.SmoothStep(0.0f, 0.02f, filters[2].max);
+                rgbSettings.gShift.value = 0;// -Mathf.SmoothStep(0.0f, 0.02f, filters[2].max);
+            }
+
+            var distortSettings = ppProfile.GetSetting<Distort>();
+            distortSettings.intensity.value = Mathf.SmoothStep(0f,0.4f, filters[2].min*105f);
+            distortSettings.posOff.value = UnityEngine.Random.value;
         }
 
-        var distortSettings = ppProfile.GetSetting<Distort>();
-        distortSettings.intensity.value = Mathf.SmoothStep(0f,0.4f, filters[2].min*105f);
-        distortSettings.posOff.value = UnityEngine.Random.value;
+        ppBehaviour[0].weight = Mathf.Clamp( 1f - blend, 0f, 1f);
+        ppBehaviour[1].weight = Mathf.Clamp( blend < 1f ? blend : 2f-blend, 0f, 1f);
+        ppBehaviour[2].weight = Mathf.Clamp( blend < 2f ? blend - 1f : 3f - blend, 0f, 1f);
+        ppBehaviour[3].weight = Mathf.Clamp( blend < 3f ? blend - 2f : 4f - blend,0f, 1f);
+        ppBehaviour[4].weight = Mathf.Clamp( blend < 4f ? blend - 3f : 5f - blend, 0f, 1f);
+
+        blend += Time.deltaTime / 10f;
+        if (blend > 4f) blend = 0f; 
+
     }
 }
 

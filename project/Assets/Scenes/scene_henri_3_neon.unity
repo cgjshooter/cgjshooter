@@ -858,7 +858,7 @@ Transform:
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 1933659330}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &268968695
 SphereCollider:
@@ -2220,6 +2220,11 @@ Prefab:
         type: 2}
       propertyPath: weapon_selectedColor.b
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114993389925833568, guid: fc95d92df56bd1146919ab4e6d914fff,
+        type: 2}
+      propertyPath: m_Text
+      value: "Hit start / enter \nto replay\n"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc95d92df56bd1146919ab4e6d914fff, type: 2}
@@ -3714,8 +3719,8 @@ Transform:
   - {fileID: 1639000823}
   - {fileID: 997776204}
   - {fileID: 1151064369}
-  - {fileID: 184182616}
   - {fileID: 268968694}
+  - {fileID: 184182616}
   - {fileID: 1046152002}
   - {fileID: 366426625}
   - {fileID: 1208855521}

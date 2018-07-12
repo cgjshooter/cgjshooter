@@ -46,11 +46,12 @@ public class UIManager : MonoBehaviour {
 
             foreach (GameObject playerGo in MainControl.activePlayers)
             {
-                if (!playerGo.activeSelf)
+                if (!playerGo.activeSelf || playerGo.GetComponent<Player>().hitPoints <= 0)
                 {
                     var player = playerGo.GetComponent<Player>();
                     var item = player.playerId == 1 ? p1 : player.playerId == 2 ? p2 : player.playerId == 3 ? p3 : p4;
                     var ho = item.transform.Find("health");
+                    ho.gameObject.SetActive(false);
                     ho.localScale = new Vector3(Mathf.Clamp(0f, 0f, 1f), ho.localScale.y, ho.localScale.z);
                 }
                 else
@@ -59,6 +60,7 @@ public class UIManager : MonoBehaviour {
                     var item = player.playerId == 1 ? p1 : player.playerId == 2 ? p2 : player.playerId == 3 ? p3 : p4;
                     item.SetActive(true);
                     var ho = item.transform.Find("health");
+                    ho.gameObject.SetActive(true);
                     ho.localScale = new Vector3(Mathf.Clamp(player.hitPoints / player.maxHealth, 0f, 1f), ho.localScale.y, ho.localScale.z);
 
                     updateItem(0, player, item);

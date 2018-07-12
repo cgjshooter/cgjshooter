@@ -21,6 +21,8 @@ public class MainControl : MonoBehaviour {
     private float defaultHeight = 95f;
     private float defaultHeightMP = 70f;
 
+    private int mood = 0;
+
     // Use this for initialization
     void Start () {
 
@@ -50,7 +52,6 @@ public class MainControl : MonoBehaviour {
             }
         }
 
-        running = true;
         //TODO - initialize player amount based on player selection.
         //TODO - make sure they have correct player ids (controller based).
 
@@ -66,40 +67,57 @@ public class MainControl : MonoBehaviour {
                 activeModifiers.Add(modifier);
         }
 
-        this.spawners = GameObject.FindGameObjectsWithTag("spawner");
 
+        
+        
         if (activePlayers.Count > 1)
             this.updateMultiplayerCam(true);
         else
             this.updateSinglePlayerCam(true);
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        //Sync the camera
-        if (!running) return;
+        Invoke("spawnFirstSpawners", 2f);
+    }
 
+    private void spawnFirstSpawners()
+    {
+        foreach (GameObject go in moodManager.GetComponent<MoodManager>().getInitialSpawns())
+        {
+            go.SetActive(true);
+            go.transform.parent = GameObject.Find("/enemyContainer").transform;
+        }
+        this.spawners = GameObject.FindGameObjectsWithTag("spawner");
+        running = true;
+    }
+
+    private void Awake()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update () {
         bool complete = true;
         bool alldead = true;
-        foreach(GameObject spawner in spawners)
+        foreach (GameObject spawner in spawners)
         {
-            if(!spawner.GetComponent<Spawner>().dead)
+            if (!spawner.GetComponent<Spawner>().dead)
             {
                 complete = false;
                 break;
             }
         }
         int aliveCount = 0;
-        foreach(GameObject player in activePlayers)
+        foreach (GameObject player in activePlayers)
         {
-            if(!player.GetComponent<Player>().dead)
+            if (!player.GetComponent<Player>().dead)
             {
                 alldead = false;
                 aliveCount++;
             }
         }
 
+
+        //Sync the camera
         if (aliveCount > 1)
         {
             //update two player cam
@@ -111,19 +129,60 @@ public class MainControl : MonoBehaviour {
             this.updateSinglePlayerCam(false);
         }
 
+
+        if (!running) return;
+        
         if (complete)
         {
-            Debug.Log("WINNER!");
-            running = false;
-            ui.GetComponent<UIManager>().showWin();
+            if(mood >= 5)
+            {
+                Debug.Log("WINNER!");
+                running = false;
+                ui.GetComponent<UIManager>().showWin();
+
+            }
+            else if(!moodManager.GetComponent<MoodManager>().waitingForMood)
+            {
+                mood++;
+                if(mood < 5)
+                    moodManager.GetComponent<MoodManager>().showMood(mood);
+            }
+            
         }
-        if(alldead)
+        if (alldead)
         {
             running = false;
             ui.GetComponent<UIManager>().showEnd();
         }
 	}
-    
+
+    public void spawnSpawners(List<GameObject> next)
+    {
+        List<GameObject> alives = new List<GameObject>();
+        foreach (GameObject p in activePlayers)
+        {
+            if (!p.GetComponent<Player>().dead)
+                alives.Add(p);
+        }
+
+        //Resurrect players
+        foreach (GameObject p in activePlayers)
+        {
+            if(p.GetComponent<Player>().dead)
+            {
+                p.transform.position = new Vector3(alives[0].transform.position.x, alives[0].transform.position.y + 15f, alives[0].transform.position.z);
+            }
+            p.GetComponent<Player>().hitPoints = p.GetComponent<Player>().maxHealth;
+        }
+        foreach( GameObject go in next)
+        {
+            go.SetActive(true);
+            go.transform.parent = GameObject.Find("/enemyContainer").transform;
+        }
+        this.spawners = GameObject.FindGameObjectsWithTag("spawner");
+
+    }
+
     //Updates the cam to fit single player in.
     private void updateSinglePlayerCam(bool instant)
     {

@@ -31,13 +31,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 118cf48a5cc07834fb5046930b1e18f0, type: 3}
   m_Name: Pixelate
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
   pixelate:
-    overrideState: 0
-    value: {x: 497, y: 767}
+    overrideState: 1
+    value: {x: 90, y: 90}
 --- !u!114 &114546635802731666
 MonoBehaviour:
   m_ObjectHideFlags: 3

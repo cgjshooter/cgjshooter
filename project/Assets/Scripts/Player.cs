@@ -53,6 +53,14 @@ public class Player : MonoBehaviour, ITarget
         set
         {
             _hitPoints = value;
+            if (value > 0)
+            {
+                death.SetActive(false);
+                foreach (MeshRenderer me in this.GetComponentsInChildren<MeshRenderer>()) me.enabled = true;
+                foreach (Collider co in this.GetComponentsInChildren<Collider>()) co.enabled = true;
+                foreach (SpriteRenderer sr in this.GetComponentsInChildren<SpriteRenderer>()) sr.enabled = true;
+            }
+                
         }
     }
 

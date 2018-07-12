@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028355, g: 0.22571374, b: 0.30692255, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2000,6 +2000,51 @@ Prefab:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 114229624916345946, guid: fc95d92df56bd1146919ab4e6d914fff,
+        type: 2}
+      propertyPath: inactiveColor.r
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 114229624916345946, guid: fc95d92df56bd1146919ab4e6d914fff,
+        type: 2}
+      propertyPath: inactiveColor.g
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 114229624916345946, guid: fc95d92df56bd1146919ab4e6d914fff,
+        type: 2}
+      propertyPath: inactiveColor.b
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 114229624916345946, guid: fc95d92df56bd1146919ab4e6d914fff,
+        type: 2}
+      propertyPath: itemColor.r
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 114229624916345946, guid: fc95d92df56bd1146919ab4e6d914fff,
+        type: 2}
+      propertyPath: itemColor.g
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 114229624916345946, guid: fc95d92df56bd1146919ab4e6d914fff,
+        type: 2}
+      propertyPath: itemColor.b
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 114229624916345946, guid: fc95d92df56bd1146919ab4e6d914fff,
+        type: 2}
+      propertyPath: weapon_selectedColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114229624916345946, guid: fc95d92df56bd1146919ab4e6d914fff,
+        type: 2}
+      propertyPath: weapon_selectedColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114229624916345946, guid: fc95d92df56bd1146919ab4e6d914fff,
+        type: 2}
+      propertyPath: weapon_selectedColor.b
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc95d92df56bd1146919ab4e6d914fff, type: 2}
   m_IsPrefabParent: 0
@@ -2717,6 +2762,11 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: d62b280f5a646484799d5f9c34e66196,
         type: 2}
+    - target: {fileID: 20556883571572578, guid: ea173ca9e05cfe74888773464b7923d7,
+        type: 2}
+      propertyPath: m_AllowMSAA
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ea173ca9e05cfe74888773464b7923d7, type: 2}
   m_IsPrefabParent: 0

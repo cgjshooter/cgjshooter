@@ -112,6 +112,7 @@ public class TutorialMainScript : MonoBehaviour
         {
             if (mood >= 0)
             {
+                PlayerPrefs.SetInt("tutorial_complete", 1);
                 running = false;
                 Invoke("showWinPre", 3f);
             }

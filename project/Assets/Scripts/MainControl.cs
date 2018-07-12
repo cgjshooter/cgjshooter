@@ -134,8 +134,8 @@ public class MainControl : MonoBehaviour {
             {
                 Debug.Log("WINNER!");
                 running = false;
-                this.GetComponentInChildren<CamText>().levelComplete();
-                Invoke("showWin", 3f);
+                PlayerPrefs.SetInt("attack_complete", 1);
+                Invoke("showWinPre", 3f);
             }
             else if(!moodManager.GetComponent<MoodManager>().waitingForMood)
             {
@@ -150,6 +150,13 @@ public class MainControl : MonoBehaviour {
             ui.GetComponent<UIManager>().showEnd();
         }
 	}
+
+    void showWinPre()
+    {
+        this.GetComponentInChildren<CamText>().levelComplete();
+        Invoke("showWin", 3f);
+
+    }
 
     void showWin()
     {

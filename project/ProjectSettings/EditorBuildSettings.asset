@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/intro_player_select.unity
     guid: 00ad9c8d0284ac94aa7bb495f49d7ad0
   - enabled: 1
+    path: Assets/Scenes/henri_tutorial.unity
+    guid: 98b13c072e2aede45b08c897580c2726
+  - enabled: 1
     path: Assets/Scenes/scene_henri_3_neon.unity
     guid: bc0d7814dc302924fa6c1e84d83dffe4
   m_configObjects: {}

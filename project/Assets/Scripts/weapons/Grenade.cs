@@ -80,13 +80,14 @@ public class Grenade : MonoBehaviour, IAmmunition{
         }
     }
 
+    private GameObject curOther;
     private void OnTriggerEnter(Collider other)
     {
         //Block self
         if (this.shooter != null && 
             (other.gameObject == this.shooter || (other.transform.parent != null && other.transform.parent.gameObject == this.shooter)))
             return;
-
+        curOther = other.gameObject;
         ITarget e = other.GetComponent<ITarget>();
         if (this.gameObject.name.IndexOf("Mine") >= 0)
             Debug.Log("trigge enter: "+ (e == null));
@@ -119,7 +120,7 @@ public class Grenade : MonoBehaviour, IAmmunition{
                 if (this.shooter != null && (co.tag == "spawner" && this.shooter.tag == "Enemy" || co.tag == "Enemy" && this.shooter.tag == "Enemy"))
                     continue; 
                 var d = this.transform.position - co.transform.position;
-                if(Vector3.Magnitude(d) < this.effectRadius)
+                if(Vector3.Magnitude(d) < this.effectRadius || curOther == co)
                 {
                     co.GetComponent<ITarget>().hit(this);
                 }
@@ -154,6 +155,8 @@ public class Grenade : MonoBehaviour, IAmmunition{
         {
             var d = this.transform.position - target.transform.position;
             float damage = dampeningFunction.Evaluate(Mathf.Clamp(Vector3.Magnitude(d) / this.effectRadius, 0f, 1f)) * this.damage;
+            if (curOther == target)
+                damage = this.damage;
             float blocked = damage * Mathf.Clamp((e.armor), 0.1f, 1f);
 
             e.hitPoints -= damage - blocked;

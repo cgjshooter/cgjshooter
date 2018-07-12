@@ -15,6 +15,7 @@ public class PlayerSelect : MonoBehaviour {
     public GameObject p4;
 
     public static List<PlayerSelections> selections;
+    public static int mode = 0;
 
     public float exitTime;
     public float exitStart;
@@ -36,6 +37,15 @@ public class PlayerSelect : MonoBehaviour {
         updateIcon(3, p3);
         updateIcon(4, p4);
 
+        if (PlayerPrefs.HasKey("tutorial_complete"))
+            mode = 1;
+        if (PlayerPrefs.HasKey("attack_complete"))
+        {
+            this.transform.Find("custom/locked").gameObject.SetActive(false);
+            this.transform.Find("custom/Image/Text").gameObject.GetComponent<Text>().color= new Color(1,1,1,1);
+
+        }
+
     }
 
     // Update is called once per frame
@@ -55,7 +65,39 @@ public class PlayerSelect : MonoBehaviour {
             this.transform.Find("fadeout").GetComponent<Image>().color = new Color(0f, 0f, 0f, 0f);
             this.transform.Find("fadeout/Text").GetComponent<Text>().color = new Color(1f, 1f, 1f, 0f);
         }
-            
+
+        this.transform.Find("tutorial/Image/Text").GetComponent<Text>().text = Mathf.Floor(Time.time*0.5f) % 2 == 0 ? "A" : "1";
+        this.transform.Find("timeattack/Image/Text").GetComponent<Text>().text = Mathf.Floor(Time.time*0.5f) % 2 == 0 ? "B" : "2";
+        this.transform.Find("custom/Image/Text").GetComponent<Text>().text = Mathf.Floor(Time.time * 0.5f) % 2 == 0 ? "X" : "3";
+        this.transform.Find("credits/Image/Text").GetComponent<Text>().text = Mathf.Floor(Time.time * 0.5f) % 2 == 0 ? "X" : "4";
+
+
+        if (CrossPlatformInputManager.GetButton("p1SelectItem1") ||
+            CrossPlatformInputManager.GetButton("p2SelectItem1") ||
+            CrossPlatformInputManager.GetButton("p3SelectItem1") ||
+            CrossPlatformInputManager.GetButton("p4SelectItem1") )
+            mode = 0;
+        else if (CrossPlatformInputManager.GetButton("p1SelectItem2") ||
+            CrossPlatformInputManager.GetButton("p2SelectItem2") ||
+            CrossPlatformInputManager.GetButton("p3SelectItem2") ||
+            CrossPlatformInputManager.GetButton("p4SelectItem2") )
+            mode = 1;
+        else if (CrossPlatformInputManager.GetButton("p1SelectItem3") ||
+            CrossPlatformInputManager.GetButton("p2SelectItem3") ||
+            CrossPlatformInputManager.GetButton("p3SelectItem3") ||
+            CrossPlatformInputManager.GetButton("p4SelectItem3"))
+            mode = 2;
+        else if (CrossPlatformInputManager.GetButton("p1SelectItem4") ||
+            CrossPlatformInputManager.GetButton("p2SelectItem4") ||
+            CrossPlatformInputManager.GetButton("p3SelectItem4") ||
+            CrossPlatformInputManager.GetButton("p4SelectItem4"))
+            mode = 3;
+
+        this.transform.Find("tutorial/selection").GetComponent<Image>().enabled = mode == 0;
+        this.transform.Find("timeattack/selection").GetComponent<Image>().enabled = mode == 1;
+        this.transform.Find("custom/selection").GetComponent<Image>().enabled = mode == 2;
+        this.transform.Find("credits/selection").GetComponent<Image>().enabled = mode == 3;
+
     }
 
     void updateIcon(int id, GameObject p)
@@ -127,7 +169,23 @@ public class PlayerSelect : MonoBehaviour {
     void moveToGame()
     {
         //TODO - fade out
-        SceneManager.LoadScene("scene_henri_3_neon");
+        if(mode == 0)
+        {
+            SceneManager.LoadScene("henri_tutorial");
+        }
+        else if(mode == 1)
+        {
+            SceneManager.LoadScene("scene_henri_3_neon");
+        }
+        else if(mode == 2)
+        {
+            //Custom
+        }
+        else
+        {
+            //Credits
+        }
+            
     }
 
     void fadeOut()

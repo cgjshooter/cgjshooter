@@ -53,5 +53,7 @@ public class customMeshRenderer : MonoBehaviour {
         mesh.normals = normals;
         mesh.RecalculateNormals();
 
+        //TODO UV Maps / Texture Rendering
+
     }
 }

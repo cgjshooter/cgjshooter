@@ -59,6 +59,7 @@ public class Player : MonoBehaviour, ITarget
                 foreach (MeshRenderer me in this.GetComponentsInChildren<MeshRenderer>()) me.enabled = true;
                 foreach (Collider co in this.GetComponentsInChildren<Collider>()) co.enabled = true;
                 foreach (SpriteRenderer sr in this.GetComponentsInChildren<SpriteRenderer>()) sr.enabled = true;
+                this.GetComponent<Rigidbody>().useGravity = true;
             }
                 
         }
@@ -243,6 +244,7 @@ public class Player : MonoBehaviour, ITarget
             foreach (MeshRenderer me in this.GetComponentsInChildren<MeshRenderer>()) me.enabled = false;
             foreach (Collider co in this.GetComponentsInChildren<Collider>()) co.enabled = false;
             foreach (SpriteRenderer sr in this.GetComponentsInChildren<SpriteRenderer>()) sr.enabled = false;
+            this.GetComponent<Rigidbody>().useGravity = false;
         }
     }
     

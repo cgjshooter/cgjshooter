@@ -16,6 +16,10 @@ public class PlayerSelect : MonoBehaviour {
 
     public static List<PlayerSelections> selections;
 
+    public float exitTime;
+    public float exitStart;
+    public bool exiting;
+
     // Use this for initialization
     void Start () {
         selections = new List<PlayerSelections>();
@@ -39,6 +43,18 @@ public class PlayerSelect : MonoBehaviour {
         handlePlayer(2,p2);
         handlePlayer(3,p3);
         handlePlayer(4,p4);
+
+        if(exiting)
+        {
+            this.transform.Find("fadeout").GetComponent<Image>().color = new Color(0f, 0f, 0f, Mathf.Clamp((Time.time - exitStart) / exitTime, 0f, 1f));
+            this.transform.Find("fadeout/Text").GetComponent<Text>().color = new Color(1f, 1f, 1f, Mathf.Clamp((Time.time - exitStart-0.75f) / (exitTime-0.75f), 0f, 1f));
+        }
+        else
+        {
+            this.transform.Find("fadeout").GetComponent<Image>().color = new Color(0f, 0f, 0f, 0f);
+            this.transform.Find("fadeout/Text").GetComponent<Text>().color = new Color(1f, 1f, 1f, 0f);
+        }
+            
     }
 
     void updateIcon(int id, GameObject p)
@@ -85,7 +101,8 @@ public class PlayerSelect : MonoBehaviour {
         {
             if(ps.active)
             {
-                Invoke("moveToGame", 1f);
+                Invoke("moveToGame", 2f);
+                Invoke("fadeOut", 1f);
                 p.transform.Find("Text").GetComponent<Text>().text = "Starting!\nBack\nto cancel";
             }
             else
@@ -100,6 +117,7 @@ public class PlayerSelect : MonoBehaviour {
         else if (CrossPlatformInputManager.GetButtonUp("p" + id + "Cancel"))
         {
             CancelInvoke();
+            exiting = false;
             ps.active = false;
             p.transform.Find("Text").GetComponent<Text>().text = "Player 1\nenter\nto join";
         }
@@ -109,6 +127,12 @@ public class PlayerSelect : MonoBehaviour {
     {
         //TODO - fade out
         SceneManager.LoadScene("scene_henri_3_neon");
+    }
+
+    void fadeOut()
+    {
+        exiting = true;
+        exitStart = Time.time;
     }
 }
 

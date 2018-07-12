@@ -45,6 +45,8 @@ public class MoodManager : MonoBehaviour {
         as4 = ases[3];
         as5 = ases[4];
 
+        // get materials
+
     }
 
     // Update is called once per frame
@@ -69,6 +71,8 @@ public class MoodManager : MonoBehaviour {
         float dif = blend - lowInd;
 
         Time.timeScale = Mathf.Lerp(targetSpeeds[lowInd], targetSpeeds[highInd], dif);
+
+        // Material Lerping
 
         Debug.Log(as1.volume + "," + as2.volume + "," + as3.volume + "," + as4.volume + "," + as5.volume);
     }

@@ -8,7 +8,7 @@ public class MainControl : MonoBehaviour {
     public List<GameObject> players;
     public List<GameObject> modifiers;
     public GameObject ui;
-
+    public GameObject moodManager;
     public GameObject[] spawners;
 
     //Keep players available at any point for other classes.

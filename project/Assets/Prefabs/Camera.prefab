@@ -335,6 +335,7 @@ MonoBehaviour:
   - {fileID: 0}
   modifiers: []
   ui: {fileID: 0}
+  moodManager: {fileID: 0}
   spawners: []
   running: 0
 --- !u!114 &114530692050050924

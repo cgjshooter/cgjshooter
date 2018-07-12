@@ -2752,6 +2752,11 @@ Prefab:
       propertyPath: ui
       value: 
       objectReference: {fileID: 147144238}
+    - target: {fileID: 114501712474548728, guid: ea173ca9e05cfe74888773464b7923d7,
+        type: 2}
+      propertyPath: moodManager
+      value: 
+      objectReference: {fileID: 1763193459}
     - target: {fileID: 1628145462229714, guid: ea173ca9e05cfe74888773464b7923d7, type: 2}
       propertyPath: m_Name
       value: Main Camera
@@ -3392,6 +3397,57 @@ Transform:
   m_PrefabParentObject: {fileID: 4656472995335216, guid: 9a81ee3591f480a4daf94b9a7eb8a3a1,
     type: 2}
   m_PrefabInternal: {fileID: 1712328398}
+--- !u!1001 &1763193458
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4342126075301650, guid: 241fb1cfd56660d499b05b6ec363251d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342126075301650, guid: 241fb1cfd56660d499b05b6ec363251d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342126075301650, guid: 241fb1cfd56660d499b05b6ec363251d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342126075301650, guid: 241fb1cfd56660d499b05b6ec363251d, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342126075301650, guid: 241fb1cfd56660d499b05b6ec363251d, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342126075301650, guid: 241fb1cfd56660d499b05b6ec363251d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342126075301650, guid: 241fb1cfd56660d499b05b6ec363251d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342126075301650, guid: 241fb1cfd56660d499b05b6ec363251d, type: 2}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133738243553966, guid: 241fb1cfd56660d499b05b6ec363251d, type: 2}
+      propertyPath: m_Name
+      value: moodcontrol
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 241fb1cfd56660d499b05b6ec363251d, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1 &1763193459 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1133738243553966, guid: 241fb1cfd56660d499b05b6ec363251d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1763193458}
 --- !u!1001 &1786292802
 Prefab:
   m_ObjectHideFlags: 0

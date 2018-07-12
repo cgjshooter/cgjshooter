@@ -13,7 +13,8 @@ public class Player : MonoBehaviour, ITarget
     public float speedBoost = 0f;
     public float speedBoostResetTime;
 
-    public List<GameObject> itemPrefabs;
+    public List<GameObject> weaponPrefabs;
+    public List<GameObject> powerups;
     public IItem activeItem;
     public List<IItem> items;
 
@@ -53,6 +54,14 @@ public class Player : MonoBehaviour, ITarget
         set
         {
             _hitPoints = value;
+            if (value > 0)
+            {
+                death.SetActive(false);
+                foreach (MeshRenderer me in this.GetComponentsInChildren<MeshRenderer>()) me.enabled = true;
+                foreach (Collider co in this.GetComponentsInChildren<Collider>()) co.enabled = true;
+                foreach (SpriteRenderer sr in this.GetComponentsInChildren<SpriteRenderer>()) sr.enabled = true;
+                this.GetComponent<Rigidbody>().useGravity = true;
+            }
         }
     }
 
@@ -123,16 +132,26 @@ public class Player : MonoBehaviour, ITarget
         if(PlayerSelect.selections != null && PlayerSelect.selections.Count > 0)
         {
             //Populate real weapons
-            GameObject go = Instantiate(itemPrefabs[PlayerSelect.selections[playerId-1].weaponIndex], this.transform);
+            GameObject go = Instantiate(weaponPrefabs[PlayerSelect.selections[playerId-1].weaponIndex], this.transform);
             this.items.Add(go.GetComponent<IItem>());
+            //Add one rrandom weapon + item
+            var rndW = (int)Mathf.Floor(UnityEngine.Random.value * weaponPrefabs.Count);
+            while(rndW == PlayerSelect.selections[playerId - 1].weaponIndex)
+                rndW = (int)Mathf.Floor(UnityEngine.Random.value * weaponPrefabs.Count);
+            go = Instantiate(weaponPrefabs[rndW], this.transform);
+            this.items.Add(go.GetComponent<IItem>());
+
+            go = Instantiate(powerups[(int)Mathf.Floor(UnityEngine.Random.value * powerups.Count)], this.transform);
+            this.items.Add(go.GetComponent<IItem>());
+
         }
         else
         {
-            GameObject go = Instantiate(itemPrefabs[(int)Mathf.Floor(UnityEngine.Random.value* itemPrefabs.Count)], this.transform);
+            GameObject go = Instantiate(weaponPrefabs[(int)Mathf.Floor(UnityEngine.Random.value* weaponPrefabs.Count)], this.transform);
             this.items.Add(go.GetComponent<IItem>());
-            go = Instantiate(itemPrefabs[(int)Mathf.Floor(UnityEngine.Random.value * itemPrefabs.Count)], this.transform);
+            go = Instantiate(weaponPrefabs[(int)Mathf.Floor(UnityEngine.Random.value * weaponPrefabs.Count)], this.transform);
             this.items.Add(go.GetComponent<IItem>());
-            go = Instantiate(itemPrefabs[(int)Mathf.Floor(UnityEngine.Random.value * itemPrefabs.Count)], this.transform);
+            go = Instantiate(weaponPrefabs[(int)Mathf.Floor(UnityEngine.Random.value * weaponPrefabs.Count)], this.transform);
             this.items.Add(go.GetComponent<IItem>());
         }
         this.activeItem = this.items[0];
@@ -235,6 +254,7 @@ public class Player : MonoBehaviour, ITarget
             foreach (MeshRenderer me in this.GetComponentsInChildren<MeshRenderer>()) me.enabled = false;
             foreach (Collider co in this.GetComponentsInChildren<Collider>()) co.enabled = false;
             foreach (SpriteRenderer sr in this.GetComponentsInChildren<SpriteRenderer>()) sr.enabled = false;
+            this.GetComponent<Rigidbody>().useGravity = false;
         }
     }
     

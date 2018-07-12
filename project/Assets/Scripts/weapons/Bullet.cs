@@ -63,7 +63,8 @@ public class Bullet : MonoBehaviour, IAmmunition {
     {
         if (other.gameObject == this.shooter || (other.transform.parent != null && other.transform.parent.gameObject == this.shooter))
             return;
-        
+        if (this.shooter != null && this.shooter.tag == "Enemy" && other.tag == "spawner") return;
+
         ITarget e = other.GetComponent<ITarget>();
         
         if (e!=null)

@@ -113,8 +113,8 @@ public class FFTEffects : MonoBehaviour {
         ppBehaviour[3].weight = Mathf.Clamp( blend < 3f ? blend - 2f : 4f - blend,0f, 1f);
         ppBehaviour[4].weight = Mathf.Clamp( blend < 4f ? blend - 3f : 5f - blend, 0f, 1f);
 
-        blend += Time.deltaTime / 10f;
-        if (blend > 4f) blend = 0f; 
+    //    blend += Time.deltaTime / 10f;
+    //    if (blend > 4f) blend = 0f; 
 
     }
 }

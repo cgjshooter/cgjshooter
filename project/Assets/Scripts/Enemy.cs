@@ -99,7 +99,7 @@ public class Enemy : MonoBehaviour, ITarget {
 			this.activeWeapon = Instantiate (weaponPrefab[(int)Mathf.Floor(UnityEngine.Random.value%weaponPrefab.Count)], this.transform).GetComponent<IItem> ();
 		}
     }
-
+    private bool waitingShoot = false;
     // Update is called once per frame
     void Update () {
 		if(dead)
@@ -115,20 +115,19 @@ public class Enemy : MonoBehaviour, ITarget {
             }
         }
         
-		if (activeWeapon != null && !dead)
+		if (activeWeapon != null && !dead && !waitingShoot)
 		{
             // simple shoot ai
             //TODO - fix this to support all weapon types.
+            waitingShoot = true;
             var delay = ((ProjectileWeapon)activeWeapon).firedelay;
-            if(delay < 0.1)
-                this.activeWeapon.activate(this.gameObject);
-            else
-                Invoke("activateWeapon", delay + UnityEngine.Random.value*delay*0.5f);
+            Invoke("activateWeapon", delay*2f + UnityEngine.Random.value*delay*1.0f);
 		}
 	}
 
     void activateWeapon()
     {
+        waitingShoot = false;
         if(this.activeWeapon != null && !dead && this.gameObject != null)
         {
             this.activeWeapon.activate(this.gameObject);

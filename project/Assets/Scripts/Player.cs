@@ -61,7 +61,6 @@ public class Player : MonoBehaviour, ITarget
                 foreach (SpriteRenderer sr in this.GetComponentsInChildren<SpriteRenderer>()) sr.enabled = true;
                 this.GetComponent<Rigidbody>().useGravity = true;
             }
-                
         }
     }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MainControl : MonoBehaviour {
+
     public List<GameObject> weapons;
 
     public List<GameObject> players;

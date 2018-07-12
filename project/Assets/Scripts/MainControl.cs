@@ -71,7 +71,7 @@ public class MainControl : MonoBehaviour {
         else
             this.updateSinglePlayerCam(true);
 
-        Invoke("spawnFirstSpawners", 4f);
+        Invoke("spawnFirstSpawners", 5f);
     }
 
     private void spawnFirstSpawners()
@@ -134,7 +134,7 @@ public class MainControl : MonoBehaviour {
             {
                 Debug.Log("WINNER!");
                 running = false;
-                this.GetComponent<CamText>().levelComplete();
+                this.GetComponentInChildren<CamText>().levelComplete();
                 Invoke("showWin", 3f);
             }
             else if(!moodManager.GetComponent<MoodManager>().waitingForMood)

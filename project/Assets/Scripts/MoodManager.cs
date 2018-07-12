@@ -50,7 +50,7 @@ public class MoodManager : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         if(animate)
-            this.current += (this.target - this.current) / 200;
+            this.current += (this.target - this.current) / 80;
         if (Mathf.Abs(this.current - this.target) < 0.01) this.current = this.target;
         Camera.main.GetComponentInChildren<FFTEffects>().blend = Mathf.Clamp( this.current, 0f, 4f);
 

@@ -35,10 +35,6 @@ public class PlayerSelect : MonoBehaviour {
         updateIcon(2, p2);
         updateIcon(3, p3);
         updateIcon(4, p4);
-        selections[0].active = true;
-        selections[1].active = true;
-        selections[2].active = true;
-        selections[3].active = true;
 
     }
 

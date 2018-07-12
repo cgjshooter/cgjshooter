@@ -279,7 +279,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1635604695155870, guid: 32aa543bc1233bf42a097608cf4a0b9b, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114561768281793148, guid: 32aa543bc1233bf42a097608cf4a0b9b,
         type: 2}
@@ -770,6 +770,10 @@ Prefab:
     - target: {fileID: 1635604695155870, guid: 32aa543bc1233bf42a097608cf4a0b9b, type: 2}
       propertyPath: m_Name
       value: Player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1635604695155870, guid: 32aa543bc1233bf42a097608cf4a0b9b, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 32aa543bc1233bf42a097608cf4a0b9b, type: 2}
@@ -4309,6 +4313,10 @@ Prefab:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 1744089352775196, guid: ea173ca9e05cfe74888773464b7923d7, type: 2}
+      propertyPath: m_Name
+      value: cam text
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ea173ca9e05cfe74888773464b7923d7, type: 2}
   m_IsPrefabParent: 0
@@ -5114,7 +5122,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1c29d71ae659197419c554ae230f53a0, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ae5978b6da310f646bcdddd17ac0ec28, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0
   m_Pitch: 1
@@ -5210,7 +5218,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c37258d331d110244bb109e489d2efdf, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 560dc2cc596efb14db5f82e2cc338bc3, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0
   m_Pitch: 1
@@ -5402,7 +5410,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c37258d331d110244bb109e489d2efdf, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ae5978b6da310f646bcdddd17ac0ec28, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

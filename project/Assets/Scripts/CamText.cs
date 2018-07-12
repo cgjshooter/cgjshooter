@@ -12,12 +12,12 @@ public class CamText : MonoBehaviour {
 	void Start () {
         this.tm = this.GetComponent<TextMesh>();
         this.tm.text = "";
-        showCounter();
+        Invoke("showCounter", 3.4f);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(Time.time - start > 1f)
+		if(Time.time - start > 0.8f)
         {
             //Advance
             this.startC--;
@@ -30,13 +30,13 @@ public class CamText : MonoBehaviour {
             {
                 if(this.startC == 0)
                 {
-                    this.tm.text = "BEGIN!";
+                    this.tm.text = "GO!";
                     this.transform.localScale = new Vector3(1, 1, 1) * 0.25f;
                 }
                 else
                 {
                     this.transform.localScale = new Vector3(1, 1, 1) * 0.25f;
-                    this.tm.text =  this.startC.ToString();
+                    this.tm.text = startC == 2 ? "READY?" : "SET";
                 }
                 start = Time.time;
             }
@@ -68,8 +68,8 @@ public class CamText : MonoBehaviour {
 
     public void showCounter()
     {
-        this.startC = 3;
+        this.startC = 2;
         start = Time.time;
-        this.tm.text = "3";
+        this.tm.text = "READY?";
     }
 }

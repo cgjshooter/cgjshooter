@@ -54,13 +54,14 @@ public class Player : MonoBehaviour, ITarget
         set
         {
             _hitPoints = value;
-            if (value > 0)
+            if (value > 0 && death.activeSelf)
             {
                 death.SetActive(false);
                 foreach (MeshRenderer me in this.GetComponentsInChildren<MeshRenderer>()) me.enabled = true;
                 foreach (Collider co in this.GetComponentsInChildren<Collider>()) co.enabled = true;
                 foreach (SpriteRenderer sr in this.GetComponentsInChildren<SpriteRenderer>()) sr.enabled = true;
                 this.GetComponent<Rigidbody>().useGravity = true;
+                this.GetComponent<Rigidbody>().isKinematic = true;
             }
         }
     }
@@ -156,8 +157,7 @@ public class Player : MonoBehaviour, ITarget
         }
         this.activeItem = this.items[0];
         while (items.Count < 4) items.Add(null);
-
-
+        
         foreach (SpriteRenderer si in this.GetComponentsInChildren<SpriteRenderer>()) si.sprite = glowImages[this.playerId-1];
         this.GetComponentInChildren<Light>().color = playerColors[this.playerId-1];
         foreach(MeshRenderer mr in this.GetComponentsInChildren<MeshRenderer>()) mr.material.SetColor("_Color", playerColors[this.playerId-1]);
@@ -255,6 +255,7 @@ public class Player : MonoBehaviour, ITarget
             foreach (Collider co in this.GetComponentsInChildren<Collider>()) co.enabled = false;
             foreach (SpriteRenderer sr in this.GetComponentsInChildren<SpriteRenderer>()) sr.enabled = false;
             this.GetComponent<Rigidbody>().useGravity = false;
+            this.GetComponent<Rigidbody>().isKinematic = true;
         }
     }
     

@@ -85,11 +85,11 @@ public class UIManager : MonoBehaviour {
             item.transform.Find(s).GetComponent<Image>().enabled = true;
             item.transform.Find(s).GetComponent<Image>().sprite = player.items[index].icon;
             item.transform.Find(sbg).GetComponent<Image>().color = (player.items[index].toggleable ?
-                (player.items[index] == player.activeItem ? weapon_selectedColor : weaponColor) : itemColor) * player.playerColors[player.playerId];
+                (player.items[index] == player.activeItem ? weapon_selectedColor : weaponColor) : itemColor) * player.playerColors[player.playerId-1];
         }
         else
         {
-            item.transform.Find(sbg).GetComponent<Image>().color = inactiveColor*player.playerColors[player.playerId];
+            item.transform.Find(sbg).GetComponent<Image>().color = inactiveColor*player.playerColors[player.playerId-1];
             item.transform.Find(s).GetComponent<Image>().enabled = false;
         }
 

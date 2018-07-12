@@ -104,6 +104,7 @@ public class Grenade : MonoBehaviour, IAmmunition{
     void explode()
     {
         if(enemiesGameObject == null) this.enemiesGameObject = GameObject.Find("/enemyContainer");
+        if (exploded) return;
         exploded = true;
         //Find out enemies in the range
         this.direction = new Vector3();
@@ -142,6 +143,7 @@ public class Grenade : MonoBehaviour, IAmmunition{
 
     void clearObject()
     {
+        exploded = false;
         this.gameObject.SetActive(false);
     }
 

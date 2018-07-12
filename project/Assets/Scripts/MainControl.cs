@@ -154,7 +154,6 @@ public class MainControl : MonoBehaviour {
     void showWin()
     {
         ui.GetComponent<UIManager>().showWin();
-
     }
 
     public void spawnSpawners(List<GameObject> next)
@@ -214,7 +213,7 @@ public class MainControl : MonoBehaviour {
     //Updates the cam to fit two players in.
     private void updateMultiplayerCam(bool instant)
     {
-        Vector2 dMin = new Vector3(9999999f, 9999999999f);
+        Vector2 dMax = new Vector3(0f, 0f);
         GameObject player = null; ;
         foreach(GameObject player1 in activePlayers)
         {
@@ -223,22 +222,22 @@ public class MainControl : MonoBehaviour {
                 if (player1 == player2) continue;
                 Vector2 distanceBetween = new Vector2(player2.transform.position.x, player2.transform.position.z) -
                                           new Vector2(player1.transform.position.x, player1.transform.position.z);
-                if(distanceBetween.magnitude < dMin.magnitude)
+                if(distanceBetween.magnitude > dMax.magnitude)
                 {
-                    dMin = distanceBetween;
+                    dMax = distanceBetween;
                     player = player1;
                 }
             }
         }
 
-        Vector3 midPoint = player.transform.position + new Vector3(dMin.x,0f,dMin.y) * 0.5f;
+        Vector3 midPoint = player.transform.position + new Vector3(dMax.x,0f,dMax.y) * 0.5f;
         float d = instant ? 1f : 10f;
         target.Set(Camera.main.transform.position.x + (midPoint.x - Camera.main.transform.position.x) / d,
             0,
             Camera.main.transform.position.z + (midPoint.z - 25 - Camera.main.transform.position.z) / d + 25);
         Camera.main.transform.position = new Vector3(
             Camera.main.transform.position.x + (midPoint.x - Camera.main.transform.position.x) / d ,
-            defaultHeight + Mathf.Max(0,(Vector3.Magnitude(dMin)*1.9f)),
+            defaultHeight + Mathf.Max(0,(Vector3.Magnitude(dMax)*1.9f)),
             Camera.main.transform.position.z + (midPoint.z - 25 - Camera.main.transform.position.z) / d);
 
         Camera.main.transform.LookAt(target);

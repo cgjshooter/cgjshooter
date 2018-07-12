@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 4503229556164640}
   - component: {fileID: 114561768281793148}
   - component: {fileID: 54916046152592328}
-  - component: {fileID: 135558788475564144}
+  - component: {fileID: 136210240482725866}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -278,7 +278,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1635604695155870}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.44, y: 1.887, z: 0}
+  m_LocalPosition: {x: -8.47, y: 1.887, z: -0.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4680743461958756}
@@ -617,8 +617,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49743d7ee3152b8449715d60a22bd529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponSpeedMultiplier: 1
+  weaponDamageMultiplier: 1
+  weaponSpeedMultiplierResetTime: 0
+  weaponDamageMultiplierResetTime: 0
   itemPrefabs:
-  - {fileID: 1460600213935450, guid: 7eaaf130964b7c54e8c1d4b6191cadb0, type: 2}
+  - {fileID: 1460600213935450, guid: a545cbc071b9b2842b0d016c7b980ea1, type: 2}
   - {fileID: 1085345533283350, guid: e58b66576a4fcac4e90237d09d4a7cc6, type: 2}
   - {fileID: 1085345533283350, guid: 6b0cdeb25eb61d44c8981281f8d14965, type: 2}
   - {fileID: 1085345533283350, guid: 07d93e12df55b84489f6e2ab62d975f2, type: 2}
@@ -627,12 +631,11 @@ MonoBehaviour:
   - {fileID: 1460600213935450, guid: 78543a94590320a46aa6adadcd7052c9, type: 2}
   - {fileID: 1520028987011832, guid: f44280a5804644541a46370c00ce0a6c, type: 2}
   - {fileID: 1520028987011832, guid: bd908c48c86efc24b9c99b2e6123e634, type: 2}
-  - {fileID: 1460600213935450, guid: 2191d815fb2f29449bc39f772cda23f6, type: 2}
   mouseHitMask:
     serializedVersion: 2
     m_Bits: 512
-  moveSpeed: 10
-  _hitPoints: 10
+  moveSpeed: 23
+  _hitPoints: 100
   death: {fileID: 1655484301056638}
   glowImages:
   - {fileID: 21300000, guid: f743ae65363a58b4bb63d471b4978b1a, type: 3}
@@ -648,8 +651,8 @@ MonoBehaviour:
   move: {x: 0, y: 0, z: 0}
   _maxHealth: 0
   _armor: 1
---- !u!135 &135558788475564144
-SphereCollider:
+--- !u!136 &136210240482725866
+CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -657,9 +660,10 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: -0.6, z: 0}
+  m_Radius: 0.66
+  m_Height: 2.67
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.01, z: 0}
 --- !u!198 &198040111276005986
 ParticleSystem:
   m_ObjectHideFlags: 1

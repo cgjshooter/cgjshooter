@@ -55,10 +55,12 @@ MonoBehaviour:
   spread: 5
   bulletSpeedRandomFactor: 3
   firedelay: 0.01
-  bulletspeed: 20
+  bulletspeed: 40
   bulletAmount: 1
   bulletDamage: 0.5
   heightAngle: 0
   effectRadius: 0
   bulletPrefab: {fileID: 1737630033848492, guid: 38a90b522ff647042904f00e003f5dc5,
+    type: 2}
+  bulletEnemyPrefab: {fileID: 1737630033848492, guid: a015e0c6596f5a4448d21a10ba5dd37c,
     type: 2}

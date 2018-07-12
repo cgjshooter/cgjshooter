@@ -55,14 +55,17 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
     public float effectRadius;
 
     public GameObject bulletPrefab;
+    public GameObject bulletEnemyPrefab;
 
     private float previousActivation=0f;
     private GameObject bulletContainer;
     
     private static Dictionary<GameObject, List<GameObject>> bulletPool;
     private static Dictionary<GameObject, int> bulletIndices;
+    private static Dictionary<GameObject, List<GameObject>> bulletPoolEnemy;
+    private static Dictionary<GameObject, int> bulletIndicesEnemy;
 
-    private static int bulletPoolSize = 100;
+    private static int bulletPoolSize = 500;
 
     // Use this for initialization
     void Start () {
@@ -73,20 +76,29 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
             DontDestroyOnLoad(this.bulletContainer.gameObject);
             bulletPool = new Dictionary<GameObject, List<GameObject>>();
             bulletIndices = new Dictionary<GameObject, int>();
+            bulletPoolEnemy = new Dictionary<GameObject, List<GameObject>>();
+            bulletIndicesEnemy = new Dictionary<GameObject, int>();
         }
         if (!bulletPool.ContainsKey(this.bulletPrefab))
         {
             //Instantiate bullets.
-            List <GameObject> bullets = new List<GameObject>();
-            for( int i = 0; i < bulletPoolSize; i++)
+            List<GameObject> bullets = new List<GameObject>();
+            List<GameObject> bulletsE = new List<GameObject>();
+
+            for ( int i = 0; i < bulletPoolSize; i++)
             {
                 GameObject go = GameObject.Instantiate(bulletPrefab,bulletContainer.transform);
                 bullets.Add(go);
                 go.SetActive(false);
+                GameObject goE = GameObject.Instantiate(bulletEnemyPrefab, bulletContainer.transform);
+                bulletsE.Add(goE);
+                goE.SetActive(false);
             }
-            
+
             bulletPool.Add(this.bulletPrefab, bullets);
             bulletIndices.Add(this.bulletPrefab, 0);
+            bulletPoolEnemy.Add(this.bulletEnemyPrefab, bulletsE);
+            bulletIndicesEnemy.Add(this.bulletEnemyPrefab, 0);
         }
     }
 	
@@ -105,7 +117,8 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
             for(int i = 0; i < bulletAmount; i++)
             {
                 //Spawn a bullet
-                var go = bulletPool[this.bulletPrefab][(bulletIndices[bulletPrefab]++)%bulletPoolSize];
+                var go = player.tag == "Enemy"?  bulletPoolEnemy[this.bulletEnemyPrefab][(bulletIndicesEnemy[bulletEnemyPrefab]++)%bulletPoolSize] :
+                    bulletPool[this.bulletPrefab][(bulletIndices[bulletPrefab]++) % bulletPoolSize];
                 go.transform.parent = bulletContainer.transform;
                 go.transform.rotation = player.transform.rotation;
                 go.transform.position = player.transform.Find("shootPoint").position;
@@ -126,14 +139,18 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
                 //TODO - this might be moved to interface at some point, but for now. Lets keep it at player.
                 if(pl != null)
                 {
-                    addSpeed = pl.weaponSpeedMultiplier;
+                 //   addSpeed = pl.weaponSpeedMultiplier;
                     addDamage = pl.weaponDamageMultiplier;
                 }
-
+                else
+                {
+                    //Enemies shoot halved speed.s
+                    addSpeed = 0.5f;
+                }
            //     Debug.Log("Shoot angle: " + add);
                 go.GetComponent<IAmmunition>().shooter = player;
                 go.GetComponent<IAmmunition>().direction = add * (bulletspeed * addSpeed + UnityEngine.Random.value * bulletSpeedRandomFactor * addSpeed) 
-                                                           + player.GetComponent<ITarget>().m_Move;
+                                                           +0f* player.GetComponent<ITarget>().m_Move;
             //    Debug.Log("final shoot: " + go.GetComponent<IAmmunition>().direction);
                 go.GetComponent<IAmmunition>().damage = this.bulletDamage*addDamage;
                 go.GetComponent<IAmmunition>().effectRadius = this.effectRadius;

@@ -6,7 +6,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour, ITarget {
     public float moveSpeed;
     public float _hitPoints;
-	public GameObject weaponPrefab;
+	public List<GameObject> weaponPrefab;
 	public IItem activeWeapon;
     public GameObject death;
     public float ramDamage;
@@ -95,8 +95,8 @@ public class Enemy : MonoBehaviour, ITarget {
     // Use this for initialization
     void Start () {
         if (this.hitPoints > _maxHealth) _maxHealth = this.hitPoints;
-        if (weaponPrefab != null) {
-			this.activeWeapon = Instantiate (weaponPrefab, this.transform).GetComponent<IItem> ();
+        if (weaponPrefab != null && weaponPrefab.Count > 0) {
+			this.activeWeapon = Instantiate (weaponPrefab[(int)Mathf.Floor(UnityEngine.Random.value%weaponPrefab.Count)], this.transform).GetComponent<IItem> ();
 		}
     }
 
@@ -117,10 +117,23 @@ public class Enemy : MonoBehaviour, ITarget {
         
 		if (activeWeapon != null && !dead)
 		{
-			// simple shoot ai
-			this.activeWeapon.activate(this.gameObject);
+            // simple shoot ai
+            //TODO - fix this to support all weapon types.
+            var delay = ((ProjectileWeapon)activeWeapon).firedelay;
+            if(delay < 0.1)
+                this.activeWeapon.activate(this.gameObject);
+            else
+                Invoke("activateWeapon", delay + UnityEngine.Random.value*delay*0.5f);
 		}
 	}
+
+    void activateWeapon()
+    {
+        if(this.activeWeapon != null && !dead && this.gameObject != null)
+        {
+            this.activeWeapon.activate(this.gameObject);
+        }
+    }
 
     void deathDone()
     {

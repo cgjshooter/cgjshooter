@@ -288,10 +288,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce1501e370d5857459d3ccc8ba07b3a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
-  _hitPoints: 10
-  weaponPrefab: {fileID: 1085345533283350, guid: 6b0cdeb25eb61d44c8981281f8d14965,
-    type: 2}
+  moveSpeed: 6
+  _hitPoints: 8
+  weaponPrefab:
+  - {fileID: 1460600213935450, guid: 7eaaf130964b7c54e8c1d4b6191cadb0, type: 2}
+  - {fileID: 1085345533283350, guid: e58b66576a4fcac4e90237d09d4a7cc6, type: 2}
+  - {fileID: 1085345533283350, guid: 6b0cdeb25eb61d44c8981281f8d14965, type: 2}
+  - {fileID: 1085345533283350, guid: 07d93e12df55b84489f6e2ab62d975f2, type: 2}
+  - {fileID: 1399108751618058, guid: c862440ced6338b47b968d12ddda13e2, type: 2}
+  - {fileID: 1460600213935450, guid: 2116546604853a342bd73437af5b7488, type: 2}
+  - {fileID: 1460600213935450, guid: 78543a94590320a46aa6adadcd7052c9, type: 2}
+  - {fileID: 1520028987011832, guid: f44280a5804644541a46370c00ce0a6c, type: 2}
+  - {fileID: 1520028987011832, guid: bd908c48c86efc24b9c99b2e6123e634, type: 2}
   death: {fileID: 1679922544137592}
   ramDamage: 2
   _armor: 0.25

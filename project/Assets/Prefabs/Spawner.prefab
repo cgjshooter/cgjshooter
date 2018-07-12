@@ -188,8 +188,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1449789425265104}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1.38, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 5}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children: []
   m_Father: {fileID: 4748163043904068}
   m_RootOrder: 0
@@ -307,7 +307,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1449789425265104}
-  m_Mesh: {fileID: 4300000, guid: 67c6c6a34d2606c47830289c7107d5fe, type: 3}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &54245867191626044
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -354,7 +354,8 @@ MonoBehaviour:
   spawnDelay: 2
   death: {fileID: 1849710862987906}
   move: {x: 0, y: 0, z: 0}
-  _hitPoints: 10
+  _hitPoints: 40
+  _maxHealth: 0
 --- !u!198 &198886045143905412
 ParticleSystem:
   m_ObjectHideFlags: 1

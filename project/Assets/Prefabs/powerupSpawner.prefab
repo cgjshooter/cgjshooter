@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cd7a323d48eaa740a98edd4ede15d6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRadius: 150
+  spawnRadius: 80
   powerupPrefabs:
   - {fileID: 1207040929541996, guid: 28a42a016edd76049bd05e62270b572d, type: 2}
   - {fileID: 1358583408165872, guid: 04f4c47fcfec9cd429eefe521079e8e3, type: 2}

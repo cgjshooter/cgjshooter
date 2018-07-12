@@ -126,7 +126,7 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
                 player.transform.rotation
                 , this.bulletContainer.transform);*/
                 go.SetActive(true);
-                float angle = this.transform.rotation.eulerAngles.y + (UnityEngine.Random.value - 0.5f) * spread;
+                float angle = this.transform.rotation.eulerAngles.y + (UnityEngine.Random.value - 0.5f) * (spread);
                 Vector3 add = new Vector3(
                     Mathf.Sin(angle * Mathf.PI / 180f),
                     Mathf.Sin(heightAngle * 180f/Mathf.PI),

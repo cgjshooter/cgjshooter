@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4018156153259648}
   - component: {fileID: 114700774953773570}
   m_Layer: 0
-  m_Name: new_gun
+  m_Name: Fairy_Dust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,11 +53,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _icon: {fileID: 21300000, guid: 11d7f0b8a3e0e0241bc54c8c9d64a759, type: 3}
   spread: 100
-  bulletSpeedRandomFactor: 100
-  firedelay: 0.1
-  bulletspeed: 1
+  bulletSpeedRandomFactor: 1000
+  firedelay: 10
+  bulletspeed: 20
   bulletAmount: 100
-  bulletDamage: 50
+  bulletDamage: 100
   heightAngle: 0
   effectRadius: 0
   bulletPrefab: {fileID: 1737630033848492, guid: a015e0c6596f5a4448d21a10ba5dd37c,

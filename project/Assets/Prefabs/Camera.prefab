@@ -56,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1628145462229714}
   m_LocalRotation: {x: 0.58750284, y: -0, z: -0, w: 0.8092221}
-  m_LocalPosition: {x: 0, y: 31.35, z: -6.7}
+  m_LocalPosition: {x: 0, y: 100, z: -6.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4914872452369270}
@@ -132,7 +132,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -142,7 +142,7 @@ AudioSource:
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
-  BypassEffects: 0
+  BypassEffects: 1
   BypassListenerEffects: 0
   BypassReverbZones: 0
   rolloffCustomCurve:
@@ -297,7 +297,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c8b372200740e418c8587f27be2757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapons:
+  - {fileID: 1460600213935450, guid: 7eaaf130964b7c54e8c1d4b6191cadb0, type: 2}
+  - {fileID: 1085345533283350, guid: e58b66576a4fcac4e90237d09d4a7cc6, type: 2}
+  - {fileID: 1085345533283350, guid: 6b0cdeb25eb61d44c8981281f8d14965, type: 2}
+  - {fileID: 1085345533283350, guid: 07d93e12df55b84489f6e2ab62d975f2, type: 2}
+  - {fileID: 1399108751618058, guid: c862440ced6338b47b968d12ddda13e2, type: 2}
+  - {fileID: 1460600213935450, guid: 2116546604853a342bd73437af5b7488, type: 2}
+  - {fileID: 1460600213935450, guid: 78543a94590320a46aa6adadcd7052c9, type: 2}
+  - {fileID: 1520028987011832, guid: f44280a5804644541a46370c00ce0a6c, type: 2}
+  - {fileID: 1520028987011832, guid: bd908c48c86efc24b9c99b2e6123e634, type: 2}
   players:
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   modifiers: []

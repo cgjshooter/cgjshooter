@@ -85,7 +85,7 @@ MonoBehaviour:
     value: 0
   height:
     overrideState: 0
-    value: 4096
+    value: 10
   posOff:
     overrideState: 0
     value: 0
@@ -1504,7 +1504,7 @@ MonoBehaviour:
     value: 0.297
   smoothness:
     overrideState: 1
-    value: 0.442
+    value: 1
   roundness:
     overrideState: 0
     value: 1

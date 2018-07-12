@@ -86,8 +86,8 @@ public class FFTEffects : MonoBehaviour {
         
         if(filters[2].max > 0.02f)
         {
-            rgbSettings.bShift.value = (filters[2].max-0.02f)*0.05f;
-            rgbSettings.gShift.value = -(filters[2].max-0.02f)*0.05f;
+            rgbSettings.bShift.value = (filters[2].max-0.02f)*0.07f;
+            rgbSettings.gShift.value = -(filters[2].max-0.02f)*0.07f;
         }
         else
         {

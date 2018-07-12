@@ -119,7 +119,7 @@ Transform:
   m_GameObject: {fileID: 1826057610392674}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -10.13, y: 1, z: -3.26}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_Children:
   - {fileID: 4917525881261152}
   - {fileID: 4849156255109036}
@@ -301,12 +301,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce1501e370d5857459d3ccc8ba07b3a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 6
-  _hitPoints: 6
-  weaponPrefab: {fileID: 0}
+  moveSpeed: 12
+  _hitPoints: 4
+  weaponPrefab: []
   death: {fileID: 1156377136209992}
   ramDamage: 0
-  _armor: 0.25
+  _armor: 0.2
   _invulnerable: 0
   _invisible: 0
   _maxHealth: 0

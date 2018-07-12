@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MainControl : MonoBehaviour {
+    public List<GameObject> weapons;
 
     public List<GameObject> players;
     public List<GameObject> modifiers;
@@ -17,23 +18,45 @@ public class MainControl : MonoBehaviour {
 
     private Vector3 target = new Vector3();
 
-    private float defaultHeight = 60f;
+    private float defaultHeight = 95f;
+    private float defaultHeightMP = 70f;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
+
+        //Populate active players
+        activePlayers = new List<GameObject>();
+        
+        if(PlayerSelect.selections != null && PlayerSelect.selections.Count > 0)
+        {
+            for (int i = 0; i < PlayerSelect.selections.Count; i++)
+            {
+                if (PlayerSelect.selections[i].active)
+                {
+                    activePlayers.Add(players[i]);
+                    Debug.Log(PlayerSelect.selections[i].weaponIndex);
+                    
+                }
+                else
+                    players[i].SetActive(false);
+            }
+        }
+        else
+        {
+            foreach (GameObject player in players)
+            {
+                if (player != null && player.activeSelf)
+                    activePlayers.Add(player);
+            }
+        }
+
         running = true;
         //TODO - initialize player amount based on player selection.
         //TODO - make sure they have correct player ids (controller based).
 
         //TODO - populate modifiers based by level generation / modifiers.
 
-        //Populate active players
-        activePlayers = new List<GameObject>();
-        foreach(GameObject player in players)
-        {
-            if (player != null && player.activeSelf)
-                activePlayers.Add(player);
-        }
+       
 
         //Populate active modifiers
         activeModifiers = new List<GameObject>();
@@ -44,6 +67,11 @@ public class MainControl : MonoBehaviour {
         }
 
         this.spawners = GameObject.FindGameObjectsWithTag("spawner");
+
+        if (activePlayers.Count > 1)
+            this.updateMultiplayerCam(true);
+        else
+            this.updateSinglePlayerCam(true);
 
 	}
 	
@@ -75,12 +103,12 @@ public class MainControl : MonoBehaviour {
         if (aliveCount > 1)
         {
             //update two player cam
-            this.updateMultiplayerCam();
+            this.updateMultiplayerCam(false);
         }
         else
         {
             //update single player cam
-            this.updateSinglePlayerCam();
+            this.updateSinglePlayerCam(false);
         }
 
         if (complete)
@@ -97,7 +125,7 @@ public class MainControl : MonoBehaviour {
 	}
     
     //Updates the cam to fit single player in.
-    private void updateSinglePlayerCam()
+    private void updateSinglePlayerCam(bool instant)
     {
         GameObject player1 = null;
         foreach(GameObject player in activePlayers)
@@ -110,20 +138,21 @@ public class MainControl : MonoBehaviour {
         }
         if(player1 != null)
         {
-            target.Set(Camera.main.transform.position.x + (player1.transform.position.x - Camera.main.transform.position.x) / 10,
+            float d = instant ? 1f : 10f;
+            target.Set(Camera.main.transform.position.x + (player1.transform.position.x - Camera.main.transform.position.x) / d,
                 0,
-                Camera.main.transform.position.z + (player1.transform.position.z - 15 - Camera.main.transform.position.z) / 10 + 15);
+                Camera.main.transform.position.z + (player1.transform.position.z - 25 - Camera.main.transform.position.z) / d + 25);
             Camera.main.transform.position = new Vector3(
-                Camera.main.transform.position.x + (player1.transform.position.x - Camera.main.transform.position.x) / 10,
+                Camera.main.transform.position.x + (player1.transform.position.x - Camera.main.transform.position.x) / d,
                 defaultHeight,
-                Camera.main.transform.position.z + (player1.transform.position.z - 15 - Camera.main.transform.position.z) / 10);
+                Camera.main.transform.position.z + (player1.transform.position.z - 25 - Camera.main.transform.position.z) / d);
 
             Camera.main.transform.LookAt(target);
         }
     }
 
     //Updates the cam to fit two players in.
-    private void updateMultiplayerCam()
+    private void updateMultiplayerCam(bool instant)
     {
         Vector2 dMin = new Vector3(9999999f, 9999999999f);
         GameObject player = null; ;
@@ -143,14 +172,14 @@ public class MainControl : MonoBehaviour {
         }
 
         Vector3 midPoint = player.transform.position + new Vector3(dMin.x,0f,dMin.y) * 0.5f;
-
-        target.Set(Camera.main.transform.position.x + (midPoint.x - Camera.main.transform.position.x) / 10,
+        float d = instant ? 1f : 10f;
+        target.Set(Camera.main.transform.position.x + (midPoint.x - Camera.main.transform.position.x) / d,
             0,
-            Camera.main.transform.position.z + (midPoint.z - 15 - Camera.main.transform.position.z) / 10 + 15);
+            Camera.main.transform.position.z + (midPoint.z - 25 - Camera.main.transform.position.z) / d + 25);
         Camera.main.transform.position = new Vector3(
-            Camera.main.transform.position.x + (midPoint.x - Camera.main.transform.position.x) / 10,
+            Camera.main.transform.position.x + (midPoint.x - Camera.main.transform.position.x) / d ,
             defaultHeight + Mathf.Max(0,(Vector3.Magnitude(dMin)*1.9f)),
-            Camera.main.transform.position.z + (midPoint.z - 15 - Camera.main.transform.position.z) / 10);
+            Camera.main.transform.position.z + (midPoint.z - 25 - Camera.main.transform.position.z) / d);
 
         Camera.main.transform.LookAt(target);
     }

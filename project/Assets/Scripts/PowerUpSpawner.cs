@@ -45,13 +45,13 @@ public class PowerUpSpawner : MonoBehaviour {
             var xp = Mathf.Cos(deg) * r;
             var zp = Mathf.Sin(deg) * r;
             //Skip if hits something.
-            if(Physics.OverlapSphere(new Vector3(xp,10f,zp) + this.transform.position, 2f).Length > 0 )
+            if(Physics.OverlapSphere(new Vector3(xp,60f,zp) + this.transform.position, 2f).Length > 0 )
             {
                 Debug.Log(Physics.OverlapSphere(go.transform.position, 10f).Length);
                 Destroy(go);
             }
             else
-                go.transform.position = new Vector3(xp, 2f, zp);
+                go.transform.position = new Vector3(xp, 60f, zp);
         }
         Invoke("spawnNext", UnityEngine.Random.value * (powerUpSpawnMaxDelay-powerUpSpawnMinDelay) + powerUpSpawnMinDelay);
     }

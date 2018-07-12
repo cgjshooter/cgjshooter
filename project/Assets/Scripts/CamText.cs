@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CamText : MonoBehaviour {
+    public bool showIntro;
 
     private TextMesh tm;
     private float start;
@@ -12,7 +13,8 @@ public class CamText : MonoBehaviour {
 	void Start () {
         this.tm = this.GetComponent<TextMesh>();
         this.tm.text = "";
-        Invoke("showCounter", 3.4f);
+        if(showIntro)
+            Invoke("showCounter", 3.4f);
 	}
 	
 	// Update is called once per frame

@@ -107,11 +107,16 @@ public class FFTEffects : MonoBehaviour {
             distortSettings.posOff.value = UnityEngine.Random.value;
         }
 
-        ppBehaviour[0].weight = Mathf.Clamp( 1f - blend, 0f, 1f);
-        ppBehaviour[1].weight = Mathf.Clamp( blend < 1f ? blend : 2f-blend, 0f, 1f);
-        ppBehaviour[2].weight = Mathf.Clamp( blend < 2f ? blend - 1f : 3f - blend, 0f, 1f);
-        ppBehaviour[3].weight = Mathf.Clamp( blend < 3f ? blend - 2f : 4f - blend,0f, 1f);
-        ppBehaviour[4].weight = Mathf.Clamp( blend < 4f ? blend - 3f : 5f - blend, 0f, 1f);
+        if(ppBehaviour.Length> 0)
+            ppBehaviour[0].weight = Mathf.Clamp( 1f - blend, 0f, 1f);
+        if (ppBehaviour.Length > 1)
+            ppBehaviour[1].weight = Mathf.Clamp( blend < 1f ? blend : 2f-blend, 0f, 1f);
+        if (ppBehaviour.Length > 2)
+            ppBehaviour[2].weight = Mathf.Clamp( blend < 2f ? blend - 1f : 3f - blend, 0f, 1f);
+        if (ppBehaviour.Length > 3)
+            ppBehaviour[3].weight = Mathf.Clamp( blend < 3f ? blend - 2f : 4f - blend,0f, 1f);
+        if (ppBehaviour.Length > 4)
+            ppBehaviour[4].weight = Mathf.Clamp( blend < 4f ? blend - 3f : 5f - blend, 0f, 1f);
 
     //    blend += Time.deltaTime / 10f;
     //    if (blend > 4f) blend = 0f; 

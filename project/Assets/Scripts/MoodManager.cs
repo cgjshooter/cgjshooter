@@ -12,6 +12,7 @@ public class MoodManager : MonoBehaviour {
 
     private bool animate;
     private List<List<GameObject>> spawnerList;
+    private List<Material> moodMaterials;
 
     //Dummy way to do mixing, but fast to implement.
     private AudioSource as1;
@@ -45,6 +46,9 @@ public class MoodManager : MonoBehaviour {
         as4 = ases[3];
         as5 = ases[4];
 
+        // get materials
+        moodMaterials = GameObject.Find("Ground").GetComponent<Environment>().moodMaterials;
+
     }
 
     // Update is called once per frame
@@ -69,6 +73,9 @@ public class MoodManager : MonoBehaviour {
         float dif = blend - lowInd;
 
         Time.timeScale = Mathf.Lerp(targetSpeeds[lowInd], targetSpeeds[highInd], dif);
+
+        // Material Lerping
+        GameObject.Find("Ground").GetComponent<Renderer>().material.Lerp(this.moodMaterials[lowInd], this.moodMaterials[highInd], dif);
 
         Debug.Log(as1.volume + "," + as2.volume + "," + as3.volume + "," + as4.volume + "," + as5.volume);
     }

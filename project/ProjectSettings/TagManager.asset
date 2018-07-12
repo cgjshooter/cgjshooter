@@ -7,6 +7,7 @@ TagManager:
   - spawner
   - Blue
   - Enemy
+  - AIM
   layers:
   - Default
   - TransparentFX

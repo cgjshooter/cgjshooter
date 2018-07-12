@@ -73,7 +73,11 @@ public class Powerup : MonoBehaviour, IItem {
             //TODO - implement pickup
             bool pickOk = other.gameObject.GetComponent<Player>().pickPowerup(this.gameObject);
             if(pickOk)
+            {
+                this.transform.parent = other.transform;
                 this.gameObject.SetActive(false);
+            }
+                
         }
     }
 

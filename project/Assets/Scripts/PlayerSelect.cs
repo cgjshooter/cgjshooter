@@ -53,6 +53,10 @@ public class PlayerSelect : MonoBehaviour {
     {
         float hv = CrossPlatformInputManager.GetAxisRaw("p" + id + "Horizontal");
         var ps = selections[id - 1];
+        var c = p.transform.Find("bg").GetComponent<Image>().color;
+        if (ps.active) c.a = 1.0f;
+        else c.a = 0.0f;
+        p.transform.Find("bg").GetComponent<Image>().color = c;
         if (hv < -0.3 && ps.previousDirection == 0 )
         {
             //Swap left

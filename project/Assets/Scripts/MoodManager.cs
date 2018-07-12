@@ -5,10 +5,12 @@ using UnityEngine;
 public class MoodManager : MonoBehaviour {
 
     public bool waitingForMood = false;
+    
 
     private float current;
     private int target;
 
+    private bool animate;
     private List<List<GameObject>> spawnerList;
 
     //Dummy way to do mixing, but fast to implement.
@@ -17,6 +19,8 @@ public class MoodManager : MonoBehaviour {
     private AudioSource as3;
     private AudioSource as4;
     private AudioSource as5;
+
+    private float[] targetSpeeds = new float[5] { 1f, 0.7f, 1f, 1.5f, 0.4f };
 
     // Use this for initialization
     void Start () {
@@ -45,7 +49,8 @@ public class MoodManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        this.current += (this.target - this.current) / 30;
+        if(animate)
+            this.current += (this.target - this.current) / 80;
         if (Mathf.Abs(this.current - this.target) < 0.01) this.current = this.target;
         Camera.main.GetComponentInChildren<FFTEffects>().blend = Mathf.Clamp( this.current, 0f, 4f);
 
@@ -56,15 +61,33 @@ public class MoodManager : MonoBehaviour {
         as4.volume = Mathf.Clamp(blend < 3f ? blend - 2f : 4f - blend, 0f, 1f);
         as5.volume = Mathf.Clamp(blend < 4f ? blend - 3f : 5f - blend, 0f, 1f);
 
+        int lowInd = (int)Mathf.Floor(blend);
+
+        int highInd = (int)Mathf.Ceil(blend);
+        
+        if(highInd > targetSpeeds.Length-1) highInd = targetSpeeds.Length-1;
+        float dif = blend - lowInd;
+
+        Time.timeScale = Mathf.Lerp(targetSpeeds[lowInd], targetSpeeds[highInd], dif);
+
         Debug.Log(as1.volume + "," + as2.volume + "," + as3.volume + "," + as4.volume + "," + as5.volume);
     }
 
     public void showMood(int target)
     {
+        animate = false;
+        Camera.main.GetComponentInChildren<CamText>().showWellDone();
+
         this.waitingForMood = true;
         this.target = target;
         //TODO - animate mood info text.
-        Invoke("spawnersIn", 4f);
+        Invoke("spawnersIn", 8f);
+        Invoke("counterIn", 4f);
+    }
+    private void counterIn()
+    {
+        animate = true;
+        Camera.main.GetComponentInChildren<CamText>().showCounter();
     }
 
     public List<GameObject> getInitialSpawns()

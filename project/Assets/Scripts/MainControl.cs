@@ -57,9 +57,7 @@ public class MainControl : MonoBehaviour {
         //TODO - make sure they have correct player ids (controller based).
 
         //TODO - populate modifiers based by level generation / modifiers.
-
-       
-
+        
         //Populate active modifiers
         activeModifiers = new List<GameObject>();
         foreach(GameObject modifier in modifiers)
@@ -68,15 +66,12 @@ public class MainControl : MonoBehaviour {
                 activeModifiers.Add(modifier);
         }
 
-
-        
-        
         if (activePlayers.Count > 1)
             this.updateMultiplayerCam(true);
         else
             this.updateSinglePlayerCam(true);
 
-        Invoke("spawnFirstSpawners", 2f);
+        Invoke("spawnFirstSpawners", 4f);
     }
 
     private void spawnFirstSpawners()
@@ -139,8 +134,8 @@ public class MainControl : MonoBehaviour {
             {
                 Debug.Log("WINNER!");
                 running = false;
-                ui.GetComponent<UIManager>().showWin();
-
+                this.GetComponent<CamText>().levelComplete();
+                Invoke("showWin", 3f);
             }
             else if(!moodManager.GetComponent<MoodManager>().waitingForMood)
             {
@@ -148,7 +143,6 @@ public class MainControl : MonoBehaviour {
                 if(mood < 5)
                     moodManager.GetComponent<MoodManager>().showMood(mood);
             }
-            
         }
         if (alldead)
         {
@@ -156,6 +150,12 @@ public class MainControl : MonoBehaviour {
             ui.GetComponent<UIManager>().showEnd();
         }
 	}
+
+    void showWin()
+    {
+        ui.GetComponent<UIManager>().showWin();
+
+    }
 
     public void spawnSpawners(List<GameObject> next)
     {

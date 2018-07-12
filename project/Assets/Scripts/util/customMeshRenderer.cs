@@ -16,7 +16,9 @@ public class customMeshRenderer : MonoBehaviour {
 
     void createObstacleMesh(MeshFilter meshFilter, float height)
     {
-        var mesh = meshFilter.mesh;
+        var mesh = new Mesh();
+        meshFilter.mesh = mesh;
+        
         int numberOfVertices = 8;
 
         Vector3[] vertices = new Vector3[numberOfVertices]; //8
@@ -39,16 +41,17 @@ public class customMeshRenderer : MonoBehaviour {
         }
         
         mesh.vertices = vertices;
-        int numberOfTriangles = (2 * numberOfVertices - 4);
-        int[] tri = new int[3 * numberOfTriangles];
-
-        for(int i = 0; i < tri.Length; i += 3)
-        {
-            tri[i] = 0;
-            tri[i + 1] = 0;
-            tri[i + 2] = 0;
-        }
-
+        //int numberOfTriangles = (2 * numberOfVertices - 4);
+        int[] tri = new int[]{ 0, 4, 3, 3, 7, 2, 2, 6, 1, 1, 5, 0, 4, 0, 5, 5, 1, 6, 6, 2, 7, 7, 3, 4, 0, 1, 2, 2, 3, 0, 4, 5, 6, 6, 7, 4};
         mesh.triangles = tri;
+
+        Vector3[] normals = new Vector3[numberOfVertices];
+        for(int i = 0; i < normals.Length; ++i)
+        {
+            normals[i] = -Vector3.forward;
+        }
+        mesh.normals = normals;
+        mesh.RecalculateNormals();
+
     }
 }

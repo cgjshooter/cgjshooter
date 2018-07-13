@@ -87,36 +87,19 @@ public class Bullet : MonoBehaviour, IAmmunition {
         {
             float blocked = this.damage * Mathf.Clamp((e.armor), 0.1f, 1f);
             float before = e.hitPoints;
-            e.hitPoints -= this.damage - blocked;
+            float rawDamage = this.damage - blocked;
+            e.hitPoints -= rawDamage;
+
+            StatisticManager.calculateDamageStatistics(this, target, rawDamage);
+
             //Weaken armor by blocked amount. Divider is just some weakening value that needs to be tweaked.
             e.armor -= blocked / 30f;
             if (e.armor < 0) e.armor = 0f;
 
             if (e.dead && before > 0)
             {
-                // Target just dyed
-
-                // who is the killer?
-                StatisticManager.PlayerStatistics p = null;
-                if (this.shooter != null && this.shooter.tag == "Player")
-                {
-                    p = StatisticManager.playerStatistics[this.shooter.GetComponent<Player>().playerId];
-                }
-
-                // Target killed ++
-                switch (target.tag)
-                {
-                    case "Enemy":
-                        StatisticManager.gameStatistics.totalEnemyKills++;
-                        break;
-                    case "spawner":
-                        if (p != null) p.spawnerKills++;
-                        StatisticManager.gameStatistics.totalSpawnerKills++;
-                        break;
-                    case "Player":
-                        StatisticManager.gameStatistics.totalPlayerKills++;
-                        break;
-                }
+                // Target just died
+                StatisticManager.calculateKillStatistics(this, target);
 
             }
         }

@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/scene_henri_3_neon.unity
     guid: bc0d7814dc302924fa6c1e84d83dffe4
+  - enabled: 1
+    path: Assets/Scenes/henri_credits.unity
+    guid: 870369989fa09324baea6c4cd2aee36c
   m_configObjects: {}

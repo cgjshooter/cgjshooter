@@ -60,12 +60,12 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
     private float previousActivation=0f;
     private GameObject bulletContainer;
     
-    private static Dictionary<GameObject, List<GameObject>> bulletPool;
-    private static Dictionary<GameObject, int> bulletIndices;
-    private static Dictionary<GameObject, List<GameObject>> bulletPoolEnemy;
-    private static Dictionary<GameObject, int> bulletIndicesEnemy;
+    private static Dictionary<string, List<GameObject>> bulletPool;
+    private static Dictionary<string, int> bulletIndices;
+    private static Dictionary<string, List<GameObject>> bulletPoolEnemy;
+    private static Dictionary<string, int> bulletIndicesEnemy;
 
-    private static int bulletPoolSize = 2000;
+    private static int bulletPoolSize = 800;
 
     // Use this for initialization
     void Start () {
@@ -74,12 +74,12 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
         if (bulletPool == null)
         {
             DontDestroyOnLoad(this.bulletContainer.gameObject);
-            bulletPool = new Dictionary<GameObject, List<GameObject>>();
-            bulletIndices = new Dictionary<GameObject, int>();
-            bulletPoolEnemy = new Dictionary<GameObject, List<GameObject>>();
-            bulletIndicesEnemy = new Dictionary<GameObject, int>();
+            bulletPool = new Dictionary<string, List<GameObject>>();
+            bulletIndices = new Dictionary<string, int>();
+            bulletPoolEnemy = new Dictionary<string, List<GameObject>>();
+            bulletIndicesEnemy = new Dictionary<string, int>();
         }
-        if (!bulletPool.ContainsKey(this.bulletPrefab))
+        if (!bulletPool.ContainsKey(this.bulletPrefab.name))
         {
             //Instantiate bullets.
             List<GameObject> bullets = new List<GameObject>();
@@ -95,10 +95,10 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
                 goE.SetActive(false);
             }
 
-            bulletPool.Add(this.bulletPrefab, bullets);
-            bulletIndices.Add(this.bulletPrefab, 0);
-            bulletPoolEnemy.Add(this.bulletEnemyPrefab, bulletsE);
-            bulletIndicesEnemy.Add(this.bulletEnemyPrefab, 0);
+            bulletPool.Add(this.bulletPrefab.name, bullets);
+            bulletIndices.Add(this.bulletPrefab.name, 0);
+            bulletPoolEnemy.Add(this.bulletEnemyPrefab.name, bulletsE);
+            bulletIndicesEnemy.Add(this.bulletEnemyPrefab.name, 0);
         }
     }
 	
@@ -117,8 +117,8 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
             for(int i = 0; i < bulletAmount; i++)
             {
                 //Spawn a bullet
-                var go = player.tag == "Enemy"?  bulletPoolEnemy[this.bulletEnemyPrefab][(bulletIndicesEnemy[bulletEnemyPrefab]++)%bulletPoolSize] :
-                    bulletPool[this.bulletPrefab][(bulletIndices[bulletPrefab]++) % bulletPoolSize];
+                var go = player.tag == "Enemy"?  bulletPoolEnemy[this.bulletEnemyPrefab.name][(bulletIndicesEnemy[bulletEnemyPrefab.name]++)%bulletPoolSize] :
+                    bulletPool[this.bulletPrefab.name][(bulletIndices[bulletPrefab.name]++) % bulletPoolSize];
                 go.transform.parent = bulletContainer.transform;
                 go.transform.rotation = player.transform.rotation;
                 go.transform.position = player.transform.Find("shootPoint").position;

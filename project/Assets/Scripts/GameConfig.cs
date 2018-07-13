@@ -9,11 +9,15 @@ public class GameConfig : MonoBehaviour {
     public static float speedMultiplier = 1f;
 
 
+    //These variables are calculated by input settings
 
     //This variable is adjusted by the number of players & difficulty
     public static float difficultyMultiplier = 1f;
 
+    //These variables are calculated live
 
+    //Increases spawn speed when spawners are destroyed.
+    public static float spawnSpeedIncrease = 1f;
 
 	// Use this for initialization
 	void Start () {

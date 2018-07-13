@@ -26,6 +26,7 @@ public class MainControl : MonoBehaviour {
     private int mood = 0;
 
     private float startTime;
+    
 
     // Use this for initialization
     void Start () {
@@ -40,6 +41,7 @@ public class MainControl : MonoBehaviour {
                 if (PlayerSelect.selections[i].active)
                 {
                     activePlayers.Add(players[i]);
+                    players[i].SetActive(true);
                 }
                 else
                     players[i].SetActive(false);
@@ -54,7 +56,7 @@ public class MainControl : MonoBehaviour {
             }
         }
         //Update 
-        GameConfig.difficultyMultiplier = GameConfig.difficulty * (1f + (activePlayers.Count - 1) / 3);
+        GameConfig.difficultyMultiplier = GameConfig.difficulty * (1f + (activePlayers.Count - 1) / 2);
 
         //TODO - populate modifiers based by level generation / modifiers.
         
@@ -107,14 +109,16 @@ public class MainControl : MonoBehaviour {
     void Update () {
         bool complete = true;
         bool alldead = true;
+        int spawnerCount = 0;
         foreach (GameObject spawner in spawners)
         {
             if (!spawner.GetComponent<Spawner>().dead)
             {
                 complete = false;
-                break;
+                spawnerCount++;
             }
         }
+        GameConfig.spawnSpeedIncrease = spawnerCount<=0? 1f: 1f - (spawners.Length-spawnerCount) / spawners.Length * 0.75f;
         int aliveCount = 0;
         foreach (GameObject player in activePlayers)
         {

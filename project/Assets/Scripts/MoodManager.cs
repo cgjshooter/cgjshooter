@@ -77,7 +77,7 @@ public class MoodManager : MonoBehaviour {
         // Material Lerping
         GameObject.Find("Ground").GetComponent<Renderer>().material.Lerp(this.moodMaterials[lowInd], this.moodMaterials[highInd], dif);
 
-        Debug.Log(as1.volume + "," + as2.volume + "," + as3.volume + "," + as4.volume + "," + as5.volume);
+        
     }
 
     public void showMood(int target)

@@ -187,8 +187,9 @@ public class PlayerSelect : MonoBehaviour {
         else
         {
             //Credits
+            SceneManager.LoadScene("henri_credits");
         }
-            
+
     }
 
     void fadeOut()

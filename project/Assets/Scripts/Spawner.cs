@@ -14,6 +14,8 @@ public class Spawner : MonoBehaviour, ITarget {
     private float previousSpawn;
     private Transform spawnPos;
 
+    private float hitIndicator = 0f;
+
     public GameObject death;
     public Vector3 move = new Vector3();
     public Vector3 m_Move
@@ -34,6 +36,8 @@ public class Spawner : MonoBehaviour, ITarget {
 
         set
         {
+            hitIndicator += (_hitPoints - value)/5f;
+            if (hitIndicator < 0f) hitIndicator = 0f;
             _hitPoints = value;
         }
     }
@@ -111,7 +115,7 @@ public class Spawner : MonoBehaviour, ITarget {
 
     // Update is called once per frame
     void Update () {
-		if(Time.time - previousSpawn >  spawnDelay && !dead)
+		if(Time.time - previousSpawn >  spawnDelay*GameConfig.spawnSpeedIncrease && !dead)
         {
             previousSpawn = Time.time;
             //Pick a random type
@@ -122,9 +126,20 @@ public class Spawner : MonoBehaviour, ITarget {
         if (dead && !death.activeSelf)
         {
             death.SetActive(true);
+            this.GetComponent<Rigidbody>().useGravity = false;
+            this.GetComponent<Rigidbody>().isKinematic = true;
+            this.GetComponent<Collider>().enabled = false;
             foreach (MeshRenderer me in this.GetComponentsInChildren<MeshRenderer>()) me.enabled = false;
         }
-	}
+        else
+        {
+            var hi = Mathf.Clamp(hitIndicator, 0f, 1f)*0.9f;
+            Color emis = new Color(hi, hi, hi);
+            this.transform.Find("Sun Symbol").GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", emis);
+        }
+        hitIndicator += -hitIndicator / 5f;
+
+    }
 
     public void hit(IAmmunition ammunition)
     {

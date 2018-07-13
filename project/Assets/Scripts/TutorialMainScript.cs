@@ -28,16 +28,16 @@ public class TutorialMainScript : MonoBehaviour
         //Populate active players
         //VERY UGLY HACK, but makes things much faster to implement.
         MainControl.activePlayers = new List<GameObject>();
-
+        
         if (PlayerSelect.selections != null && PlayerSelect.selections.Count > 0)
         {
             for (int i = 0; i < PlayerSelect.selections.Count; i++)
             {
                 if (PlayerSelect.selections[i].active)
                 {
+                    Debug.Log("Activate player");
                     MainControl.activePlayers.Add(players[i]);
-                    Debug.Log(PlayerSelect.selections[i].weaponIndex);
-
+                    players[i].SetActive(true);
                 }
                 else
                     players[i].SetActive(false);

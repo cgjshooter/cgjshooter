@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/henri_credits.unity
     guid: 870369989fa09324baea6c4cd2aee36c
+  - enabled: 1
+    path: Assets/Scenes/intro_custom_select.unity
+    guid: 3bb8341a45322eb4abba29d3570730dc
   m_configObjects: {}

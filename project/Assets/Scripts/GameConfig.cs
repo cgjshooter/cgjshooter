@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameConfig : MonoBehaviour {
     //These values get adjusted from custom settings.
     public static bool friendlyFire = false;
+    public static bool allowPowerups = true;
     public static float difficulty = 1f;
     public static float speedMultiplier = 1f;
 

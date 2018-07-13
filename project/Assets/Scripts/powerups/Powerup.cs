@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Powerup : MonoBehaviour, IItem {
 
+    public bool invulnerability;
     public Sprite _icon;
     public Sprite icon
     {
@@ -95,6 +96,13 @@ public class Powerup : MonoBehaviour, IItem {
             else p.speedBoostResetTime = Time.time + this.activeTime;
         }
 
+        if (this.invulnerability)
+        {
+            p.invulnerable = true;
+            if (p.invulnerableResetTime > Time.time) p.invulnerableResetTime += this.activeTime;
+            else p.invulnerableResetTime = Time.time + this.activeTime;
+        }
+        
         if (this.weapondamagemultiplier > 0f)
         {
             p.weaponDamageMultiplier += this.weapondamagemultiplier-1f;//offset by 1 as 1 is at bottom.

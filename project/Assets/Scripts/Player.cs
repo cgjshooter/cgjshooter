@@ -9,6 +9,7 @@ public class Player : MonoBehaviour, ITarget
     public float weaponDamageMultiplier = 1f;
     public float weaponSpeedMultiplierResetTime;
     public float weaponDamageMultiplierResetTime;
+    public float invulnerableResetTime;
 
     public float speedBoost = 0f;
     public float speedBoostResetTime;
@@ -179,8 +180,9 @@ public class Player : MonoBehaviour, ITarget
         if (Time.time > this.weaponDamageMultiplierResetTime) this.weaponDamageMultiplier = 1f;
         if (Time.time > this.weaponSpeedMultiplierResetTime) this.weaponSpeedMultiplier = 1f;
         if (Time.time > this.speedBoostResetTime) this.speedBoost = 0f;
+        if (Time.time > this.invulnerableResetTime) this.invulnerable =false;
 
-        if( CrossPlatformInputManager.GetAxis("p" + playerId + "Fire1")!=0 || CrossPlatformInputManager.GetAxis("p" + playerId + "Fire2") != 0 && 
+        if ( CrossPlatformInputManager.GetAxis("p" + playerId + "Fire1")!=0 || CrossPlatformInputManager.GetAxis("p" + playerId + "Fire2") != 0 && 
             activeItem != null)
         {
             this.activeItem.activate(this.gameObject);

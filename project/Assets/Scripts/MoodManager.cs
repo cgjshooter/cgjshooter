@@ -22,6 +22,9 @@ public class MoodManager : MonoBehaviour {
     private AudioSource as4;
     private AudioSource as5;
 
+    private bool as4playing;
+    private AudioClip as4_part2;
+    
     private float[] targetSpeeds = new float[5] { 1f, 0.7f, 1f, 1.4f, 0.4f };
 
     // Use this for initialization
@@ -79,10 +82,18 @@ public class MoodManager : MonoBehaviour {
         GameObject.Find("Ground").GetComponent<Renderer>().material.Lerp(this.moodMaterials[lowInd], this.moodMaterials[highInd], dif);
 
         Camera.main.GetComponent<MainControl>().cameraOffset = Mathf.Lerp(cameraOffsets[lowInd], cameraOffsets[highInd], cameraCurve.Evaluate( dif));
+
+        if(target == 3 && !as4.isPlaying)
+        {
+            as4.clip = as4_part2;
+            as4.loop = true;
+            as4.Play();
+        }
     }
 
     public void showMood(int target)
     {
+        
         animate = false;
         Camera.main.GetComponentInChildren<CamText>().showWellDone();
 
@@ -95,6 +106,12 @@ public class MoodManager : MonoBehaviour {
 
     private void counterIn()
     {
+        if (!as4playing && target == 3)
+        {
+            as4playing = true;
+            as4.Stop();
+            as4.Play();
+        }
         animate = true;
         Camera.main.GetComponentInChildren<CamText>().showCounter();
     }

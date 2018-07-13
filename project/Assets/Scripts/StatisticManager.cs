@@ -12,31 +12,31 @@ public class StatisticManager : MonoBehaviour {
 
     public class GameStatistics
     {
-        public float totalGameTime; //CC
-        public int totalEnemyKills; //c
-        public int totalSpawnerKills; //c
-        public int totalPlayerKills; //c
-        public int totalBulletsShot; // by players and enemies
-        public int totalShots;
-        public int totalLevelsCompleted;
+        public float totalGameTime=0; //CC
+        public int totalEnemyKills = 0; //c
+        public int totalSpawnerKills = 0; //c
+        public int totalPlayerKills = 0; //c
+        public int totalBulletsShot = 0; // by players and enemies
+        public int totalShots = 0;
+        public int totalLevelsCompleted = 0;
     };
 
     public class PlayerStatistics
     {
         public Dictionary<EnemyType, int> enemyKills; //c
-        public int playerKills; //c
-        public int spawnerKills; //c
-        public float damageTaken; //c
-        public float rawDamageTaken; //c
-        public float damageDealt; //c
-        public float rawDamageDealt; //c
+        public int playerKills = 0; //c
+        public int spawnerKills = 0; //c
+        public float damageTaken = 0; //c
+        public float rawDamageTaken = 0; //c
+        public float damageDealt = 0; //c
+        public float rawDamageDealt = 0; //c
         public Dictionary<Powerups, int> powerupsCollected;
         public Dictionary<Powerups, int> powerupsUsed;
-        public float hitpointsHealed;
+        public float hitpointsHealed = 0;
         public Dictionary<Death, int> deaths;
-        public int survivedLevels;
-        public int totalBulletsShot;
-        public int totalShots;
+        public int survivedLevels = 0;
+        public int totalBulletsShot = 0;
+        public int totalShots = 0;
         public Dictionary<Targets, int> totalHits; // sum = total shots hit //c
         public Dictionary<Weapon, float> weaponTimeUsed;
     };
@@ -56,15 +56,59 @@ public class StatisticManager : MonoBehaviour {
             ps.enemyKills = new Dictionary<EnemyType, int>();
             ps.powerupsCollected = new Dictionary<Powerups, int>();
             ps.powerupsUsed = new Dictionary<Powerups, int>();
+
             ps.deaths = new Dictionary<Death, int>();
             ps.totalHits = new Dictionary<Targets, int>();
             ps.weaponTimeUsed = new Dictionary<Weapon, float>();
             playerStatistics.Add(i, ps);
         }
+        init();
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    void init()
+    {
+        foreach(PlayerStatistics ps in playerStatistics.Values)
+        {
+            ps.enemyKills.Add(EnemyType.easy, 0);
+            ps.enemyKills.Add(EnemyType.normal, 0);
+            ps.enemyKills.Add(EnemyType.hard, 0);
+
+            ps.powerupsCollected.Add(Powerups.damage, 0);
+            ps.powerupsCollected.Add(Powerups.health, 0);
+            ps.powerupsCollected.Add(Powerups.shield, 0);
+            ps.powerupsCollected.Add(Powerups.speed, 0);
+            ps.powerupsCollected.Add(Powerups.weaponspeed, 0);
+
+            ps.powerupsUsed.Add(Powerups.damage, 0);
+            ps.powerupsUsed.Add(Powerups.health, 0);
+            ps.powerupsUsed.Add(Powerups.shield, 0);
+            ps.powerupsUsed.Add(Powerups.speed, 0);
+            ps.powerupsUsed.Add(Powerups.weaponspeed, 0);
+
+            ps.deaths.Add(Death.byEnemy, 0);
+            ps.deaths.Add(Death.byJump, 0);
+            ps.deaths.Add(Death.byPlayer, 0);
+
+            ps.totalHits.Add(Targets.enemy, 0);
+            ps.totalHits.Add(Targets.obstacle, 0);
+            ps.totalHits.Add(Targets.player, 0);
+            ps.totalHits.Add(Targets.spawner, 0);
+
+            ps.weaponTimeUsed.Add(Weapon.DualWield, 0);
+            ps.weaponTimeUsed.Add(Weapon.Grenade, 0);
+            ps.weaponTimeUsed.Add(Weapon.GrenadeHand, 0);
+            ps.weaponTimeUsed.Add(Weapon.Mine, 0);
+            ps.weaponTimeUsed.Add(Weapon.MiniGun, 0);
+            ps.weaponTimeUsed.Add(Weapon.Pistol, 0);
+            ps.weaponTimeUsed.Add(Weapon.Rocket, 0);
+            ps.weaponTimeUsed.Add(Weapon.SawnShotgun, 0);
+            ps.weaponTimeUsed.Add(Weapon.Shotgun, 0);
+
+        }
+    }
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 

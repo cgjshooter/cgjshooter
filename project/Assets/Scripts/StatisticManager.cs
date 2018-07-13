@@ -32,7 +32,7 @@ public class StatisticManager : MonoBehaviour {
 		public float rawDamageDealt = 0; //cc
         public Dictionary<Powerups, int> powerupsUsed; //cc
         public float hitpointsHealed = 0;
-        public Dictionary<Death, int> deaths;
+        public Dictionary<Death, int> deaths; //cc
 		public int survivedLevels = 0;
 		public int totalBulletsShot = 0; //cc
 		public int totalShots = 0; //cc
@@ -121,9 +121,9 @@ public class StatisticManager : MonoBehaviour {
         playerStatistics[player.playerId].deaths[cause]++;
     }
 
-    public static void calculateHitStatistics(Player player)
+    public static void calculateHitStatistics(Player player, Targets type)
     {
-        
+        playerStatistics[player.playerId].totalHits[type]++;
     }
 
     public static void calculateShotStatistics(Player player, int bulletAmount)

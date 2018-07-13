@@ -23,6 +23,8 @@ public class MainControl : MonoBehaviour {
     private float defaultHeight = 95f;
     private float defaultHeightMP = 70f;
 
+    public float cameraOffset = 25f;
+    
     private int mood = 0;
 
     private float startTime;
@@ -241,11 +243,11 @@ public class MainControl : MonoBehaviour {
             float d = instant ? 1f : 10f;
             target.Set(Camera.main.transform.position.x + (player1.transform.position.x - Camera.main.transform.position.x) / d,
                 0,
-                Camera.main.transform.position.z + (player1.transform.position.z - 25 - Camera.main.transform.position.z) / d + 25);
+                Camera.main.transform.position.z + (player1.transform.position.z - cameraOffset - Camera.main.transform.position.z) / d + cameraOffset);
             Camera.main.transform.position = new Vector3(
                 Camera.main.transform.position.x + (player1.transform.position.x - Camera.main.transform.position.x) / d,
                 defaultHeight,
-                Camera.main.transform.position.z + (player1.transform.position.z - 25 - Camera.main.transform.position.z) / d);
+                Camera.main.transform.position.z + (player1.transform.position.z - cameraOffset - Camera.main.transform.position.z) / d);
 
             Camera.main.transform.LookAt(target);
         }
@@ -275,11 +277,11 @@ public class MainControl : MonoBehaviour {
         float d = instant ? 1f : 10f;
         target.Set(Camera.main.transform.position.x + (midPoint.x - Camera.main.transform.position.x) / d,
             0,
-            Camera.main.transform.position.z + (midPoint.z - 25 - Camera.main.transform.position.z) / d + 25);
+            Camera.main.transform.position.z + (midPoint.z - cameraOffset - Camera.main.transform.position.z) / d + cameraOffset);
         Camera.main.transform.position = new Vector3(
             Camera.main.transform.position.x + (midPoint.x - Camera.main.transform.position.x) / d ,
             defaultHeight + Mathf.Max(0,(Vector3.Magnitude(dMax)*1.9f)),
-            Camera.main.transform.position.z + (midPoint.z - 25 - Camera.main.transform.position.z) / d);
+            Camera.main.transform.position.z + (midPoint.z - cameraOffset - Camera.main.transform.position.z) / d);
 
         Camera.main.transform.LookAt(target);
     }

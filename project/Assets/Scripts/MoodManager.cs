@@ -5,8 +5,9 @@ using UnityEngine;
 public class MoodManager : MonoBehaviour {
 
     public bool waitingForMood = false;
-    
 
+    public List<float> cameraOffsets;
+    public AnimationCurve cameraCurve;
     private float current;
     private int target;
 
@@ -77,7 +78,7 @@ public class MoodManager : MonoBehaviour {
         // Material Lerping
         GameObject.Find("Ground").GetComponent<Renderer>().material.Lerp(this.moodMaterials[lowInd], this.moodMaterials[highInd], dif);
 
-        
+        Camera.main.GetComponent<MainControl>().cameraOffset = Mathf.Lerp(cameraOffsets[lowInd], cameraOffsets[highInd], cameraCurve.Evaluate( dif));
     }
 
     public void showMood(int target)

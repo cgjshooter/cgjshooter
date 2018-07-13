@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StatisticManager : MonoBehaviour {
 
-    public enum Enemy { easy, normal, hard };
+    public enum EnemyType { easy, normal, hard };
     public enum Death { byJump, byEnemy, byPlayer };
     public enum Weapon { DualWield, Grenade, GrenadeHand, Mine, MiniGun, Pistol, Rocket, SawnShotgun, Shotgun };
     public enum Powerups { damage, health, shield, speed, weaponspeed };
@@ -23,7 +23,7 @@ public class StatisticManager : MonoBehaviour {
 
     public class PlayerStatistics
     {
-        public Dictionary<Enemy, int> enemyKills; //c
+        public Dictionary<EnemyType, int> enemyKills; //c
         public int playerKills; //c
         public int spawnerKills; //c
         public float damageTaken; //c
@@ -53,7 +53,7 @@ public class StatisticManager : MonoBehaviour {
         for(int i = 1; i <= 4; ++i)
         {
             var ps = new PlayerStatistics();
-            ps.enemyKills = new Dictionary<Enemy, int>();
+            ps.enemyKills = new Dictionary<EnemyType, int>();
             ps.powerupsCollected = new Dictionary<Powerups, int>();
             ps.powerupsUsed = new Dictionary<Powerups, int>();
             ps.deaths = new Dictionary<Death, int>();

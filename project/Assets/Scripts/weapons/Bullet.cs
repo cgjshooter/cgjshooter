@@ -95,6 +95,14 @@ public class Bullet : MonoBehaviour, IAmmunition {
             if (e.dead && before > 0)
             {
                 // Target just dyed
+
+                // who is the killer?
+                var p;
+                if (this.shooter != null && this.shooter.tag == "Player")
+                {
+                    p = StatisticManager.playerStatistics[this.shooter.GetComponent<Player>().playerId];
+                }
+
                 // Target killed ++
                 switch (target.tag)
                 {
@@ -102,6 +110,7 @@ public class Bullet : MonoBehaviour, IAmmunition {
                         StatisticManager.gameStatistics.totalEnemyKills++;
                         break;
                     case "spawner":
+                        if (p) p.spawnerKills++;
                         StatisticManager.gameStatistics.totalSpawnerKills++;
                         break;
                     case "Player":
@@ -109,11 +118,6 @@ public class Bullet : MonoBehaviour, IAmmunition {
                         break;
                 }
 
-                // who is the killer?
-                if(this.shooter != null && this.shooter.tag == "Player")
-                {
-                    int p = this.shooter.GetComponent<Player>().playerId;
-                }
             }
         }
     }

@@ -23,7 +23,7 @@ public class MoodManager : MonoBehaviour {
     private AudioSource as5;
 
     private bool as4playing;
-    private AudioClip as4_part2;
+    public AudioClip as4_part2;
     
     private float[] targetSpeeds = new float[5] { 1f, 0.7f, 1f, 1.4f, 0.4f };
 

@@ -19,16 +19,20 @@ public class UIManager : MonoBehaviour {
     public Color weapon_selectedColor;
     public Color itemColor;
 
+    private GameObject endscreen;
+
     // Use this for initialization
     void Start () {
         this.win.SetActive(false);
         this.lose.SetActive(false);
+        endscreen = this.transform.Find("endscreen").gameObject;
+        endscreen.SetActive(false);
    	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		if(this.win.activeSelf || lose.activeSelf)
+		if(this.endscreen.activeSelf)
         {
             //restarts
             if(CrossPlatformInputManager.GetButton("p1Submit") ||
@@ -97,13 +101,13 @@ public class UIManager : MonoBehaviour {
 
     public void showWin()
     {
+        endscreen.SetActive(true);
         this.gameObject.SetActive(true);
-        this.win.SetActive(true);
     }
 
     public void showEnd()
     {
+        endscreen.SetActive(true);
         this.gameObject.SetActive(true);
-        this.lose.SetActive(true);
     }
 }

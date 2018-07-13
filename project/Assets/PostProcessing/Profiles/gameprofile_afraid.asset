@@ -19,6 +19,25 @@ MonoBehaviour:
   - {fileID: 114978593338041238}
   - {fileID: 114656676642697216}
   - {fileID: 114678516202542036}
+  - {fileID: 114065103992521174}
+--- !u!114 &114065103992521174
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 118cf48a5cc07834fb5046930b1e18f0, type: 3}
+  m_Name: Pixelate
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  pixelate:
+    overrideState: 0
+    value: {x: 128, y: 300}
 --- !u!114 &114546635802731666
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -82,10 +101,10 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 0
+    value: 0.75
   height:
-    overrideState: 0
-    value: 10
+    overrideState: 1
+    value: 20
   posOff:
     overrideState: 0
     value: 0
@@ -173,11 +192,11 @@ MonoBehaviour:
     overrideState: 0
     value: {r: 1, g: 1, b: 1, a: 1}
   hueShift:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: -60
   saturation:
     overrideState: 1
-    value: 41.5
+    value: 26
   brightness:
     overrideState: 0
     value: 0
@@ -216,13 +235,13 @@ MonoBehaviour:
     value: 100
   lift:
     overrideState: 1
-    value: {x: 0.4712988, y: 1, z: 0.41251922, w: 0}
+    value: {x: 1, y: 0.26133955, z: 0.966054, w: 0}
   gamma:
     overrideState: 1
-    value: {x: 1, y: 0.52016675, z: 0.49370104, w: 0}
+    value: {x: 0.38006794, y: 0.89523226, z: 1, w: 0}
   gain:
     overrideState: 1
-    value: {x: 0.6465428, y: 0.6737834, z: 1, w: 0}
+    value: {x: 0.780768, y: 1, z: 0.831149, w: 0}
   masterCurve:
     overrideState: 0
     value:
@@ -1501,7 +1520,7 @@ MonoBehaviour:
     value: {x: 0.5, y: 0.5}
   intensity:
     overrideState: 1
-    value: 0.465
+    value: 0.315
   smoothness:
     overrideState: 1
     value: 1

@@ -105,6 +105,15 @@ public class FFTEffects : MonoBehaviour {
             var distortSettings = ppProfile.GetSetting<Distort>();
             distortSettings.intensity.value = Mathf.SmoothStep(0f,0.4f, filters[2].min*55f);
             distortSettings.posOff.value = UnityEngine.Random.value;
+
+            Pixelate pixelate;
+            var pixelateFound = ppProfile.TryGetSettings<Pixelate>(out pixelate);
+            if(pixelateFound)
+            {
+             //   pixelate.pixelate.value = new Vector2(filters[0].max * Screen.width / 2 + Screen.width / 4, filters[0].max * Screen.height / 2 + Screen.height / 4);
+                distortSettings.intensity.value = Mathf.SmoothStep(0f, 0.4f, (filters[0].max + filters[1].max + filters[2].max) * 25f)+0.25f;
+
+            }
         }
 
         if(ppBehaviour.Length> 0)

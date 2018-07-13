@@ -138,7 +138,6 @@ public class Grenade : MonoBehaviour, IAmmunition{
             foreach (MeshRenderer mr in this.GetComponentsInChildren<MeshRenderer>()) mr.enabled = false;
         }
 
-
         Invoke("clearObject", 1);
     }
 
@@ -151,7 +150,7 @@ public class Grenade : MonoBehaviour, IAmmunition{
     public void affect(GameObject target)
     {
         var e = target.GetComponent<ITarget>();
-        if (e != null && target != this.shooter)
+        if (e != null && target != this.shooter && !e.invulnerable)
         {
             var d = this.transform.position - target.transform.position;
             float damage = dampeningFunction.Evaluate(Mathf.Clamp(Vector3.Magnitude(d) / this.effectRadius, 0f, 1f)) * this.damage;
@@ -163,7 +162,6 @@ public class Grenade : MonoBehaviour, IAmmunition{
             //Weaken armor by blocked amount. Divider is just some weakening value that needs to be tweaked.
             e.armor -= blocked / 15f;
             if (e.armor < 0) e.armor = 0f;
-
         }
     }
 }

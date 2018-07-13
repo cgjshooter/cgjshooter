@@ -266,6 +266,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1162527562646962
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 224454413722643372}
+  - component: {fileID: 222420123841708538}
+  - component: {fileID: 114703793536976236}
+  - component: {fileID: 114821240190414162}
+  m_Layer: 5
+  m_Name: intro fade out
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!1 &1164198018123808
 GameObject:
   m_ObjectHideFlags: 0
@@ -1762,7 +1780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.5882353}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1951,7 +1969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.5882353}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1998,7 +2016,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Hit start / enter to replay!
+  m_Text: Hit start / enter to return to menu
 --- !u!114 &114192331639579880
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2157,10 +2175,10 @@ MonoBehaviour:
   p2: {fileID: 1977605145673624}
   p3: {fileID: 1418509927861526}
   p4: {fileID: 1505027071198328}
-  inactiveColor: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 1}
+  inactiveColor: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
   weaponColor: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 1}
-  weapon_selectedColor: {r: 0.8301887, g: 0.8301887, b: 0.8301887, a: 1}
-  itemColor: {r: 0.6792453, g: 0.6792453, b: 0.6792453, a: 1}
+  weapon_selectedColor: {r: 1, g: 1, b: 1, a: 1}
+  itemColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
 --- !u!114 &114233360095706736
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3464,6 +3482,33 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: B
+--- !u!114 &114703793536976236
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1162527562646962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
 --- !u!114 &114707872024411656
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3562,7 +3607,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Hit start / enter to replay!
+  m_Text: Hit start / enter to return to menu
 --- !u!114 &114716141522952066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3655,9 +3700,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Hit start / enter to retry level!
-
-    Escape/back to quit.'
+  m_Text: "Hit start / enter \nto return to menu\n"
 --- !u!114 &114756409167424554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3799,6 +3842,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114821240190414162
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1162527562646962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 787d87eb77a33a2429179b8ec4b8e277, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeTime: 0.5
 --- !u!114 &114867691712717216
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4254,9 +4309,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Hit start / enter to retry level!
-
-    Escape/back to quit.'
+  m_Text: "Hit start / enter \nto return to menu\n"
 --- !u!114 &114998535861402948
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4452,6 +4505,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1501796193678416}
+--- !u!222 &222420123841708538
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1162527562646962}
 --- !u!222 &222432814742757976
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -5296,6 +5355,7 @@ RectTransform:
   - {fileID: 224694498461585004}
   - {fileID: 224408343489450762}
   - {fileID: 224652312507179532}
+  - {fileID: 224454413722643372}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5692,6 +5752,24 @@ RectTransform:
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -15}
   m_SizeDelta: {x: 160, y: 90}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &224454413722643372
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1162527562646962}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 224222964818321306}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224467525498261528
 RectTransform:

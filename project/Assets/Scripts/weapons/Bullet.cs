@@ -81,7 +81,9 @@ public class Bullet : MonoBehaviour, IAmmunition {
     public void affect(GameObject target)
     {
         var e = target.GetComponent<ITarget>();
-        if(e!= null && target != this.shooter)
+        if (!GameConfig.friendlyFire && this.shooter != null && this.shooter.tag == "Player" && target.tag == "Player")
+            return;
+        if(e!= null && target != this.shooter && !e.invulnerable)
         {
             float blocked = this.damage * Mathf.Clamp((e.armor), 0.1f, 1f);
             e.hitPoints -= this.damage - blocked;

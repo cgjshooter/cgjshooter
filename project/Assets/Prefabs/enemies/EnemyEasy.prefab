@@ -305,7 +305,7 @@ MonoBehaviour:
   _hitPoints: 1
   weaponPrefab: []
   death: {fileID: 1945985422686964}
-  ramDamage: 1
+  ramDamage: 4
   _armor: 0
   _invulnerable: 0
   _invisible: 0

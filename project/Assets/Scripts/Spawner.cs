@@ -95,6 +95,9 @@ public class Spawner : MonoBehaviour, ITarget {
 
     // Use this for initialization
     void Start () {
+        this._maxHealth *= GameConfig.difficultyMultiplier;
+        this._hitPoints *= GameConfig.difficultyMultiplier;
+
         if (this.hitPoints > _maxHealth) _maxHealth = this.hitPoints;
         if (this.enemyContainer == null) this.enemyContainer = GameObject.Find("enemyContainer");
         this.spawnPos = this.transform.Find("spawnPos");

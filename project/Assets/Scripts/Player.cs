@@ -144,6 +144,8 @@ public class Player : MonoBehaviour, ITarget
 
             go = Instantiate(powerups[(int)Mathf.Floor(UnityEngine.Random.value * powerups.Count)], this.transform);
             this.items.Add(go.GetComponent<IItem>());
+            go.SetActive(false);
+
 
         }
         else

@@ -82,10 +82,10 @@ public class PlayerSelect : MonoBehaviour {
             CrossPlatformInputManager.GetButton("p3SelectItem2") ||
             CrossPlatformInputManager.GetButton("p4SelectItem2") )
             mode = 1;
-        else if (CrossPlatformInputManager.GetButton("p1SelectItem3") ||
+        else if ((CrossPlatformInputManager.GetButton("p1SelectItem3") ||
             CrossPlatformInputManager.GetButton("p2SelectItem3") ||
             CrossPlatformInputManager.GetButton("p3SelectItem3") ||
-            CrossPlatformInputManager.GetButton("p4SelectItem3"))
+            CrossPlatformInputManager.GetButton("p4SelectItem3")) && PlayerPrefs.HasKey("attack_complete"))
             mode = 2;
         else if (CrossPlatformInputManager.GetButton("p1SelectItem4") ||
             CrossPlatformInputManager.GetButton("p2SelectItem4") ||
@@ -146,7 +146,10 @@ public class PlayerSelect : MonoBehaviour {
             {
                 Invoke("moveToGame", 2f);
                 Invoke("fadeOut", 1f);
-                p.transform.Find("Text").GetComponent<Text>().text = "Starting!\nBack\nto cancel";
+                if(id == 1)
+                    p.transform.Find("Text").GetComponent<Text>().text = "Starting!\nEsc\nto cancel";
+                else
+                    p.transform.Find("Text").GetComponent<Text>().text = "Starting!\nBack\nto cancel";
             }
             else
             {

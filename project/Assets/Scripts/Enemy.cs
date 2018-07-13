@@ -94,6 +94,10 @@ public class Enemy : MonoBehaviour, ITarget {
 
     // Use this for initialization
     void Start () {
+        //Difficulty scale
+        this._maxHealth *= GameConfig.difficultyMultiplier;
+        this._hitPoints *= GameConfig.difficultyMultiplier;
+
         if (this.hitPoints > _maxHealth) _maxHealth = this.hitPoints;
         if (weaponPrefab != null && weaponPrefab.Count > 0) {
 			this.activeWeapon = Instantiate (weaponPrefab[(int)Mathf.Floor(UnityEngine.Random.value%weaponPrefab.Count)], this.transform).GetComponent<IItem> ();
@@ -121,7 +125,7 @@ public class Enemy : MonoBehaviour, ITarget {
             //TODO - fix this to support all weapon types.
             waitingShoot = true;
             var delay = ((ProjectileWeapon)activeWeapon).firedelay;
-            Invoke("activateWeapon", delay*2f + UnityEngine.Random.value*delay*1.0f);
+            Invoke("activateWeapon", delay*2f/GameConfig.difficultyMultiplier + UnityEngine.Random.value*delay*1.0f);
 		}
 	}
 

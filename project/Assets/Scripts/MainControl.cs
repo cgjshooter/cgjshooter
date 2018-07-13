@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainControl : MonoBehaviour {
 
@@ -24,6 +25,8 @@ public class MainControl : MonoBehaviour {
 
     private int mood = 0;
 
+    private float startTime;
+
     // Use this for initialization
     void Start () {
 
@@ -37,8 +40,6 @@ public class MainControl : MonoBehaviour {
                 if (PlayerSelect.selections[i].active)
                 {
                     activePlayers.Add(players[i]);
-                    Debug.Log(PlayerSelect.selections[i].weaponIndex);
-                    
                 }
                 else
                     players[i].SetActive(false);
@@ -72,6 +73,17 @@ public class MainControl : MonoBehaviour {
             this.updateSinglePlayerCam(true);
 
         Invoke("spawnFirstSpawners", 5f);
+
+        if (PlayerSelect.mode == 1)
+        {
+            ui.transform.Find("timeattack").GetComponent<Text>().text = "00:00";
+        }
+        else if (PlayerSelect.mode == 2)
+        {
+            ui.transform.Find("timeattack").GetComponent<Text>().text = "0";
+        }
+        else
+            ui.transform.Find("timeattack").GetComponent<Text>().text = "";
     }
 
     private void spawnFirstSpawners()
@@ -83,6 +95,7 @@ public class MainControl : MonoBehaviour {
         }
         this.spawners = GameObject.FindGameObjectsWithTag("spawner");
         running = true;
+        startTime = Time.time;
     }
 
     private void Awake()
@@ -149,7 +162,24 @@ public class MainControl : MonoBehaviour {
             running = false;
             ui.GetComponent<UIManager>().showEnd();
         }
-	}
+
+        if(PlayerSelect.mode == 1)
+        {
+            float t = Time.time - startTime;
+            float m = Mathf.Floor(t / 60f);
+            string mm = (t < 10 ? "0" : "") + m;
+            float s = Mathf.Floor(t % 60f);
+            string ss = (s < 10 ? "0" : "") + s;
+            ui.transform.Find("timeattack").GetComponent<Text>().text = mm + ":" + ss;
+        }
+        else if(PlayerSelect.mode == 2)
+        {
+            ui.transform.Find("timeattack").GetComponent<Text>().text = "score";
+        }
+        else
+            ui.transform.Find("timeattack").GetComponent<Text>().text = "";
+
+    }
 
     void showWinPre()
     {

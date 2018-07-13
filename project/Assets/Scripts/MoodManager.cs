@@ -21,7 +21,7 @@ public class MoodManager : MonoBehaviour {
     private AudioSource as4;
     private AudioSource as5;
 
-    private float[] targetSpeeds = new float[5] { 1f, 0.7f, 1f, 1.25f, 0.4f };
+    private float[] targetSpeeds = new float[5] { 1f, 0.7f, 1f, 1.4f, 0.4f };
 
     // Use this for initialization
     void Start () {

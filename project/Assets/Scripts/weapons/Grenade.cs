@@ -74,7 +74,7 @@ public class Grenade : MonoBehaviour, IAmmunition{
     void Update()
     {
         this.transform.position += direction*Time.deltaTime;
-        if (Time.time - start > explosionDelay)
+        if (Time.time - start > explosionDelay && !exploded)
         {
             this.explode();
         }
@@ -86,26 +86,33 @@ public class Grenade : MonoBehaviour, IAmmunition{
         //Block self
         if (this.shooter != null && 
             (other.gameObject == this.shooter || (other.transform.parent != null && other.transform.parent.gameObject == this.shooter)))
+        {
+            Debug.Log("Block by shooter.");
             return;
+        }
         curOther = other.gameObject;
         ITarget e = other.GetComponent<ITarget>();
         if (this.gameObject.name.IndexOf("Mine") >= 0)
             Debug.Log("trigge enter: "+ (e == null));
         if (e != null)
         {
-            
+            Debug.Log(other.tag + " vs " + this.shooter.tag);
             if (this.shooter != null && 
                 !(other.tag == "spawner" && this.shooter.tag == "Enemy" || other.tag == "Enemy" && this.shooter.tag == "Enemy"))
                 explode();
         }
         else if (this.gameObject.name.IndexOf("Rocket")>=0)
+        {
+            Debug.Log("not itarget");
             explode();
+        }
     }
 
     void explode()
     {
         if(enemiesGameObject == null) this.enemiesGameObject = GameObject.Find("/enemyContainer");
         if (exploded) return;
+        Debug.Log("Explode");
         exploded = true;
         //Find out enemies in the range
         this.direction = new Vector3();
@@ -118,8 +125,12 @@ public class Grenade : MonoBehaviour, IAmmunition{
             {
                 var co = enemiesGameObject.transform.GetChild(i);
                 if (this.shooter != null && (co.tag == "spawner" && this.shooter.tag == "Enemy" || co.tag == "Enemy" && this.shooter.tag == "Enemy"))
+                {
+                    Debug.Log("skip as is enemy - spawner");
                     continue; 
+                }
                 var d = this.transform.position - co.transform.position;
+                Debug.Log("Distance: " + d + " is other: " + (curOther == co));
                 if(Vector3.Magnitude(d) < this.effectRadius || curOther == co)
                 {
                     co.GetComponent<ITarget>().hit(this);
@@ -155,7 +166,12 @@ public class Grenade : MonoBehaviour, IAmmunition{
             var d = this.transform.position - target.transform.position;
             float damage = dampeningFunction.Evaluate(Mathf.Clamp(Vector3.Magnitude(d) / this.effectRadius, 0f, 1f)) * this.damage;
             if (curOther == target)
+            {
                 damage = this.damage;
+                Debug.Log("Use this damage");
+            }
+            Debug.Log("damge: " + damage);    
+            
             float blocked = damage * Mathf.Clamp((e.armor), 0.1f, 1f);
 
             e.hitPoints -= damage - blocked;

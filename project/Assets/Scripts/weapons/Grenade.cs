@@ -51,6 +51,15 @@ public class Grenade : MonoBehaviour, IAmmunition{
         }
     }
 
+    public float bulletToShotRatio
+    {
+        get
+        {
+            return 0;
+        }
+        set { }
+    }
+
     private Transform explosionParticles;
     private Transform smokeParticles;
 

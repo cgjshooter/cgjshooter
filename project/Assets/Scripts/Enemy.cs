@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour, ITarget {
     public GameObject death;
     public float ramDamage;
     private Vector3 move;
-    public StatisticManager.Enemy type;
+    public StatisticManager.EnemyEnum type;
     public Vector3 m_Move
     {
         get

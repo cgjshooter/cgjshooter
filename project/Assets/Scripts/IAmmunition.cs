@@ -11,6 +11,8 @@ public interface IAmmunition {
     //Radius of the ammunition effect.
     float effectRadius { get; set; }
 
+    float bulletToShotRatio { get; set; }
+
     GameObject shooter { get; set; }
 
     void affect(GameObject target);

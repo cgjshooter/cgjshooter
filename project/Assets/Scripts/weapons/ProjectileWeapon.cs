@@ -155,6 +155,7 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
             //    Debug.Log("final shoot: " + go.GetComponent<IAmmunition>().direction);
                 go.GetComponent<IAmmunition>().damage = this.bulletDamage*addDamage;
                 go.GetComponent<IAmmunition>().effectRadius = this.effectRadius;
+                go.GetComponent<IAmmunition>().bulletToShotRatio = 1 / this.bulletAmount;
                 
             }
             this.previousActivation = Time.time;

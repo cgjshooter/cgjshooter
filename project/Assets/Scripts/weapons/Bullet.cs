@@ -42,6 +42,19 @@ public class Bullet : MonoBehaviour, IAmmunition {
         }
     }
 
+    public float _bulletToShotRatio;
+    public float bulletToShotRatio
+    {
+        get
+        {
+            return 1 / _bulletToShotRatio;
+        }
+        set
+        {
+            _bulletToShotRatio = value;
+        }
+    }
+
     // Use this for initialization
     void Start () {
         start = Time.time;

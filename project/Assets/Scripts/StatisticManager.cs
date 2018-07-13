@@ -73,18 +73,18 @@ public class StatisticManager : MonoBehaviour {
 
     }
 
-    public static void calculateDamageStatistics(IAmmunition ammo, GameObject target, float rawDamage)
+    public static void calculateDamageStatistics(IAmmunition ammo, GameObject target, float damage, float rawDamage)
     {
         if (ammo.shooter != null && ammo.shooter.tag == "Player")
         {
             //p = this.playerStatistics[ammo.shooter.GetComponent<Player>().playerId];
-            playerStatistics[ammo.shooter.GetComponent<Player>().playerId].damageDealt += ammo.damage; //c
+            playerStatistics[ammo.shooter.GetComponent<Player>().playerId].damageDealt += damage; //c
             playerStatistics[ammo.shooter.GetComponent<Player>().playerId].rawDamageDealt += rawDamage; //c
         }
 
         if (target.tag == "Player")
         {
-            playerStatistics[target.GetComponent<Player>().playerId].damageTaken += ammo.damage; //c
+            playerStatistics[target.GetComponent<Player>().playerId].damageTaken += damage; //c
             playerStatistics[target.GetComponent<Player>().playerId].rawDamageTaken += rawDamage; //c
         }
     }

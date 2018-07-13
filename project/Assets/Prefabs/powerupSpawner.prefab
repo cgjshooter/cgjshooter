@@ -34,7 +34,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1205504270099930}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -78.09256, y: 7.086515, z: -25.222265}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -51,13 +51,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cd7a323d48eaa740a98edd4ede15d6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRadius: 80
+  spawnRadius: 5
   powerupPrefabs:
   - {fileID: 1207040929541996, guid: 28a42a016edd76049bd05e62270b572d, type: 2}
   - {fileID: 1358583408165872, guid: 04f4c47fcfec9cd429eefe521079e8e3, type: 2}
   - {fileID: 1569151068804318, guid: dda81d645d37c3349bba969b594bf66c, type: 2}
   - {fileID: 1759685155787456, guid: d02476870727cb149bc42eccc4d6cb53, type: 2}
   - {fileID: 1116329346407412, guid: 109c72af8a5133e41817c34345c85055, type: 2}
+  - {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8, type: 2}
   powerUpSpawnMinDelay: 1
   powerUpSpawnMaxDelay: 10
   maxPowerupCount: 10

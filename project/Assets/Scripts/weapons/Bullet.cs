@@ -47,7 +47,7 @@ public class Bullet : MonoBehaviour, IAmmunition {
     {
         get
         {
-            return 1 / _bulletToShotRatio;
+            return _bulletToShotRatio;
         }
         set
         {

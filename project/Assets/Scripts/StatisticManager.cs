@@ -13,31 +13,31 @@ public class StatisticManager : MonoBehaviour {
     public class GameStatistics
     {
         public float totalGameTime; //CC
-        public int totalEnemyKills; //c
-        public int totalSpawnerKills; //c
-        public int totalPlayerKills; //c
-        public int totalBulletsShot; // by players and enemies
-        public int totalShots;
+        public int totalEnemyKills; //cc
+        public int totalSpawnerKills; //cc
+        public int totalPlayerKills; //cc
+        public int totalBulletsShot; //cc by players and enemies
+        public int totalShots; //cc
         public int totalLevelsCompleted;
     };
 
     public class PlayerStatistics
     {
-        public Dictionary<EnemyType, int> enemyKills; //c
-        public int playerKills; //c
-        public int spawnerKills; //c
-        public float damageTaken; //c
-        public float rawDamageTaken; //c
-        public float damageDealt; //c
-        public float rawDamageDealt; //c
+        public Dictionary<EnemyType, int> enemyKills; //cc
+        public int playerKills; //cc
+        public int spawnerKills; //cc
+        public float damageTaken; //cc
+        public float rawDamageTaken; //cc
+        public float damageDealt; //cc
+        public float rawDamageDealt; //cc
         public Dictionary<Powerups, int> powerupsCollected;
         public Dictionary<Powerups, int> powerupsUsed;
         public float hitpointsHealed;
         public Dictionary<Death, int> deaths;
         public int survivedLevels;
-        public int totalBulletsShot;
-        public int totalShots;
-        public Dictionary<Targets, int> totalHits; // sum = total shots hit //c
+        public int totalBulletsShot; //cc
+        public int totalShots; //cc
+        public Dictionary<Targets, int> totalHits; // sum = total shots hit
         public Dictionary<Weapon, float> weaponTimeUsed;
     };
 
@@ -71,6 +71,22 @@ public class StatisticManager : MonoBehaviour {
     void Reset ()
     {
 
+    }
+    public static void calculateHitStatistics(Player player)
+    {
+        
+    }
+
+    public static void calculateShotStatistics(Player player, int bulletAmount)
+    {
+        // player == null -> shot by enemy
+        if(player != null)
+        {
+            playerStatistics[player.playerId].totalBulletsShot += bulletAmount;
+            playerStatistics[player.playerId].totalShots += 1;
+        }
+        gameStatistics.totalShots += 1;
+        gameStatistics.totalBulletsShot += bulletAmount;
     }
 
     public static void calculateDamageStatistics(IAmmunition ammo, GameObject target, float damage, float rawDamage)

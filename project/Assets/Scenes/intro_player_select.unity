@@ -3724,7 +3724,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preview1: {fileID: 21300000, guid: 30862c73b88a3874c9debef132b942f7, type: 3}
   preview2: {fileID: 21300000, guid: 96246656f723ab64184fe5efd9267c31, type: 3}
-  preview3: {fileID: 21300000, guid: 30862c73b88a3874c9debef132b942f7, type: 3}
+  preview3: {fileID: 21300000, guid: 93f47aedc0897794f9fa75540936c115, type: 3}
   playerscreen: {fileID: 147144238}
   exitTime: 1
   exitStart: 0

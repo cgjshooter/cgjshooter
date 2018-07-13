@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/henri_credits.unity
     guid: 870369989fa09324baea6c4cd2aee36c
   - enabled: 1
-    path: Assets/Scenes/intro_custom_select.unity
-    guid: 3bb8341a45322eb4abba29d3570730dc
+    path: Assets/Scenes/scene_henri_3_maze.unity
+    guid: d7fdd0c736a60c64e8caabc90228fa23
+  - enabled: 1
+    path: Assets/Scenes/scene_henri_3_mini.unity
+    guid: b664780fdcf891940ae06b7d60e4eece
   m_configObjects: {}

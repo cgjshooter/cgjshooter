@@ -114,6 +114,7 @@ public class Bullet : MonoBehaviour, IAmmunition {
                         StatisticManager.gameStatistics.totalSpawnerKills++;
                         break;
                     case "Player":
+                        if (p != null) p.playerKills++;
                         StatisticManager.gameStatistics.totalPlayerKills++;
                         break;
                 }

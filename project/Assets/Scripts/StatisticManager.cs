@@ -116,6 +116,11 @@ public class StatisticManager : MonoBehaviour {
         playerStatistics[player.playerId].powerupsUsed[powerup]++;
     }
 
+    public static void calculatePlayerDeathStatistics(Player player, Death cause)
+    {
+        playerStatistics[player.playerId].deaths[cause]++;
+    }
+
     public static void calculateHitStatistics(Player player)
     {
         
@@ -161,16 +166,24 @@ public class StatisticManager : MonoBehaviour {
         switch (target.tag)
         {
             case "Enemy":
-                if (p != null) p.enemyKills[target.GetComponent<Enemy>().type]++;
-                gameStatistics.totalEnemyKills++;
+                    if (p != null) p.enemyKills[target.GetComponent<Enemy>().type]++;
+                    gameStatistics.totalEnemyKills++;
                 break;
             case "spawner":
-                if (p != null) p.spawnerKills++;
-                gameStatistics.totalSpawnerKills++;
+                    if (p != null) p.spawnerKills++;
+                    gameStatistics.totalSpawnerKills++;
                 break;
             case "Player":
-                if (p != null) p.playerKills++;
-                gameStatistics.totalPlayerKills++;
+                    if (p != null)
+                    {
+                        p.playerKills++;
+                        calculatePlayerDeathStatistics(target.GetComponent<Player>(), Death.byPlayer);
+                    }
+                    else
+                    {
+                        calculatePlayerDeathStatistics(target.GetComponent<Player>(), Death.byEnemy);
+                    }
+                    gameStatistics.totalPlayerKills++;
                 break;
         }
     }

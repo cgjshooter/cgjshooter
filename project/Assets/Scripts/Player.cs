@@ -275,6 +275,7 @@ public class Player : MonoBehaviour, ITarget
         {
             //Game over
             this.hitPoints = 0;
+            StatisticManager.calculatePlayerDeathStatistics(this, StatisticManager.Death.byJump);
         }
     }
 

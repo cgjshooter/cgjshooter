@@ -91,22 +91,6 @@ public class Bullet : MonoBehaviour, IAmmunition {
             e.hitPoints -= rawDamage;
 
             StatisticManager.calculateDamageStatistics(this, target, rawDamage);
-            // is the shooter a player? If yes, which one?
-            /*
-            StatisticManager.PlayerStatistics p = null;
-            if (this.shooter != null && this.shooter.tag == "Player")
-            {
-                p = StatisticManager.playerStatistics[this.shooter.GetComponent<Player>().playerId];
-                p.damageDealt += this.damage; //c
-                p.rawDamageDealt += rawDamage; //c
-            }
-            
-            if(target.tag == "Player")
-            {
-                StatisticManager.playerStatistics[target.GetComponent<Player>().playerId].damageTaken += this.damage; //c
-                StatisticManager.playerStatistics[target.GetComponent<Player>().playerId].rawDamageTaken += rawDamage; //c
-            }
-            */
 
             //Weaken armor by blocked amount. Divider is just some weakening value that needs to be tweaked.
             e.armor -= blocked / 30f;
@@ -116,24 +100,6 @@ public class Bullet : MonoBehaviour, IAmmunition {
             {
                 // Target just died
                 StatisticManager.calculateKillStatistics(this, target);
-                /*
-                // Target killed ++ //c
-                switch (target.tag)
-                {
-                    case "Enemy":
-                        Enemy enemy = (Enemy)e;
-                        if (p != null) p.enemyKills[enemy.type]++;
-                        StatisticManager.gameStatistics.totalEnemyKills++;
-                        break;
-                    case "spawner":
-                        if (p != null) p.spawnerKills++;
-                        StatisticManager.gameStatistics.totalSpawnerKills++;
-                        break;
-                    case "Player":
-                        if (p != null) p.playerKills++;
-                        StatisticManager.gameStatistics.totalPlayerKills++;
-                        break;
-                }*/
 
             }
         }

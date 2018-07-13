@@ -12,10 +12,10 @@ public class StatisticManager : MonoBehaviour {
 
     public class GameStatistics
     {
-        public float totalGameTime;
-        public int totalEnemyKills;
-        public int totalSpawnerKills;
-        public int totalPlayerKills;
+        public float totalGameTime; //c
+        public int totalEnemyKills; //c
+        public int totalSpawnerKills; //c
+        public int totalPlayerKills; //c
         public int totalBulletsShot; // by players and enemies
         public int totalShots;
         public int totalLevelsCompleted;
@@ -23,9 +23,9 @@ public class StatisticManager : MonoBehaviour {
 
     public class PlayerStatistics
     {
-        public Dictionary<Enemy, int> enemyKills;
-        public int playerKills;
-        public int spawnerKills;
+        public Dictionary<Enemy, int> enemyKills; //c
+        public int playerKills; //c
+        public int spawnerKills; //c
         public float damageTaken;
         public float damageDealt;
         public Dictionary<Powerups, int> powerupsCollected;

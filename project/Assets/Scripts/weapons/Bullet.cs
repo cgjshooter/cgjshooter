@@ -107,6 +107,8 @@ public class Bullet : MonoBehaviour, IAmmunition {
                 switch (target.tag)
                 {
                     case "Enemy":
+                        Enemy enemy = (Enemy)e;
+                        if (p != null) p.enemyKills[enemy.type]++;
                         StatisticManager.gameStatistics.totalEnemyKills++;
                         break;
                     case "spawner":

@@ -20,6 +20,7 @@ public class PlayerSelect : MonoBehaviour {
     public float exitTime;
     public float exitStart;
     public bool exiting;
+    bool showText = true;
 
     // Use this for initialization
     void Start () {
@@ -58,6 +59,7 @@ public class PlayerSelect : MonoBehaviour {
         if(exiting)
         {
             this.transform.Find("fadeout").GetComponent<Image>().color = new Color(0f, 0f, 0f, Mathf.Clamp((Time.time - exitStart) / exitTime, 0f, 1f));
+            if(mode != 2)
             this.transform.Find("fadeout/Text").GetComponent<Text>().color = new Color(1f, 1f, 1f, Mathf.Clamp((Time.time - exitStart-0.75f) / (exitTime-0.75f), 0f, 1f));
         }
         else
@@ -144,12 +146,20 @@ public class PlayerSelect : MonoBehaviour {
         {
             if(ps.active)
             {
-                Invoke("moveToGame", 2f);
-                Invoke("fadeOut", 1f);
-                if(id == 1)
-                    p.transform.Find("Text").GetComponent<Text>().text = "Starting!\nEsc\nto cancel";
+                if(mode !=2)
+                {
+                    Invoke("moveToGame", 2f);
+                    Invoke("fadeOut", 1f);
+                }
                 else
-                    p.transform.Find("Text").GetComponent<Text>().text = "Starting!\nBack\nto cancel";
+                {
+                    moveToGame();
+                    if (id == 1)
+                        p.transform.Find("Text").GetComponent<Text>().text = "Starting!\nEsc\nto cancel";
+                    else
+                        p.transform.Find("Text").GetComponent<Text>().text = "Starting!\nBack\nto cancel";
+                }
+
             }
             else
             {
@@ -183,6 +193,7 @@ public class PlayerSelect : MonoBehaviour {
         else if(mode == 2)
         {
             //Custom
+            SceneManager.LoadScene("intro_custom_select");
         }
         else
         {

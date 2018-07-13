@@ -15,7 +15,8 @@ public class PowerUpSpawner : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         this.robin =new List<GameObject>();
-        Invoke("spawnNext", UnityEngine.Random.value * (powerUpSpawnMaxDelay-powerUpSpawnMinDelay) + powerUpSpawnMinDelay);
+        if(GameConfig.allowPowerups)
+           Invoke("spawnNext", UnityEngine.Random.value * (powerUpSpawnMaxDelay-powerUpSpawnMinDelay) + powerUpSpawnMinDelay);
 	}
 	
 	// Update is called once per frame

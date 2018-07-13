@@ -12,32 +12,32 @@ public class StatisticManager : MonoBehaviour {
 
     public class GameStatistics
     {
-        public float totalGameTime=0; //CC
-        public int totalEnemyKills = 0; //c
-        public int totalSpawnerKills = 0; //c
-        public int totalPlayerKills = 0; //c
-        public int totalBulletsShot = 0; // by players and enemies
-        public int totalShots = 0;
-        public int totalLevelsCompleted = 0;
+        public float totalGameTime = 0; //CC
+		public int totalEnemyKills = 0; //cc
+		public int totalSpawnerKills = 0; //cc
+		public int totalPlayerKills = 0; //cc
+		public int totalBulletsShot = 0; //cc by players and enemies
+		public int totalShots = 0; //cc
+		public int totalLevelsCompleted = 0;
     };
 
     public class PlayerStatistics
     {
-        public Dictionary<EnemyType, int> enemyKills; //c
-        public int playerKills = 0; //c
-        public int spawnerKills = 0; //c
-        public float damageTaken = 0; //c
-        public float rawDamageTaken = 0; //c
-        public float damageDealt = 0; //c
-        public float rawDamageDealt = 0; //c
+        public Dictionary<EnemyType, int> enemyKills; //cc
+		public int playerKills = 0; //cc
+		public int spawnerKills = 0; //cc
+		public float damageTaken = 0; //cc
+		public float rawDamageTaken = 0; //cc
+		public float damageDealt = 0; //cc
+		public float rawDamageDealt = 0; //cc
         public Dictionary<Powerups, int> powerupsCollected;
         public Dictionary<Powerups, int> powerupsUsed;
         public float hitpointsHealed = 0;
         public Dictionary<Death, int> deaths;
-        public int survivedLevels = 0;
-        public int totalBulletsShot = 0;
-        public int totalShots = 0;
-        public Dictionary<Targets, int> totalHits; // sum = total shots hit //c
+		public int survivedLevels = 0;
+		public int totalBulletsShot = 0; //cc
+		public int totalShots = 0; //cc
+        public Dictionary<Targets, int> totalHits; // sum = total shots hit
         public Dictionary<Weapon, float> weaponTimeUsed;
     };
 
@@ -115,6 +115,22 @@ public class StatisticManager : MonoBehaviour {
     void Reset ()
     {
 
+    }
+    public static void calculateHitStatistics(Player player)
+    {
+        
+    }
+
+    public static void calculateShotStatistics(Player player, int bulletAmount)
+    {
+        // player == null -> shot by enemy
+        if(player != null)
+        {
+            playerStatistics[player.playerId].totalBulletsShot += bulletAmount;
+            playerStatistics[player.playerId].totalShots += 1;
+        }
+        gameStatistics.totalShots += 1;
+        gameStatistics.totalBulletsShot += bulletAmount;
     }
 
     public static void calculateDamageStatistics(IAmmunition ammo, GameObject target, float damage, float rawDamage)

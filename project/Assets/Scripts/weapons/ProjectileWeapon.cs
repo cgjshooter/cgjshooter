@@ -49,7 +49,7 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
     public float bulletSpeedRandomFactor;
     public float firedelay;
     public float bulletspeed;
-    public float bulletAmount;
+    public int bulletAmount;
     public float bulletDamage;
     public float heightAngle;
     public float effectRadius;
@@ -158,6 +158,9 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
                 go.GetComponent<IAmmunition>().bulletToShotRatio = 1 / this.bulletAmount;
                 
             }
+
+            StatisticManager.calculateShotStatistics(pl, bulletAmount);
+
             this.previousActivation = Time.time;
         }
     }

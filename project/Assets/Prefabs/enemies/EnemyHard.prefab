@@ -302,6 +302,7 @@ MonoBehaviour:
   - {fileID: 1520028987011832, guid: bd908c48c86efc24b9c99b2e6123e634, type: 2}
   death: {fileID: 1679922544137592}
   ramDamage: 2
+  type: 2
   _armor: 0.25
   _invulnerable: 0
   _invisible: 0

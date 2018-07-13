@@ -12,7 +12,7 @@ public class StatisticManager : MonoBehaviour {
 
     public class GameStatistics
     {
-        public float totalGameTime; //c
+        public float totalGameTime; //CC
         public int totalEnemyKills; //c
         public int totalSpawnerKills; //c
         public int totalPlayerKills; //c
@@ -26,8 +26,10 @@ public class StatisticManager : MonoBehaviour {
         public Dictionary<Enemy, int> enemyKills; //c
         public int playerKills; //c
         public int spawnerKills; //c
-        public float damageTaken;
-        public float damageDealt;
+        public float damageTaken; //c
+        public float rawDamageTaken; //c
+        public float damageDealt; //c
+        public float rawDamageDealt; //c
         public Dictionary<Powerups, int> powerupsCollected;
         public Dictionary<Powerups, int> powerupsUsed;
         public float hitpointsHealed;
@@ -35,7 +37,7 @@ public class StatisticManager : MonoBehaviour {
         public int survivedLevels;
         public int totalBulletsShot;
         public int totalShots;
-        public Dictionary<Targets, int> totalHits; // sum = total shots hit
+        public Dictionary<Targets, int> totalHits; // sum = total shots hit //c
         public Dictionary<Weapon, float> weaponTimeUsed;
     };
 
@@ -69,5 +71,47 @@ public class StatisticManager : MonoBehaviour {
     void Reset ()
     {
 
+    }
+
+    public static void calculateDamageStatistics(IAmmunition ammo, GameObject target, float rawDamage)
+    {
+        if (ammo.shooter != null && ammo.shooter.tag == "Player")
+        {
+            //p = this.playerStatistics[ammo.shooter.GetComponent<Player>().playerId];
+            playerStatistics[ammo.shooter.GetComponent<Player>().playerId].damageDealt += ammo.damage; //c
+            playerStatistics[ammo.shooter.GetComponent<Player>().playerId].rawDamageDealt += rawDamage; //c
+        }
+
+        if (target.tag == "Player")
+        {
+            playerStatistics[target.GetComponent<Player>().playerId].damageTaken += ammo.damage; //c
+            playerStatistics[target.GetComponent<Player>().playerId].rawDamageTaken += rawDamage; //c
+        }
+    }
+
+    public static void calculateKillStatistics(IAmmunition ammo, GameObject target)
+    {
+        PlayerStatistics p = null;
+        if (ammo.shooter != null && ammo.shooter.tag == "Player")
+        {
+            p = playerStatistics[ammo.shooter.GetComponent<Player>().playerId];
+        }
+
+        // Target killed ++ //c
+        switch (target.tag)
+        {
+            case "Enemy":
+                if (p != null) p.enemyKills[target.GetComponent<Enemy>().type]++;
+                gameStatistics.totalEnemyKills++;
+                break;
+            case "spawner":
+                if (p != null) p.spawnerKills++;
+                gameStatistics.totalSpawnerKills++;
+                break;
+            case "Player":
+                if (p != null) p.playerKills++;
+                gameStatistics.totalPlayerKills++;
+                break;
+        }
     }
 }

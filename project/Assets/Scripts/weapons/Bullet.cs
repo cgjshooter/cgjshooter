@@ -87,23 +87,37 @@ public class Bullet : MonoBehaviour, IAmmunition {
         {
             float blocked = this.damage * Mathf.Clamp((e.armor), 0.1f, 1f);
             float before = e.hitPoints;
-            e.hitPoints -= this.damage - blocked;
+            float rawDamage = this.damage - blocked;
+            e.hitPoints -= rawDamage;
+
+            StatisticManager.calculateDamageStatistics(this, target, rawDamage);
+            // is the shooter a player? If yes, which one?
+            /*
+            StatisticManager.PlayerStatistics p = null;
+            if (this.shooter != null && this.shooter.tag == "Player")
+            {
+                p = StatisticManager.playerStatistics[this.shooter.GetComponent<Player>().playerId];
+                p.damageDealt += this.damage; //c
+                p.rawDamageDealt += rawDamage; //c
+            }
+            
+            if(target.tag == "Player")
+            {
+                StatisticManager.playerStatistics[target.GetComponent<Player>().playerId].damageTaken += this.damage; //c
+                StatisticManager.playerStatistics[target.GetComponent<Player>().playerId].rawDamageTaken += rawDamage; //c
+            }
+            */
+
             //Weaken armor by blocked amount. Divider is just some weakening value that needs to be tweaked.
             e.armor -= blocked / 30f;
             if (e.armor < 0) e.armor = 0f;
 
             if (e.dead && before > 0)
             {
-                // Target just dyed
-
-                // who is the killer?
-                StatisticManager.PlayerStatistics p = null;
-                if (this.shooter != null && this.shooter.tag == "Player")
-                {
-                    p = StatisticManager.playerStatistics[this.shooter.GetComponent<Player>().playerId];
-                }
-
-                // Target killed ++
+                // Target just died
+                StatisticManager.calculateKillStatistics(this, target);
+                /*
+                // Target killed ++ //c
                 switch (target.tag)
                 {
                     case "Enemy":
@@ -119,7 +133,7 @@ public class Bullet : MonoBehaviour, IAmmunition {
                         if (p != null) p.playerKills++;
                         StatisticManager.gameStatistics.totalPlayerKills++;
                         break;
-                }
+                }*/
 
             }
         }

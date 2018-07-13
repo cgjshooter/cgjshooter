@@ -153,6 +153,7 @@ public class MainControl : MonoBehaviour {
             {
                 Debug.Log("WINNER!");
                 running = false;
+                StatisticManager.gameStatistics.totalGameTime += (Time.time - startTime);
                 PlayerPrefs.SetInt("attack_complete", 1);
                 Invoke("showWinPre", 3f);
             }
@@ -166,6 +167,7 @@ public class MainControl : MonoBehaviour {
         if (alldead)
         {
             running = false;
+            StatisticManager.gameStatistics.totalGameTime += (Time.time - startTime);
             ui.GetComponent<UIManager>().showEnd();
         }
 

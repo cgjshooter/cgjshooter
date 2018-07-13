@@ -140,6 +140,8 @@ public class Enemy : MonoBehaviour, ITarget {
 
     void deathDone()
     {
+
+        StatisticManager.gameStatistics.totalEnemyKills += 1;
         GameObject.Destroy(this.gameObject);
     }
 

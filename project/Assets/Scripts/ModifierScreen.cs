@@ -51,7 +51,7 @@ public class ModifierScreen : MonoBehaviour {
     private string[] arenas = new string[] { "Arena!", "Arena mini!", "Mazed!" };
     private string[] arenaDescriptions = new string[] { "Battle in a classic\narena style\nsurvival challenge",
         "Space is very limited\nin this level.\nMind your step!", "Stuck in a maze?\nFind your\nway out." };
-    private string[] arenaLevels = new string[] { "scene_henri_3_neon", "scene_henri_3_neon", "scene_henri_3_neon" };
+    private string[] arenaLevels = new string[] { "scene_henri_3_neon", "scene_henri_3_mini", "scene_henri_3_maze" };
     private Sprite[] arenaImages;
 
     // Update is called once per frame
@@ -61,6 +61,7 @@ public class ModifierScreen : MonoBehaviour {
         {
             this.transform.Find("fadeout").GetComponent<Image>().color = new Color(0f, 0f, 0f, Mathf.Clamp((Time.time - exitStart) / exitTime, 0f, 1f));
             this.transform.Find("fadeout/Text").GetComponent<Text>().color = new Color(1f, 1f, 1f, Mathf.Clamp((Time.time - exitStart - 0.75f) / (exitTime - 0.75f), 0f, 1f));
+            GameObject.Find("Sounds").GetComponent<AudioSource>().volume = 1f - Mathf.Clamp((Time.time - exitStart) / exitTime, 0f, 1f);
         }
         else
         {

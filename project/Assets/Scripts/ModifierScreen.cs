@@ -7,6 +7,13 @@ using UnityEngine.SceneManagement;
 
 public class ModifierScreen : MonoBehaviour {
 
+    public Sprite preview1;
+    public Sprite preview2;
+    public Sprite preview3;
+
+
+    public GameObject playerscreen;
+
     int modYpos = 0;
     int level = 0;
     int difficulty = 2;
@@ -38,14 +45,15 @@ public class ModifierScreen : MonoBehaviour {
         activeHilight = active.Find("Image").gameObject;
         activeHilight.SetActive(false);
         activeStart = active.localPosition;
+        arenaImages = new Sprite[] { preview1, preview2, preview3 };
     }
 
     private string[] arenas = new string[] { "Arena!", "Arena mini!", "Mazed!" };
     private string[] arenaDescriptions = new string[] { "Battle in a classic\narena style\nsurvival challenge",
         "Space is very limited\nin this level.\nMind your step!", "Stuck in a maze?\nFind your\nway out." };
     private string[] arenaLevels = new string[] { "scene_henri_3_neon", "scene_henri_3_neon", "scene_henri_3_neon" };
-    
-   
+    private Sprite[] arenaImages;
+
     // Update is called once per frame
     void Update () {
 
@@ -180,7 +188,8 @@ public class ModifierScreen : MonoBehaviour {
            CrossPlatformInputManager.GetButtonUp("p3Cancel") ||
            CrossPlatformInputManager.GetButtonUp("p4Cancel")))
         {
-            SceneManager.LoadScene("intro_player_select");
+            playerscreen.SetActive(true);
+            this.gameObject.SetActive(false);
         }
 
         //Update mod state
@@ -203,13 +212,14 @@ public class ModifierScreen : MonoBehaviour {
         v.x = 120f + 40 * difficulty;
         this.difficultySlider.localPosition = v;
 
-        GameConfig.difficulty = 1f * (difficulty - 2) * 0.2f;
-        GameConfig.speedMultiplier = 1f * (speed - 2) * 0.2f;
-
+        GameConfig.difficulty = difficultyValues[difficulty];
+        GameConfig.speedMultiplier = speedValues[speed];
 
         this.transform.Find("modifiers/mod_friendly_fire/active").GetComponent<Image>().enabled = GameConfig.friendlyFire;
         this.transform.Find("modifiers/mod_allow_powerups/active").GetComponent<Image>().enabled = GameConfig.allowPowerups;
     }
+    float[] difficultyValues = { 0.5f, 0.85f, 1f, 1.3f, 1.7f };
+    float[] speedValues = { 0.8f, 0.9f, 1f, 1.1f, 1.2f };
 
     void loadLevel(int target)
     {
@@ -218,7 +228,7 @@ public class ModifierScreen : MonoBehaviour {
 
         transform.Find("level/info/title").GetComponent<Text>().text = title;
         transform.Find("level/info/description").GetComponent<Text>().text = description;
-
+        transform.Find("level/info/Image").GetComponent<Image>().sprite = arenaImages[target%arenaImages.Length];
     }
 
     void moveToGame()

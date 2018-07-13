@@ -145,7 +145,7 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
                 else
                 {
                     //Enemies shoot halved speed.s
-                    addSpeed = 0.5f*GameConfig.difficulty;
+                    addSpeed = 0.1f*GameConfig.difficulty;
                     addDamage *= GameConfig.difficulty;
                 }
            //     Debug.Log("Shoot angle: " + add);

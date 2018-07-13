@@ -9,6 +9,7 @@ public class PlayerSelect : MonoBehaviour {
 
     public List<GameObject> weapons;
 
+    public GameObject customscenario;
     public GameObject p1;
     public GameObject p2;
     public GameObject p3;
@@ -43,10 +44,10 @@ public class PlayerSelect : MonoBehaviour {
         if (PlayerPrefs.HasKey("attack_complete"))
         {
             this.transform.Find("custom/locked").gameObject.SetActive(false);
-            this.transform.Find("custom/Image/Text").gameObject.GetComponent<Text>().color= new Color(1,1,1,1);
-
+            this.transform.Find("custom").gameObject.GetComponent<Text>().color= new Color(1,1,1,1);
         }
 
+        this.customscenario.SetActive(false);
     }
 
     // Update is called once per frame
@@ -72,7 +73,6 @@ public class PlayerSelect : MonoBehaviour {
         this.transform.Find("timeattack/Image/Text").GetComponent<Text>().text = Mathf.Floor(Time.time*0.5f) % 2 == 0 ? "B" : "2";
         this.transform.Find("custom/Image/Text").GetComponent<Text>().text = Mathf.Floor(Time.time * 0.5f) % 2 == 0 ? "X" : "3";
         this.transform.Find("credits/Image/Text").GetComponent<Text>().text = Mathf.Floor(Time.time * 0.5f) % 2 == 0 ? "X" : "4";
-
 
         if (CrossPlatformInputManager.GetButton("p1SelectItem1") ||
             CrossPlatformInputManager.GetButton("p2SelectItem1") ||
@@ -150,14 +150,15 @@ public class PlayerSelect : MonoBehaviour {
                 {
                     Invoke("moveToGame", 2f);
                     Invoke("fadeOut", 1f);
-                }
-                else
-                {
-                    moveToGame();
                     if (id == 1)
                         p.transform.Find("Text").GetComponent<Text>().text = "Starting!\nEsc\nto cancel";
                     else
                         p.transform.Find("Text").GetComponent<Text>().text = "Starting!\nBack\nto cancel";
+                }
+                else
+                {
+                    moveToGame();
+                    
                 }
 
             }
@@ -193,7 +194,9 @@ public class PlayerSelect : MonoBehaviour {
         else if(mode == 2)
         {
             //Custom
-            SceneManager.LoadScene("intro_custom_select");
+            this.customscenario.SetActive(true);
+            this.gameObject.SetActive(false);
+//            SceneManager.LoadScene("intro_custom_select");
         }
         else
         {

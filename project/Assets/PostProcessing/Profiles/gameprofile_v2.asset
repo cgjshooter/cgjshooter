@@ -128,10 +128,10 @@ MonoBehaviour:
     value: 0
   gShift:
     overrideState: 1
-    value: -0.01
+    value: 0
   bShift:
     overrideState: 1
-    value: 0.01
+    value: 0
 --- !u!114 &114763055069841018
 MonoBehaviour:
   m_ObjectHideFlags: 3

@@ -292,6 +292,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb6a4314e072de54abaf66979f576c0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  preview1: {fileID: 21300000, guid: 30862c73b88a3874c9debef132b942f7, type: 3}
+  preview2: {fileID: 21300000, guid: 96246656f723ab64184fe5efd9267c31, type: 3}
+  preview3: {fileID: 21300000, guid: 30862c73b88a3874c9debef132b942f7, type: 3}
+  playerscreen: {fileID: 0}
   exitTime: 1
   exitStart: 0
   exiting: 0

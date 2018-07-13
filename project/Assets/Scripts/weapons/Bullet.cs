@@ -103,7 +103,7 @@ public class Bullet : MonoBehaviour, IAmmunition {
             float rawDamage = this.damage - blocked;
             e.hitPoints -= rawDamage;
 
-            StatisticManager.calculateDamageStatistics(this, target, rawDamage);
+            StatisticManager.calculateDamageStatistics(this, target, this.damage, rawDamage);
 
             //Weaken armor by blocked amount. Divider is just some weakening value that needs to be tweaked.
             e.armor -= blocked / 30f;
@@ -113,7 +113,6 @@ public class Bullet : MonoBehaviour, IAmmunition {
             {
                 // Target just died
                 StatisticManager.calculateKillStatistics(this, target);
-
             }
         }
     }

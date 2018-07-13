@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StatisticManager : MonoBehaviour {
 
-    public enum EnemyEnum { easy, normal, hard };
+    public enum EnemyType { easy, normal, hard };
     public enum Death { byJump, byEnemy, byPlayer };
     public enum Weapon { DualWield, Grenade, GrenadeHand, Mine, MiniGun, Pistol, Rocket, SawnShotgun, Shotgun };
     public enum Powerups { damage, health, shield, speed, weaponspeed };
@@ -23,7 +23,7 @@ public class StatisticManager : MonoBehaviour {
 
     public class PlayerStatistics
     {
-        public Dictionary<EnemyEnum, int> enemyKills; //c
+        public Dictionary<EnemyType, int> enemyKills; //c
         public int playerKills; //c
         public int spawnerKills; //c
         public float damageTaken; //c
@@ -53,7 +53,7 @@ public class StatisticManager : MonoBehaviour {
         for(int i = 1; i <= 4; ++i)
         {
             var ps = new PlayerStatistics();
-            ps.enemyKills = new Dictionary<EnemyEnum, int>();
+            ps.enemyKills = new Dictionary<EnemyType, int>();
             ps.powerupsCollected = new Dictionary<Powerups, int>();
             ps.powerupsUsed = new Dictionary<Powerups, int>();
             ps.deaths = new Dictionary<Death, int>();
@@ -73,18 +73,18 @@ public class StatisticManager : MonoBehaviour {
 
     }
 
-    public static void calculateDamageStatistics(IAmmunition ammo, GameObject target, float rawDamage)
+    public static void calculateDamageStatistics(IAmmunition ammo, GameObject target, float damage, float rawDamage)
     {
         if (ammo.shooter != null && ammo.shooter.tag == "Player")
         {
             //p = this.playerStatistics[ammo.shooter.GetComponent<Player>().playerId];
-            playerStatistics[ammo.shooter.GetComponent<Player>().playerId].damageDealt += ammo.damage; //c
+            playerStatistics[ammo.shooter.GetComponent<Player>().playerId].damageDealt += damage; //c
             playerStatistics[ammo.shooter.GetComponent<Player>().playerId].rawDamageDealt += rawDamage; //c
         }
 
         if (target.tag == "Player")
         {
-            playerStatistics[target.GetComponent<Player>().playerId].damageTaken += ammo.damage; //c
+            playerStatistics[target.GetComponent<Player>().playerId].damageTaken += damage; //c
             playerStatistics[target.GetComponent<Player>().playerId].rawDamageTaken += rawDamage; //c
         }
     }

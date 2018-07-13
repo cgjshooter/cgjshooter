@@ -179,14 +179,24 @@ public class Grenade : MonoBehaviour, IAmmunition{
                 damage = this.damage;
                 Debug.Log("Use this damage");
             }
-            Debug.Log("damge: " + damage);    
+            Debug.Log("damage: " + damage);    
             
             float blocked = damage * Mathf.Clamp((e.armor), 0.1f, 1f);
+            float before = e.hitPoints;
+            float rawDamage = damage - blocked;
+            e.hitPoints -= rawDamage;
 
-            e.hitPoints -= damage - blocked;
+            StatisticManager.calculateDamageStatistics(this, target, damage, rawDamage);
+
             //Weaken armor by blocked amount. Divider is just some weakening value that needs to be tweaked.
             e.armor -= blocked / 15f;
             if (e.armor < 0) e.armor = 0f;
+
+            if (e.dead && before > 0)
+            {
+                // Target just died
+                StatisticManager.calculateKillStatistics(this, target);
+            }
         }
     }
 }

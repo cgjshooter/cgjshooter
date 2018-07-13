@@ -32,7 +32,7 @@ public class StatisticManager : MonoBehaviour {
 		public float rawDamageDealt = 0; //cc
         public Dictionary<Powerups, int> powerupsUsed; //cc
         public float hitpointsHealed = 0;
-        public Dictionary<Death, int> deaths;
+        public Dictionary<Death, int> deaths; //cc
 		public int survivedLevels = 0;
 		public int totalBulletsShot = 0; //cc
 		public int totalShots = 0; //cc
@@ -116,9 +116,14 @@ public class StatisticManager : MonoBehaviour {
         playerStatistics[player.playerId].powerupsUsed[powerup]++;
     }
 
-    public static void calculateHitStatistics(Player player)
+    public static void calculatePlayerDeathStatistics(Player player, Death cause)
     {
-        
+        playerStatistics[player.playerId].deaths[cause]++;
+    }
+
+    public static void calculateHitStatistics(Player player, Targets type)
+    {
+        playerStatistics[player.playerId].totalHits[type]++;
     }
 
     public static void calculateShotStatistics(Player player, int bulletAmount)
@@ -161,16 +166,24 @@ public class StatisticManager : MonoBehaviour {
         switch (target.tag)
         {
             case "Enemy":
-                if (p != null) p.enemyKills[target.GetComponent<Enemy>().type]++;
-                gameStatistics.totalEnemyKills++;
+                    if (p != null) p.enemyKills[target.GetComponent<Enemy>().type]++;
+                    gameStatistics.totalEnemyKills++;
                 break;
             case "spawner":
-                if (p != null) p.spawnerKills++;
-                gameStatistics.totalSpawnerKills++;
+                    if (p != null) p.spawnerKills++;
+                    gameStatistics.totalSpawnerKills++;
                 break;
             case "Player":
-                if (p != null) p.playerKills++;
-                gameStatistics.totalPlayerKills++;
+                    if (p != null)
+                    {
+                        p.playerKills++;
+                        calculatePlayerDeathStatistics(target.GetComponent<Player>(), Death.byPlayer);
+                    }
+                    else
+                    {
+                        calculatePlayerDeathStatistics(target.GetComponent<Player>(), Death.byEnemy);
+                    }
+                    gameStatistics.totalPlayerKills++;
                 break;
         }
     }

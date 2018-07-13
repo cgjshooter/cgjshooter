@@ -2451,6 +2451,425 @@ Prefab:
       propertyPath: m_Name
       value: powerups
       objectReference: {fileID: 0}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[6]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[7]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[8]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[9]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[10]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[11]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[12]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[13]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[14]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[15]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[16]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[17]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[18]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[19]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[20]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[21]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[22]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[23]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[24]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[25]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[26]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[27]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[28]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[29]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[30]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[31]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[32]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[33]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[34]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[35]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[36]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[37]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[38]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[39]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[40]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[41]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[42]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[43]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[44]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[45]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[46]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[47]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[48]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[49]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[50]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[51]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[52]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[53]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[54]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[55]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[56]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[57]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[58]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[59]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[60]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[61]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[62]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[63]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[64]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[65]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[66]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[67]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[68]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[69]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[70]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[71]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[72]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[73]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerupPrefabs.Array.data[74]
+      value: 
+      objectReference: {fileID: 1569151068804318, guid: 5996c073acb2eac46a90fec8d2f767d8,
+        type: 2}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: spawnRadius
+      value: 75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4b3fa7013fcb0ee478232beb7eabf6e6, type: 2}
   m_IsPrefabParent: 0

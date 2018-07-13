@@ -21,7 +21,7 @@ public class MoodManager : MonoBehaviour {
     private AudioSource as4;
     private AudioSource as5;
 
-    private float[] targetSpeeds = new float[5] { 1f, 0.7f, 1f, 1.5f, 0.4f };
+    private float[] targetSpeeds = new float[5] { 1f, 0.7f, 1f, 1.25f, 0.4f };
 
     // Use this for initialization
     void Start () {
@@ -72,7 +72,7 @@ public class MoodManager : MonoBehaviour {
         if(highInd > targetSpeeds.Length-1) highInd = targetSpeeds.Length-1;
         float dif = blend - lowInd;
 
-        Time.timeScale = Mathf.Lerp(targetSpeeds[lowInd], targetSpeeds[highInd], dif);
+        Time.timeScale = Mathf.Lerp(targetSpeeds[lowInd], targetSpeeds[highInd], dif) * GameConfig.speedMultiplier;
 
         // Material Lerping
         GameObject.Find("Ground").GetComponent<Renderer>().material.Lerp(this.moodMaterials[lowInd], this.moodMaterials[highInd], dif);
@@ -89,7 +89,7 @@ public class MoodManager : MonoBehaviour {
         this.target = target;
         //TODO - animate mood info text.
         Invoke("spawnersIn", 8f);
-        Invoke("counterIn", 4f);
+        Invoke("counterIn", 6.4f);
     }
 
     private void counterIn()

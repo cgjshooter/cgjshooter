@@ -89,6 +89,12 @@ public class MoodManager : MonoBehaviour {
             as4.loop = true;
             as4.Play();
         }
+        if (target == 0 && !as1.isPlaying)
+        {
+            as1.clip = as4_part2;
+            as1.loop = true;
+            as1.Play();
+        }
     }
 
     public void showMood(int target)

@@ -53,13 +53,13 @@ public class MainControl : MonoBehaviour {
                     activePlayers.Add(player);
             }
         }
-
-        //TODO - initialize player amount based on player selection.
-        //TODO - make sure they have correct player ids (controller based).
+        //Update 
+        GameConfig.difficultyMultiplier = GameConfig.difficulty * (1f + (activePlayers.Count - 1) / 3);
 
         //TODO - populate modifiers based by level generation / modifiers.
         
         //Populate active modifiers
+        //Modifiers purely in code for now as time didnt allow proper implementatiton to unity editor.
         activeModifiers = new List<GameObject>();
         foreach(GameObject modifier in modifiers)
         {

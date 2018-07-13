@@ -65,7 +65,7 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
     private static Dictionary<GameObject, List<GameObject>> bulletPoolEnemy;
     private static Dictionary<GameObject, int> bulletIndicesEnemy;
 
-    private static int bulletPoolSize = 1000;
+    private static int bulletPoolSize = 2000;
 
     // Use this for initialization
     void Start () {
@@ -145,8 +145,8 @@ public class ProjectileWeapon : MonoBehaviour, IItem {
                 else
                 {
                     //Enemies shoot halved speed.s
-                    addSpeed = 0.5f*GameConfig.difficultyMultiplier;
-                    addDamage *= GameConfig.difficultyMultiplier;
+                    addSpeed = 0.5f*GameConfig.difficulty;
+                    addDamage *= GameConfig.difficulty;
                 }
            //     Debug.Log("Shoot angle: " + add);
                 go.GetComponent<IAmmunition>().shooter = player;

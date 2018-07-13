@@ -7,7 +7,7 @@ public class StatisticManager : MonoBehaviour {
     public enum EnemyType { easy, normal, hard };
     public enum Death { byJump, byEnemy, byPlayer };
     public enum Weapon { DualWield, Grenade, GrenadeHand, Mine, MiniGun, Pistol, Rocket, SawnShotgun, Shotgun };
-    public enum Powerups { damage, health, shield, speed, weaponspeed };
+    public enum Powerups { damageboost, health, invulnerability, shield, speed, weaponspeed };
     public enum Targets { player, enemy, spawner, obstacle };
 
     public class GameStatistics
@@ -30,8 +30,7 @@ public class StatisticManager : MonoBehaviour {
 		public float rawDamageTaken = 0; //cc
 		public float damageDealt = 0; //cc
 		public float rawDamageDealt = 0; //cc
-        public Dictionary<Powerups, int> powerupsCollected;
-        public Dictionary<Powerups, int> powerupsUsed;
+        public Dictionary<Powerups, int> powerupsUsed; //cc
         public float hitpointsHealed = 0;
         public Dictionary<Death, int> deaths;
 		public int survivedLevels = 0;
@@ -54,7 +53,6 @@ public class StatisticManager : MonoBehaviour {
         {
             var ps = new PlayerStatistics();
             ps.enemyKills = new Dictionary<EnemyType, int>();
-            ps.powerupsCollected = new Dictionary<Powerups, int>();
             ps.powerupsUsed = new Dictionary<Powerups, int>();
 
             ps.deaths = new Dictionary<Death, int>();
@@ -73,14 +71,9 @@ public class StatisticManager : MonoBehaviour {
             ps.enemyKills.Add(EnemyType.normal, 0);
             ps.enemyKills.Add(EnemyType.hard, 0);
 
-            ps.powerupsCollected.Add(Powerups.damage, 0);
-            ps.powerupsCollected.Add(Powerups.health, 0);
-            ps.powerupsCollected.Add(Powerups.shield, 0);
-            ps.powerupsCollected.Add(Powerups.speed, 0);
-            ps.powerupsCollected.Add(Powerups.weaponspeed, 0);
-
-            ps.powerupsUsed.Add(Powerups.damage, 0);
+            ps.powerupsUsed.Add(Powerups.damageboost, 0);
             ps.powerupsUsed.Add(Powerups.health, 0);
+            ps.powerupsUsed.Add(Powerups.invulnerability, 0);
             ps.powerupsUsed.Add(Powerups.shield, 0);
             ps.powerupsUsed.Add(Powerups.speed, 0);
             ps.powerupsUsed.Add(Powerups.weaponspeed, 0);
@@ -114,8 +107,15 @@ public class StatisticManager : MonoBehaviour {
 
     void Reset ()
     {
-
+        // save
+        // init
     }
+
+    public static void calculatePowerupStatistics(Player player, Powerups powerup)
+    {
+        playerStatistics[player.playerId].powerupsUsed[powerup]++;
+    }
+
     public static void calculateHitStatistics(Player player)
     {
         

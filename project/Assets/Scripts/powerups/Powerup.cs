@@ -57,6 +57,8 @@ public class Powerup : MonoBehaviour, IItem {
     public float activeTime;
     public float speedBoost;
 
+    public StatisticManager.Powerups type;
+
     // Use this for initialization
     void Start () {
 		
@@ -123,6 +125,8 @@ public class Powerup : MonoBehaviour, IItem {
                 p.items[p.items.IndexOf(this.gameObject.GetComponent<IItem>())] = null;
             this.gameObject.SetActive(false);
         }
+
+        StatisticManager.calculatePowerupStatistics(p, this.type);
     }
 
     public void deactivate(GameObject player)

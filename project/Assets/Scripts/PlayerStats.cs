@@ -7,27 +7,24 @@ public class PlayerStats : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        ps1 = this.transform.Find("ps1").gameObject;
-        ps2 = this.transform.Find("ps2").gameObject;
-        ps3 = this.transform.Find("ps3").gameObject;
-        ps4 = this.transform.Find("ps4").gameObject;
+      
     }
 
     // Update is called once per frame
     void Update () {
-		
-	}
-    private GameObject ps1;
-    private GameObject ps2;
-    private GameObject ps3;
-    private GameObject ps4;
-
-    private void OnEnable()
-    {
         updateStats(ps1, 1);
         updateStats(ps2, 2);
         updateStats(ps3, 3);
         updateStats(ps4, 4);
+    }
+    public GameObject ps1;
+    public GameObject ps2;
+    public GameObject ps3;
+    public GameObject ps4;
+
+    private void OnEnable()
+    {
+        
     }
 
     void updateStats(GameObject go, int playerId)

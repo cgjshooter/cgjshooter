@@ -22,6 +22,7 @@ public class PlayerSelect : MonoBehaviour {
     public float exitStart;
     public bool exiting;
     bool showText = true;
+    
 
     // Use this for initialization
     void Start () {

@@ -78,7 +78,7 @@ public class MainControl : MonoBehaviour {
 
         Invoke("spawnFirstSpawners", 5f);
 
-        if (PlayerSelect.mode == 1)
+        if (PlayerSelect.mode == 1 || PlayerSelect.mode == 2)
         {
             ui.transform.Find("timeattack").GetComponent<Text>().text = "00:00";
         }
@@ -173,7 +173,7 @@ public class MainControl : MonoBehaviour {
             ui.GetComponent<UIManager>().showEnd();
         }
 
-        if(PlayerSelect.mode == 1)
+        if(PlayerSelect.mode == 1 || PlayerSelect.mode == 2)
         {
             float t = Time.time - startTime;
             float m = Mathf.Floor(t / 60f);
@@ -213,15 +213,18 @@ public class MainControl : MonoBehaviour {
         }
 
         //Resurrect players
-        foreach (GameObject p in activePlayers)
-        {
-            if(p.GetComponent<Player>().dead)
+        if(alives.Count>0)
+        { 
+            foreach (GameObject p in activePlayers)
             {
-                p.transform.position = new Vector3(alives[0].transform.position.x, alives[0].transform.position.y + 15f, alives[0].transform.position.z);
+                if(p.GetComponent<Player>().dead)
+                {
+                    p.transform.position = new Vector3(alives[0].transform.position.x, alives[0].transform.position.y + 15f, alives[0].transform.position.z);
+                }
+                p.GetComponent<Player>().hitPoints = p.GetComponent<Player>().maxHealth;
             }
-            p.GetComponent<Player>().hitPoints = p.GetComponent<Player>().maxHealth;
         }
-        foreach( GameObject go in next)
+        foreach ( GameObject go in next)
         {
             go.SetActive(true);
             go.transform.parent = GameObject.Find("/enemyContainer").transform;

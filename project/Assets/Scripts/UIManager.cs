@@ -40,6 +40,7 @@ public class UIManager : MonoBehaviour {
                 CrossPlatformInputManager.GetButton("p3Submit")||
                 CrossPlatformInputManager.GetButton("p4Submit"))
             {
+                Time.timeScale = 1f;
                 UnityEngine.SceneManagement.SceneManager.LoadScene(0);
             }
         }

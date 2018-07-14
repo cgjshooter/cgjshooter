@@ -187,7 +187,9 @@ public class Grenade : MonoBehaviour, IAmmunition{
             e.hitPoints -= rawDamage;
 
             StatisticManager.calculateDamageStatistics(this, target, damage, rawDamage);
-
+            if (this.shooter.tag == "Player")
+                StatisticManager.calculateHitStatistics(this.shooter.GetComponent<Player>(), target.tag == "Player" ? StatisticManager.Targets.enemy : StatisticManager.Targets.spawner,
+                    1);
             //Weaken armor by blocked amount. Divider is just some weakening value that needs to be tweaked.
             e.armor -= blocked / 15f;
             if (e.armor < 0) e.armor = 0f;

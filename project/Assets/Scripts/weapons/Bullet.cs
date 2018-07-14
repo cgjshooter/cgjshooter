@@ -104,7 +104,9 @@ public class Bullet : MonoBehaviour, IAmmunition {
             e.hitPoints -= rawDamage;
 
             StatisticManager.calculateDamageStatistics(this, target, this.damage, rawDamage);
-
+            if (this.shooter.tag == "Player")
+                StatisticManager.calculateHitStatistics(this.shooter.GetComponent<Player>(), target.tag =="Player"? StatisticManager.Targets.enemy: StatisticManager.Targets.spawner,
+                    this._bulletToShotRatio);
             //Weaken armor by blocked amount. Divider is just some weakening value that needs to be tweaked.
             e.armor -= blocked / 30f;
             if (e.armor < 0) e.armor = 0f;

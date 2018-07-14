@@ -77,10 +77,24 @@ public class PlayerStats : MonoBehaviour {
         
         foreach (int v in StatisticManager.playerStatistics[playerId].totalHits.Values) hits+=v;
         if(totalShots==0)
-            go.transform.Find("hitmissratio/value").GetComponent<Text>().text = "0";
+            go.transform.Find("hitmissratio/value").GetComponent<Text>().text = "-";
         else
             go.transform.Find("hitmissratio/value").GetComponent<Text>().text = Mathf.Floor(hits/totalShots*100).ToString()+"%";
 
+        float favorite = 0;
+        StatisticManager.Weapon favWep = StatisticManager.Weapon.DualWield;
+        
+        foreach(StatisticManager.Weapon weapon in StatisticManager.playerStatistics[playerId].weaponTimeUsed.Keys)
+        {
+            var val = StatisticManager.playerStatistics[playerId].weaponTimeUsed[weapon];
+            if(val > favorite)
+            {
+                favorite = val;
+                favWep = weapon;
+            }
+        }
+        go.transform.Find("favoriteweapon/value").GetComponent<Text>().text = "";// favWep.ToString();
 
+        go.transform.Find("favoriteweapon/title").GetComponent<Text>().text = "";//
     }
 }

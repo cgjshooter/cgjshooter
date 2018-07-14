@@ -121,7 +121,7 @@ public class StatisticManager : MonoBehaviour {
         playerStatistics[player.playerId].deaths[cause]++;
     }
 
-    public static void calculateHitStatistics(Player player, Targets type)
+    public static void calculateHitStatistics(Player player, Targets type, float increase)
     {
         playerStatistics[player.playerId].totalHits[type]++;
     }

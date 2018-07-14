@@ -102,6 +102,11 @@ public class UIManager : MonoBehaviour {
 
     public void showWin()
     {
+        p1.SetActive(false);
+        p2.SetActive(false);
+        p3.SetActive(false);
+        p4.SetActive(false);
+
         endscreen.SetActive(true);
         this.gameObject.SetActive(true);
     }

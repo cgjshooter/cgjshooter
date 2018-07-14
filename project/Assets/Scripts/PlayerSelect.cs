@@ -35,6 +35,14 @@ public class PlayerSelect : MonoBehaviour {
         selections[1].weaponIndex = (int)Mathf.Floor(UnityEngine.Random.value * weapons.Count);
         selections[2].weaponIndex = (int)Mathf.Floor(UnityEngine.Random.value * weapons.Count);
         selections[3].weaponIndex = (int)Mathf.Floor(UnityEngine.Random.value * weapons.Count);
+
+        /*
+        selections[0].active = true;
+        selections[1].active = true;
+        selections[2].active = true;
+        selections[3].active = true;
+        */
+
         updateIcon(1, p1);
         updateIcon(2, p2);
         updateIcon(3, p3);

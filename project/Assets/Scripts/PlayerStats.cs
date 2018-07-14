@@ -72,10 +72,11 @@ public class PlayerStats : MonoBehaviour {
         foreach (int v in StatisticManager.playerStatistics[playerId].powerupsUsed.Values) powers+=v;
         go.transform.Find("powerups/value").GetComponent<Text>().text = powers.ToString();
 
-        var hits = 0;
-        var totalShots = StatisticManager.playerStatistics[playerId].totalShots;
+        float hits = 0f;
+        float totalShots = StatisticManager.playerStatistics[playerId].totalShots;
         
-        foreach (int v in StatisticManager.playerStatistics[playerId].totalHits.Values) hits+=v;
+        foreach (float v in StatisticManager.playerStatistics[playerId].totalHits.Values) hits+=v;
+        Debug.Log("Hits: " + hits + ", total: " + totalShots);
         if(totalShots==0)
             go.transform.Find("hitmissratio/value").GetComponent<Text>().text = "-";
         else

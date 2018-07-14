@@ -36,7 +36,7 @@ public class StatisticManager : MonoBehaviour {
 		public int survivedLevels = 0;
 		public int totalBulletsShot = 0; //cc
 		public int totalShots = 0; //cc
-        public Dictionary<Targets, int> totalHits; // sum = total shots hit
+        public Dictionary<Targets, float> totalHits; // sum = total shots hit
         public Dictionary<Weapon, float> weaponTimeUsed;
     };
 
@@ -57,7 +57,7 @@ public class StatisticManager : MonoBehaviour {
                 ps.powerupsUsed = new Dictionary<Powerups, int>();
 
                 ps.deaths = new Dictionary<Death, int>();
-                ps.totalHits = new Dictionary<Targets, int>();
+                ps.totalHits = new Dictionary<Targets, float>();
                 ps.weaponTimeUsed = new Dictionary<Weapon, float>();
                 playerStatistics.Add(i, ps);
             }
@@ -126,7 +126,8 @@ public class StatisticManager : MonoBehaviour {
 
     public static void calculateHitStatistics(Player player, Targets type, float increase)
     {
-        playerStatistics[player.playerId].totalHits[type]++;
+        Debug.Log("player " + player.playerId + " shot " + type + " with " + increase + " bulleets");
+        playerStatistics[player.playerId].totalHits[type]+=increase;
     }
 
     public static void calculateShotStatistics(Player player, int bulletAmount)

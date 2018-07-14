@@ -88,6 +88,8 @@ public class MainControl : MonoBehaviour {
         }
         else
             ui.transform.Find("timeattack").GetComponent<Text>().text = "";
+
+        //StatisticManager.init();
     }
 
     private void spawnFirstSpawners()

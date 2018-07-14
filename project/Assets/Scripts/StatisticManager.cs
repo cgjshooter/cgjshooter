@@ -20,7 +20,7 @@ public class StatisticManager : MonoBehaviour {
 		public int totalShots = 0; //cc
 		public int totalLevelsCompleted = 0;
     };
-
+    
     public class PlayerStatistics
     {
         public Dictionary<EnemyType, int> enemyKills; //cc
@@ -41,32 +41,35 @@ public class StatisticManager : MonoBehaviour {
     };
 
     public static Dictionary<int, PlayerStatistics> playerStatistics;
+
     public static GameStatistics gameStatistics;
 
 	// Use this for initialization
 	void Start () {
-        DontDestroyOnLoad(this.gameObject);
-        playerStatistics = new Dictionary<int, PlayerStatistics>();
-        gameStatistics = new GameStatistics();
+            //Only create them if they dont exist.
+            playerStatistics = new Dictionary<int, PlayerStatistics>();
+            gameStatistics = new GameStatistics();
 
-        for(int i = 1; i <= 4; ++i)
-        {
-            var ps = new PlayerStatistics();
-            ps.enemyKills = new Dictionary<EnemyType, int>();
-            ps.powerupsUsed = new Dictionary<Powerups, int>();
+            for(int i = 1; i <= 4; ++i)
+            {
+                var ps = new PlayerStatistics();
+                ps.enemyKills = new Dictionary<EnemyType, int>();
+                ps.powerupsUsed = new Dictionary<Powerups, int>();
 
-            ps.deaths = new Dictionary<Death, int>();
-            ps.totalHits = new Dictionary<Targets, int>();
-            ps.weaponTimeUsed = new Dictionary<Weapon, float>();
-            playerStatistics.Add(i, ps);
-        }
+                ps.deaths = new Dictionary<Death, int>();
+                ps.totalHits = new Dictionary<Targets, int>();
+                ps.weaponTimeUsed = new Dictionary<Weapon, float>();
+                playerStatistics.Add(i, ps);
+            }
         init();
 	}
 
-    void init()
+    public static void init()
     {
+        if (playerStatistics == null) return;
         foreach(PlayerStatistics ps in playerStatistics.Values)
         {
+
             ps.enemyKills.Add(EnemyType.easy, 0);
             ps.enemyKills.Add(EnemyType.normal, 0);
             ps.enemyKills.Add(EnemyType.hard, 0);

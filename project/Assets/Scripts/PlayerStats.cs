@@ -35,7 +35,7 @@ public class PlayerStats : MonoBehaviour {
         if (go == null) return;
         var exists = false;
         if (playerId != 1)
-            go.transform.Find("help/title").GetComponent<Text>().text = "Press back to return to menu";
+            go.transform.Find("help/title").GetComponent<Text>().text = "Press start to return to menu";
         if(MainControl.activePlayers != null)
         {
             foreach(GameObject ap in MainControl.activePlayers)

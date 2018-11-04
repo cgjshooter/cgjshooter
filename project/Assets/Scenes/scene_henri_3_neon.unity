@@ -2831,6 +2831,21 @@ Prefab:
       propertyPath: spawnRadius
       value: 75
       objectReference: {fileID: 0}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: maxPowerupCount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerUpSpawnMinDelay
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114536993554911014, guid: 4b3fa7013fcb0ee478232beb7eabf6e6,
+        type: 2}
+      propertyPath: powerUpSpawnMaxDelay
+      value: 16
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4b3fa7013fcb0ee478232beb7eabf6e6, type: 2}
   m_IsPrefabParent: 0

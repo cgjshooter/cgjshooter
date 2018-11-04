@@ -652,7 +652,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Time attack
+  m_Text: Classic
 --- !u!222 &168235572
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -906,7 +906,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -8172,7 +8172,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: P R E P A R I N G   B U L L E T S !
+  m_Text: E M B R A C E   Y O U R S E L V E S . . .
 --- !u!222 &1530757747
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10955,7 +10955,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: P R E P A R I N G   B U L L E T S !
+  m_Text: E M B R A C E   Y O U R S E L V E S . . .
 --- !u!222 &2055705292
 CanvasRenderer:
   m_ObjectHideFlags: 0

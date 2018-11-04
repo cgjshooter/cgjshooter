@@ -136,7 +136,7 @@ public class Player : MonoBehaviour, ITarget
             //Populate real weapons
             GameObject go = Instantiate(weaponPrefabs[PlayerSelect.selections[playerId-1].weaponIndex], this.transform);
             this.items.Add(go.GetComponent<IItem>());
-            //Add one rrandom weapon + item
+            //Add one random weapon + item
             var rndW = (int)Mathf.Floor(UnityEngine.Random.value * weaponPrefabs.Count);
             while(rndW == PlayerSelect.selections[playerId - 1].weaponIndex)
                 rndW = (int)Mathf.Floor(UnityEngine.Random.value * weaponPrefabs.Count);

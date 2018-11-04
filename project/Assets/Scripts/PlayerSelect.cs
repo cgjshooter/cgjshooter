@@ -79,11 +79,13 @@ public class PlayerSelect : MonoBehaviour {
             this.transform.Find("fadeout/Text").GetComponent<Text>().color = new Color(1f, 1f, 1f, 0f);
         }
 
-        this.transform.Find("tutorial/Image/Text").GetComponent<Text>().text = Mathf.Floor(Time.time*0.5f) % 2 == 0 ? "A" : "1";
-        this.transform.Find("timeattack/Image/Text").GetComponent<Text>().text = Mathf.Floor(Time.time*0.5f) % 2 == 0 ? "B" : "2";
-        this.transform.Find("custom/Image/Text").GetComponent<Text>().text = Mathf.Floor(Time.time * 0.5f) % 2 == 0 ? "X" : "3";
-        this.transform.Find("credits/Image/Text").GetComponent<Text>().text = Mathf.Floor(Time.time * 0.5f) % 2 == 0 ? "X" : "4";
+        // UI switch game mode labels between numbers and letters
+        this.transform.Find("tutorial/Image/Text").GetComponent<Text>().text = Mathf.Floor(Time.time*0.3125f) % 2 == 0 ? "A" : "1";
+        this.transform.Find("timeattack/Image/Text").GetComponent<Text>().text = Mathf.Floor(Time.time*0.3125f) % 2 == 0 ? "B" : "2";
+        this.transform.Find("custom/Image/Text").GetComponent<Text>().text = Mathf.Floor(Time.time * 0.3125f) % 2 == 0 ? "X" : "3";
+        this.transform.Find("credits/Image/Text").GetComponent<Text>().text = Mathf.Floor(Time.time * 0.3125f) % 2 == 0 ? "Y" : "4";
 
+        // Any Player can choose the game mode
         if (CrossPlatformInputManager.GetButton("p1SelectItem1") ||
             CrossPlatformInputManager.GetButton("p2SelectItem1") ||
             CrossPlatformInputManager.GetButton("p3SelectItem1") ||
